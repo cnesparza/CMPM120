@@ -14,5 +14,14 @@ Load.prototype =
 		// load graphics assets
 		game.load.path = 'assets/img/';
 		game.load.image( 'background', 'background.png' );
+
+		// load audio assets
+		game.load.path = 'assets/audio/';
+		game.load.audio( 'bg_music', [ 'deja_vu_bgm.mp3' ] );
+	}
+
+	create: function()
+	{
+		game.state.start( 'Menu' );
 	}
 }
