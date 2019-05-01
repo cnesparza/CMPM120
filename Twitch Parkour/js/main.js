@@ -28,7 +28,7 @@ window.onload = function() {
 	// define states
 	game.state.add('Boot', Boot);
 	game.state.add('Load', Load);
-	game.state.add('Title', Title);
+	game.state.add('Menu', Menu);
 	game.state.add('Play', Play);
 	game.state.add('GameOver', GameOver);
 	game.state.start('Boot');
