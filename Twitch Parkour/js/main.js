@@ -9,10 +9,8 @@
 var game;
 var paddle = null;
 var paddleVelocity = 150;
-var colors = [0x1BE7FF, 0x6EEB83, 0xE4FF1A, 0xE8AA14]; // colors array (rainbows!)
-var colorIndex = 0;
 var extremeMODE;
-var barrierSpeed;
+var emoteSpeed;
 var level;
 var highScore;
 var newHighScore;
