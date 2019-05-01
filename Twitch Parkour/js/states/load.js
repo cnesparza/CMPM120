@@ -13,6 +13,7 @@ Load.prototype =
 
 		// load graphics assets
 		game.load.path = 'assets/img/';
+		game.load.sprite( 'player', 'datSheffy.png' );
 		game.load.image( 'background', 'background.png' );
 
 		// load audio assets
