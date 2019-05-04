@@ -11,14 +11,22 @@ Load.prototype =
 		loadingBar.anchor.set( 0.5 );
 		game.load.setPreloadSprite( loadingBar );
 
-		// load graphics assets
+		// load player and collectibles assets
 		game.load.path = 'assets/img/';
-		game.load.sprite( 'player', 'datSheffy.png' );
-		game.load.image( 'background', 'background.png' );
+		game.load.image( 'trust', 'stringBall.png' );
+		game.load.sprite( 'player', 'monka.png' );
+
+		// load platform assets
+		game.load.path = 'assets/img/platforms/';
+		game.load.image( 'platform', 'turquoisePlatform.png' );
+
+		// load hazard assets
+		game.load.path = 'assets/img/hazards/';
+		game.load.image( 'spike', 'orangeSpike.png' );
 
 		// load audio assets
 		game.load.path = 'assets/audio/';
-		game.load.audio( 'bg_music', [ 'deja_vu_bgm.mp3' ] );
+		game.load.audio( 'bgm', ['random1.mp3'] );
 	}
 
 	create: function()

@@ -13,13 +13,8 @@
 
 // define globals
 var game;
-var paddle = null;
-var paddleVelocity = 150;
-var extremeMODE;
-var emoteSpeed;
-var level;
-var highScore;
-var newHighScore;
+var bg = "#FCD36F";
+var trustLVL;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
@@ -27,14 +22,13 @@ window.onload = function() {
 	// localStorage.clear();
 	
 	// define game
-	game = new Phaser.Game( 1080,720, Phaser.AUTO, 'myGame' );
+	game = new Phaser.Game( 1080,720, Phaser.AUTO, 'phaser' );
 	
 	// define states
 	game.state.add('Boot', Boot);
 	game.state.add('Load', Load);
 	game.state.add('Menu', Menu);
 	game.state.add('Play', Play);
-	game.state.add('GameOver', GameOver);
 	game.state.start('Boot');
 }
 

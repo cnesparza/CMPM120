@@ -3,28 +3,36 @@
 var Play = function( game ) {};
 Play.prototype = 
 {
+    init: function()
+    {
+        this.trustLVL = 0;
+    },
+
     create: function()
     {
-        // reset emote speed, level, and EXTREME mode
-        emoteSpeed = -450;
-        level = 0;
-        extremeMode = false;
+        // start physics engine for game
+        game.physics.startSystem( Phaser.Physics.ARCADE );
 
-        // setup bgm
-        this.bg_music = game.add.audio( 'bg_music' );
-        this.bg_music.play( '', 0, 1, true );
+        // Create platforms group
+        platforms = game.add.group();
+        platforms.enableBody = true;
 
-        // add player
-        player = game.add.sprite( 32, game.height/2, 'player' );
-        player.anchor.set( 0.5 );
-        player.destroyed = false;   // custome property to track player life
+        // Create ground platform for player
+        var ground = platforms.create( 0, game.world.height - 64, 'platoform' );
+        ground.scale.setTo( 2, 2 );
+        ground.body.immovable = true;
 
-        // player physics
-        game.physics.enable( player, Phaser.Physics.ARCADE );
-        paddle.body.maxVelocity.set( 600 );
-        paddle.body.collideWorldBounds = true;
-        paddle.body.immovable = true;
+        // Create player and enable physics
+        player = game.add.sprite( game.world.width/2, 0, 'player' );
+        game.physics.arcade.enable( player );
+        player.body.gravity.y = 2000;
+        player.body.collideWorldBounds = true;
 
+        // Create keyboard functionality
+        cursors = game.input.keyboard.createCursorKeys();
+
+        // Create collectibles group
+        balls = game.add.group();
         
     }
 }
