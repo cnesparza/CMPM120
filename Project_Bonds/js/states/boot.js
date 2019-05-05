@@ -13,4 +13,4 @@ Boot.prototype =
 	{
 		game.state.start( 'Load' );
 	}
-}
+};

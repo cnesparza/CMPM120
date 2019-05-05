@@ -29,4 +29,4 @@ Menu.prototype =
             game.state.start( 'Play' );
         }
     }
-}
+};
