@@ -14,7 +14,8 @@ Load.prototype =
 		// load player and collectibles assets
 		game.load.path = 'assets/img/';
 		game.load.image( 'trust', 'stringBall.png' );
-		game.load.sprite( 'player', 'monka.png' );
+		game.load.image( 'player', 'monka.png' );
+		game.load.image( 'buddy', 'LUL.png')
 
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
@@ -27,10 +28,10 @@ Load.prototype =
 		// load audio assets
 		game.load.path = 'assets/audio/';
 		game.load.audio( 'bgm', ['random1.mp3'] );
-	}
+	},
 
 	create: function()
 	{
 		game.state.start( 'Menu' );
 	}
-}
+};
