@@ -13,7 +13,6 @@
 
 // define globals
 var game;
-var fuckass;
 var bg = "#FCD36F";
 var trustLVL;
 
