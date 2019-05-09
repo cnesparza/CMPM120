@@ -15,6 +15,7 @@
 var game;
 var bg = "#FCD36F";
 var trustLVL;
+var plyrSpeed = 400;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
