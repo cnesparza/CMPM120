@@ -35,7 +35,7 @@ Play.prototype =
         game.physics.p2.enable( [ player1, player2, platform ], false );
         
         // set players together
-        game.physics.p2.createSpring( this.player1, this.player2, 15, 1, 1 );
+        game.physics.p2.createSpring( player1, player2, 15, 10, 100 );
 
         // Create keyboard functionality
         cursors = game.input.keyboard.createCursorKeys();
