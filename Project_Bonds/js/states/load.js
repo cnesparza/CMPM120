@@ -14,12 +14,13 @@ Load.prototype =
 		// load player and collectibles assets
 		game.load.path = 'assets/img/';
 		game.load.image( 'trust', 'stringBall.png' );
-		game.load.image( 'player', 'monka.png' );
-		game.load.image( 'buddy', 'LUL.png')
+		game.load.image( 'player', 'player_1.png' );
+		game.load.image( 'buddy', 'player_2.png')
 
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
 		game.load.image( 'platform', 'turquoisePlatform.png' );
+		game.load.image( 'floor', 'floor.png' );
 
 		// load hazard assets
 		game.load.path = 'assets/img/hazards/';
