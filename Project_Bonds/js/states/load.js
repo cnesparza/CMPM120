@@ -22,12 +22,13 @@ Load.prototype =
 
 		// load players
 		game.load.path = 'assets/img/players/';
-		game.load.atlas = ( 'player', 'blueboispritesheet.png', 'blueboisprites.json' );
-		game.load.atlas = ( 'buddy', 'redboispritesheet.png', 'redboisprites.json' );
+		game.load.spritesheet('bluewalk', 'bluespritesheet.png', )
+		game.load.atlasJSONHash = ( 'player', 'blueboispritesheet.png', 'blueboisprites.json' );
+		game.load.atlasJSONHash = ( 'buddy', 'redboispritesheet.png', 'redboisprites.json' );
 
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
-		game.load.image( 'platform', 'turquoisePlatform.png' );
+		game.load.image( 'platform', 'turq_long.png' );
 		game.load.image( 'floor', 'floor.png' );
 
 		// load hazard assets

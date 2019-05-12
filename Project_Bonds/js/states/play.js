@@ -31,7 +31,8 @@ Play.prototype =
         var floor = platforms.create( 0, game.world.height, 'floor' );
 
         // Create platform
-        var platform = platforms.create( game.world.width/2, game.world.height - 400, 'platform' );
+        var platform = platforms.create( game.world.width/2 + 100, game.world.height - 130, 'platform' );
+        platform.scale.setTo( 1, 0.5 );
 
         // Add player sprites and enable phsysics
         player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'Asset 1' );
@@ -45,7 +46,7 @@ Play.prototype =
         // Additional physics
         player1.body.fixedRotation = true;
         player2.body.fixedRotation = true;
-        platform.body.setRectangle( 434, 108 );
+        platform.body.setRectangle( 434, 54 );
         platform.body.static = true;
         floor.body.static = true;
 
@@ -132,7 +133,7 @@ Play.prototype =
         this.line = game.add.sprite( 0, 0, this.ropeBitmapData );
 
         // Create a spring between the player and block to act as the ropoe
-        this.rope = this.game.physics.p2.createSpring( p1, p2, 200, 80, 5 );
+        this.rope = this.game.physics.p2.createSpring( p1, p2, 100, 80, 5 );
 
         // Draw a line from the players
         this.line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
@@ -148,7 +149,7 @@ Play.prototype =
         this.ropeBitmapData.ctx.beginPath();
         this.ropeBitmapData.ctx.moveTo( player1.x, player1.y );
         this.ropeBitmapData.ctx.lineTo( player2.x, player2.y );
-        this.ropeBitmapData.ctx.lineWidth = 4;
+        this.ropeBitmapData.ctx.lineWidth = 2;
         this.ropeBitmapData.ctx.stroke();
         this.ropeBitmapData.ctx.closePath();
         this.ropeBitmapData.render();
