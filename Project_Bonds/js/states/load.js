@@ -21,10 +21,10 @@ Load.prototype =
 		game.load.image( 'button', 'button.png' );
 
 		// load players
-		game.load.path = 'assets/img/players/';
-		game.load.spritesheet('bluewalk', 'bluespritesheet.png', )
-		game.load.atlasJSONHash = ( 'player', 'blueboispritesheet.png', 'blueboisprites.json' );
-		game.load.atlasJSONHash = ( 'buddy', 'redboispritesheet.png', 'redboisprites.json' );
+		game.load.atlas = ( 'player', 'assets/img/players/blueboispritesheet.png', 
+			'assets/img/players/blueboisprites.json' );
+		game.load.atlas = ( 'buddy', 'assets/img/players/redboispritesheet.png', 
+			'assets/img/players/redboisprites.json' );
 
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';

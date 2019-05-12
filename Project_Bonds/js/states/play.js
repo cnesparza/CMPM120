@@ -35,10 +35,10 @@ Play.prototype =
         platform.scale.setTo( 1, 0.5 );
 
         // Add player sprites and enable phsysics
-        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'Asset 1' );
-        player1.scale.setTo( 0.5, 0.5 );
-        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy', 'redboi 5' );
-        player2.scale.setTo( 0.5, 0.5 );
+        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player' );
+        //player1.scale.setTo( 0.5, 0.5 );
+        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy' );
+        //player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
         game.physics.p2.enable( [ player1, player2, platform, floor ], false );
@@ -59,9 +59,9 @@ Play.prototype =
         cursors = game.input.keyboard.createCursorKeys();
 
         // Create collectibles group
-        balls = game.add.group();
-        balls.enableBody = true;
-        var ball = balls.create( 550, game.world.height - 150, 'trust' );
+        //balls = game.add.group();
+        //balls.enableBody = true;
+        //var ball = balls.create( 550, game.world.height - 150, 'trust' );
         
     },
 
