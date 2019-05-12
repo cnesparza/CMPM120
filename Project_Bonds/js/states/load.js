@@ -11,11 +11,14 @@ Load.prototype =
 		loadingBar.anchor.set( 0.5 );
 		game.load.setPreloadSprite( loadingBar );
 
-		// load player and collectibles assets
+		// load collectibles assets
 		game.load.path = 'assets/img/';
 		game.load.image( 'trust', 'stringBall.png' );
-		game.load.image( 'player', 'player_1.png' );
-		game.load.image( 'buddy', 'player_2.png')
+
+		// load players
+		game.load.path = 'assets/img/players/';
+		game.load.atlas = ( 'player', 'blueboispritesheet.png', 'blueboisprites.json' );
+		game.load.atlas = ( 'buddy', 'redboispritesheet.png', 'redboisprites.json' );
 
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
