@@ -124,7 +124,7 @@ Play.prototype =
         this.ropeBitmapData = game.add.bitmapData( this.game.world.width, this.game.world.height );
 
         this.ropeBitmapData.ctx.beginPath();
-        this.ropeBitmapData.ctx.lineWidth = "4";
+        this.ropeBitmapData.ctx.lineWidth = "2";
         this.ropeBitmapData.ctx.strokeStyle = "#ffffff";
         this.ropeBitmapData.ctx.stroke();
 

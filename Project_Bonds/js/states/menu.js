@@ -10,23 +10,18 @@ Menu.prototype =
         game.stage.backgroundColor = bg;
 
         // add menu screen text
-        var menuText = game.add.text( game.width/2, game.height/2, 'BONDS', { fontSize: '48px', fill: '#000' } );
-        menuText.anchor.set( 0.5 );
+        game.add.image( game.width/3, game.height/3, 'title' );
 
-        var playText = game.add.text( game.width/2, game.height*.8, 'Press ENTER to Start', 
-            { fontSize: '48px', fill: '#000' } );
+        var button = game.add.button( game.width/3 + 50, game.height * .7, 'button', this.actionOnClick, this, 'play' );
+        var playText = game.add.text( game.width/3 + 125, game.height * .7 + 20, 'play', { fontSize: '32px', fill: '#000' } );
 
         // begin playing bgm
         this.bgm = game.add.audio( 'bgm' );
         this.bgm.play( '', 0, 1, true );    // set bgm to loop
     },
 
-    update: function()
+    actionOnClick: function()
     {
-        //check for UP input
-        if( game.input.keyboard.justPressed( Phaser.Keyboard.ENTER ) )
-        {
-            game.state.start( 'Play' );
-        }
+        game.state.start( 'Play' );
     }
 };

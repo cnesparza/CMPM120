@@ -15,6 +15,11 @@ Load.prototype =
 		game.load.path = 'assets/img/';
 		game.load.image( 'trust', 'stringBall.png' );
 
+		// load menu assets
+		game.load.path = 'assets/img/title_screen/';
+		game.load.image( 'title', 'title.png' );
+		game.load.image( 'button', 'button.png' );
+
 		// load players
 		game.load.path = 'assets/img/players/';
 		game.load.atlas = ( 'player', 'blueboispritesheet.png', 'blueboisprites.json' );
