@@ -16,35 +16,35 @@ Play.prototype =
         // Create platforms group
         platforms = game.add.group();
         platforms.enableBody = true;
+        platforms.physicsBodyType = Phaser.Physics.P2JS;
 
         // Setting up world properties
-        game.physics.p2.gravity.y = 8000;
+        game.physics.p2.gravity.y = 9000;
         game.physics.p2.world.defaultContactMaterial.friction = 0.3;
         game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Create the floor
-        var floor = game.add.image( game.world.width, game.world.height - 60, 'floor' );
-        game.physics.p2.enable( [ floor ], false );
-        //game.body.immovable = true;
+        var floor = game.add.image( 0, game.world.height - 60, 'floor' );
+        game.physics.p2.enable( floor, false );
+        //floor.body.STATIC = true;
 
         // Create platform
-        var platform = platforms.create( game.world.width/2, game.world.height - 150, 'platform' );
-        platform.body.immovable = true;
-        platform.scale.setTo( 0.5, 0.5 );
-
+        var platform = platforms.create( game.world.width/2, game.world.height - 400, 'platform' );
 
         // Add player sprites and enable phsysics
-        player1 = game.add.sprite( game.world.width/4, game.world.height, 'player' );
+        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player' );
         player1.scale.setTo( 0.5, 0.5 );
-        player2 = game.add.sprite( game.world.width/2, game.world.height, 'buddy' );
+        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy' );
         player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
         game.physics.p2.enable( [ player1, player2, platform ], false );
         
-        // Additional player physics
+        // Additional physics
         player1.body.fixedRotation = true;
         player2.body.fixedRotation = true;
+        platform.body.setRectangle( 434, 108 );
+        platform.body.static = true;
 
         // set players together
         this.createRope( player1, player2 );
@@ -83,7 +83,7 @@ Play.prototype =
         // Allow the player to jump if they are touching the ground
         if( cursors.up.isDown )
         {
-            player1.body.velocity.y = -1750;
+            player1.body.velocity.y = -1000;
         }
 
 
@@ -104,7 +104,7 @@ Play.prototype =
         // Allow the player to jump if they are touching the ground
         if( game.input.keyboard.isDown( Phaser.Keyboard.W ) )
         {
-            player2.body.velocity.y = -1750;
+            player2.body.velocity.y = -1000;
         }
 
         this.drawRope();
@@ -127,7 +127,7 @@ Play.prototype =
         this.line = game.add.sprite( 0, 0, this.ropeBitmapData );
 
         // Create a spring between the player and block to act as the ropoe
-        this.rope = this.game.physics.p2.createSpring( p1, p2, 300, 10, 3 );
+        this.rope = this.game.physics.p2.createSpring( p1, p2, 200, 80, 5 );
 
         // Draw a line from the players
         this.line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
