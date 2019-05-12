@@ -12,7 +12,7 @@ Menu.prototype =
         // add menu screen text
         game.add.image( game.width/3, game.height/3, 'title' );
 
-        var button = game.add.button( game.width/3 + 50, game.height * .7, 'button', this.actionOnClick, this, 'play' );
+        var button = game.add.button( game.width/3 + 50, game.height * .7, 'button', this.actionOnClick, this );
         var playText = game.add.text( game.width/3 + 125, game.height * .7 + 20, 'play', { fontSize: '32px', fill: '#000' } );
 
         // begin playing bgm
