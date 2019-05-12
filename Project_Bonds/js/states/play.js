@@ -34,9 +34,9 @@ Play.prototype =
         var platform = platforms.create( game.world.width/2, game.world.height - 400, 'platform' );
 
         // Add player sprites and enable phsysics
-        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player' );
+        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'Asset 1' );
         player1.scale.setTo( 0.5, 0.5 );
-        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy' );
+        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy', 'redboi 5' );
         player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
