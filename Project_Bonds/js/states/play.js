@@ -13,6 +13,10 @@ Play.prototype =
         // start physics engine for game
         game.physics.startSystem( Phaser.Physics.P2JS );
 
+        // set up collision groups for detection
+        var playerCollisionGroup = game.physics.p2.createCollisionGroup();
+        var platformCollisionGroup = game.physics.p2.createCollisionGroup();
+
         // Create platforms group
         platforms = game.add.group();
         platforms.enableBody = true;
@@ -24,9 +28,7 @@ Play.prototype =
         game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Create the floor
-        var floor = game.add.image( 0, game.world.height - 60, 'floor' );
-        game.physics.p2.enable( floor, false );
-        //floor.body.STATIC = true;
+        var floor = platforms.create( 0, game.world.height, 'floor' );
 
         // Create platform
         var platform = platforms.create( game.world.width/2, game.world.height - 400, 'platform' );
@@ -38,13 +40,14 @@ Play.prototype =
         player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
-        game.physics.p2.enable( [ player1, player2, platform ], false );
+        game.physics.p2.enable( [ player1, player2, platform, floor ], false );
         
         // Additional physics
         player1.body.fixedRotation = true;
         player2.body.fixedRotation = true;
         platform.body.setRectangle( 434, 108 );
         platform.body.static = true;
+        floor.body.static = true;
 
         // set players together
         this.createRope( player1, player2 );
@@ -81,9 +84,10 @@ Play.prototype =
         }
 
         // Allow the player to jump if they are touching the ground
-        if( cursors.up.isDown )
+        if( cursors.up.isDown && game.time.now > jumpTimer && this.checkIfCanJump( player1 ) )
         {
-            player1.body.velocity.y = -1000;
+            player1.body.velocity.y = -( plyrJump );
+            jumpTimer = game.time.now + 750;
         }
 
 
@@ -102,9 +106,10 @@ Play.prototype =
         }
 
         // Allow the player to jump if they are touching the ground
-        if( game.input.keyboard.isDown( Phaser.Keyboard.W ) )
+        if( game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > jumpTimer && this.checkIfCanJump( player2 ) )
         {
-            player2.body.velocity.y = -1000;
+            player2.body.velocity.y = -( plyrJump );
+            jumpTimer = game.time.now + 750;
         }
 
         this.drawRope();
@@ -147,5 +152,34 @@ Play.prototype =
         this.ropeBitmapData.ctx.stroke();
         this.ropeBitmapData.ctx.closePath();
         this.ropeBitmapData.render();
+    },
+
+    // Code for checkIfCanJump function found:
+    // https://phaser.io/examples/v2/p2-physics/platformer-material
+    checkIfCanJump: function( player )
+    {
+        var result = false;
+
+        for( var i = 0; i < game.physics.p2.world.narrowphase.contactEquations.length; i++ )
+        {
+            var c = game.physics.p2.world.narrowphase.contactEquations[i];
+            
+            if( c.bodyA === player.body.data || c.bodyB === player.body.data )
+            {
+                var d = p2.vec2.dot( c.normalA, yAxis );
+
+                if( c.bodyA === player.body.data )
+                {
+                    d *= -1;
+                }
+
+                if( d > 0.5 )
+                {
+                    result = true;
+                }
+            }   
+        }
+
+        return result;
     }
 };

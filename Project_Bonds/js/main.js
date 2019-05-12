@@ -15,7 +15,10 @@
 var game;
 var bg = "#FCD36F";
 var trustLVL;
-var plyrSpeed = 400;
+var plyrSpeed = 600;
+var plyrJump = 2000;
+var yAxis = p2.vec2.fromValues( 0, 1 );
+var jumpTimer = 0;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
