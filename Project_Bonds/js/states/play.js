@@ -25,6 +25,7 @@ Play.prototype =
         //layer.resizeWorld();
 
         map.setCollisionBetween( 1, 12 );
+        //map.setCollisionByExclusion( [] );
         game.physics.p2.convertTilemap( map, layer );
 
         // Create platforms group
@@ -35,7 +36,7 @@ Play.prototype =
         // Setting up world properties
         game.physics.p2.gravity.y = 5000;
         game.physics.p2.world.defaultContactMaterial.friction = 0.3;
-        game.physics.p2.world.setGlobalStiffness( 1e5 );
+        //game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Create the floor
         //var floor = platforms.create( 0, game.world.height, 'floor' );
