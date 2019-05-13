@@ -11,12 +11,17 @@ Play.prototype =
     preload: function()
     {
         // load players
-        game.load.atlas = ( 'player', 'assets/img/players/bluspritesheet.png', 'assets/img/players/blusprites.json' );
-        game.load.atlas = ( 'buddy', 'assets/img/players/redspritesheet.png', 'assets/img/players/redsprites.json' );
+        game.load.path = 'assets/img/';
+        game.load.atlas( 'player', 'players/bluspritesheet.png', 'players/blusprites.json' );
+        game.load.atlas( 'buddy', 'players/redspritesheet.png', 'players/redsprites.json' );
+        game.load.image('playerStanding', 'player_1.png');
+        game.load.image('buddyStanding', 'player_2.png');
     },
 
     create: function()
     {
+
+    
         // start physics engine for game
         game.physics.startSystem( Phaser.Physics.P2JS );
 
@@ -56,6 +61,13 @@ Play.prototype =
         platform.body.setRectangle( 434, 54 );
         platform.body.static = true;
         floor.body.static = true;
+        
+        //animations for the players
+		var redMove = player2.animations.add('redMove', ['red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8'], 20, true);
+		player1.animations.add('redMove');   
+		var bluMove = player1.animations.add('bluMove', ['blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8'], 20, true);
+		player2.animations.add('bluMove');   
+
 
         // set players together
         this.createRope( player1, player2 );
@@ -81,13 +93,19 @@ Play.prototype =
         if( cursors.left.isDown )
         {
             player1.body.velocity.x = -( plyrSpeed );
+            player1.anchor.setTo(.5, .5);
+            player1.scale.x*=-1;
+        	    player1.animations.play('bluMove');
         }
         else if( cursors.right.isDown )
         {
             player1.body.velocity.x = plyrSpeed;
+            player1.animations.play('bluMove');
+
         }
         else
         {
+        	player1.
             player1.body.velocity.x = 0;
         }
 
@@ -103,10 +121,15 @@ Play.prototype =
         if( game.input.keyboard.isDown( Phaser.Keyboard.A ) )
         {
             player2.body.velocity.x = -( plyrSpeed );
+            player2.scale.x = -this.HALFSCALE;
+
+			player2.animations.play('redMove');
+
         }
         else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) )
         {
             player2.body.velocity.x = plyrSpeed;
+			player2.animations.play('redMove');
         }
         else
         {
