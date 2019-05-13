@@ -8,18 +8,6 @@ Play.prototype =
         this.trustLVL = 0;
     },
 
-    preload: function()
-    {
-        // load players
-        game.load.path = 'assets/img/';
-        game.load.atlas( 'player', 'players/bluspritesheet.png', 'players/blusprites.json' );
-        game.load.atlas( 'buddy', 'players/redspritesheet.png', 'players/redsprites.json' );
-        game.load.image('playerStanding', 'player_1.png');
-        game.load.image('buddyStanding', 'player_2.png');
-        game.load.tilemap('Bonds_Protoype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.spritesheet('platforms', 'platfroms.png', 3, 3);
-    },
-
     create: function()
     {
 
@@ -37,7 +25,7 @@ Play.prototype =
         platforms.physicsBodyType = Phaser.Physics.P2JS;
 
         // Setting up world properties
-        game.physics.p2.gravity.y = 9000;
+        game.physics.p2.gravity.y = 5000;
         game.physics.p2.world.defaultContactMaterial.friction = 0.3;
         game.physics.p2.world.setGlobalStiffness( 1e5 );
 
@@ -45,14 +33,14 @@ Play.prototype =
         var floor = platforms.create( 0, game.world.height, 'floor' );
 
         // Create platform
-        var platform = platforms.create( game.world.width/2 + 100, game.world.height - 230, 'platform' );
+        var platform = platforms.create( game.world.width/2 + 100, game.world.height - 200, 'platform' );
         platform.scale.setTo( 1, 0.5 );
 
         // Add player sprites and enable phsysics
         player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'blue 1' );
-        //player1.scale.setTo( 0.5, 0.5 );
+        player1.scale.setTo( 0.5, 0.5 );
         player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy', 'red 1' );
-        //player2.scale.setTo( 0.5, 0.5 );
+        player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
         game.physics.p2.enable( [ player1, player2, platform, floor ], false );
@@ -65,11 +53,10 @@ Play.prototype =
         floor.body.static = true;
         
         //animations for the players
-		var redMove = player2.animations.add('redMove', ['red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8'], 20, true);
-		player1.animations.add('redMove');   
-		var bluMove = player1.animations.add('bluMove', ['blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8'], 20, true);
-		player2.animations.add('bluMove');   
-
+		player1.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
+        player1.animations.add( 'right', [ 'blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8' ], 20, true );
+        player2.animations.add( 'left', [ 'red 9', 'red 10', 'red 11', 'red 12', 'red 13', 'red 14', 'red 15', 'red 16' ], 20, true );
+        player2.animations.add( 'right', [ 'red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8' ], 20, true );
 
         // set players together
         this.createRope( player1, player2 );
@@ -95,18 +82,17 @@ Play.prototype =
         if( cursors.left.isDown )
         {
             player1.body.velocity.x = -( plyrSpeed );
-            player1.anchor.setTo(.5, .5);
-            player1.scale.x*=-1;
-        	    player1.animations.play('bluMove');
+        	player1.animations.play( 'left' );
         }
         else if( cursors.right.isDown )
         {
             player1.body.velocity.x = plyrSpeed;
-            player1.animations.play('bluMove');
+            player1.animations.play( 'right' );
 
         }
         else
         {
+            player1.animations.stop();
             player1.body.velocity.x = 0;
         }
 
@@ -122,18 +108,17 @@ Play.prototype =
         if( game.input.keyboard.isDown( Phaser.Keyboard.A ) )
         {
             player2.body.velocity.x = -( plyrSpeed );
-            player2.scale.x = -this.HALFSCALE;
-
-			player2.animations.play('redMove');
+			player2.animations.play( 'left' );
 
         }
         else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) )
         {
             player2.body.velocity.x = plyrSpeed;
-			player2.animations.play('redMove');
+			player2.animations.play( 'right' );
         }
         else
         {
+            player2.animations.stop();
             player2.body.velocity.x = 0;
         }
 

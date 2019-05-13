@@ -14,6 +14,8 @@ Load.prototype =
 		// load collectibles assets
 		game.load.path = 'assets/img/';
 		game.load.image( 'trust', 'stringBall.png' );
+		game.load.tilemap('Bonds_Protoype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.spritesheet('platforms', 'platfroms.png', 3, 3);
 
 		// load menu assets
 		game.load.path = 'assets/img/title_screen/';
@@ -21,9 +23,10 @@ Load.prototype =
 		game.load.image( 'button', 'button.png' );
 
 		// load players
-		game.load.atlasJSONHash = ( 'player', 'assets/img/players/bluspritesheet.png', 'assets/img/players/blusprites.json' );
-		game.load.atlasJSONHash = ( 'buddy', 'assets/img/players/redspritesheet.png', 'assets/img/players/redsprites.json' );
-
+		game.load.path = 'assets/img/players/';
+		game.load.atlas( 'player', 'fullbluespritesheet.png', 'fullbluesprites.json' );
+        game.load.atlas( 'buddy', 'fullredspritesheet.png', 'fullredsprites.json' );
+        
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
 		game.load.image( 'platform', 'turq_long.png' );
