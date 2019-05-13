@@ -8,6 +8,13 @@ Play.prototype =
         this.trustLVL = 0;
     },
 
+    preload: function()
+    {
+        // load players
+        game.load.atlas = ( 'player', 'assets/img/players/bluspritesheet.png', 'assets/img/players/blusprites.json' );
+        game.load.atlas = ( 'buddy', 'assets/img/players/redspritesheet.png', 'assets/img/players/redsprites.json' );
+    },
+
     create: function()
     {
         // start physics engine for game
@@ -35,9 +42,9 @@ Play.prototype =
         platform.scale.setTo( 1, 0.5 );
 
         // Add player sprites and enable phsysics
-        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player' );
+        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'blue 1' );
         //player1.scale.setTo( 0.5, 0.5 );
-        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy' );
+        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy', 'red 1' );
         //player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics

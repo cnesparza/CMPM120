@@ -21,10 +21,8 @@ Load.prototype =
 		game.load.image( 'button', 'button.png' );
 
 		// load players
-		game.load.atlas = ( 'player', 'assets/img/players/blueboispritesheet.png', 
-			'assets/img/players/blueboisprites.json' );
-		game.load.atlas = ( 'buddy', 'assets/img/players/redboispritesheet.png', 
-			'assets/img/players/redboisprites.json' );
+		game.load.atlasJSONHash = ( 'player', 'assets/img/players/bluspritesheet.png', 'assets/img/players/blusprites.json' );
+		game.load.atlasJSONHash = ( 'buddy', 'assets/img/players/redspritesheet.png', 'assets/img/players/redsprites.json' );
 
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
@@ -42,6 +40,6 @@ Load.prototype =
 
 	create: function()
 	{
-		game.state.start( 'Menu' );
+		game.state.start( 'Menu', true, false );
 	}
 };
