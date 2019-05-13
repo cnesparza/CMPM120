@@ -19,14 +19,13 @@ Play.prototype =
 
         // set up level
         map = game.add.tilemap( 'level' );
-        map.addTilesetImage( 'platfroms', 'tilesheet' );
+        map.addTilesetImage( 'tilesheet_test', 'tilesheet' );
 
+        //map.setCollisionBetween( 1, 12 );
+        map.setCollisionByExclusion( [] );
+        game.physics.p2.convertTilemap( map, layer );
         layer = map.createLayer( 'Tile Layer 1' );
         //layer.resizeWorld();
-
-        map.setCollisionBetween( 1, 12 );
-        //map.setCollisionByExclusion( [] );
-        game.physics.p2.convertTilemap( map, layer );
 
         // Create platforms group
         //platforms = game.add.group();
