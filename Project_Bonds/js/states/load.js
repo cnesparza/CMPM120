@@ -13,7 +13,7 @@ Load.prototype =
 
 		// load collectibles assets & level json and spritesheet
 		game.load.path = 'assets/img/';
-		game.load.tilemap( 'level', 'Bonds_Protoype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.tilemap( 'level', 'Bonds_Prototype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON );
         game.load.spritesheet( 'tilesheet', 'platfroms.png', 3, 3 );
         game.load.image( 'trust', 'stringBall.png' );
 

@@ -19,10 +19,10 @@ Play.prototype =
 
         // set up level
         map = game.add.tilemap( 'level' );
-        map.addTilesetImage( 'platforms', 'tilesheet' );
+        map.addTilesetImage( 'platfroms', 'tilesheet' );
 
         layer = map.createLayer( 'Tile Layer 1' );
-        layer.resizeWorld();
+        //layer.resizeWorld();
 
         map.setCollisionBetween( 1, 12 );
         game.physics.p2.convertTilemap( map, layer );
@@ -157,7 +157,7 @@ Play.prototype =
         this.line = game.add.sprite( 0, 0, this.ropeBitmapData );
 
         // Create a spring between the player and block to act as the ropoe
-        this.rope = this.game.physics.p2.createSpring( p1, p2, 100, 80, 5 );
+        this.rope = this.game.physics.p2.createSpring( p1, p2, 50, 50, 5 );
 
         // Draw a line from the players
         this.line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
