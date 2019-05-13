@@ -14,6 +14,8 @@
 // define globals
 var game;
 var bg = "#FCD36F";
+var map;
+var layer;
 var trustLVL;
 var plyrSpeed = 600;
 var plyrJump = 2000;

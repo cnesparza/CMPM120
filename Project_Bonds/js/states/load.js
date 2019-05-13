@@ -11,11 +11,11 @@ Load.prototype =
 		loadingBar.anchor.set( 0.5 );
 		game.load.setPreloadSprite( loadingBar );
 
-		// load collectibles assets
+		// load collectibles assets & level json and spritesheet
 		game.load.path = 'assets/img/';
-		game.load.image( 'trust', 'stringBall.png' );
-		game.load.tilemap('Bonds_Protoype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.spritesheet('platforms', 'platfroms.png', 3, 3);
+		game.load.tilemap( 'level', 'Bonds_Protoype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON );
+        game.load.spritesheet( 'tilesheet', 'platfroms.png', 3, 3 );
+        game.load.image( 'trust', 'stringBall.png' );
 
 		// load menu assets
 		game.load.path = 'assets/img/title_screen/';
@@ -38,7 +38,7 @@ Load.prototype =
 
 		// load audio assets
 		game.load.path = 'assets/audio/';
-		game.load.audio( 'bgm', ['random1.mp3'] );
+		game.load.audio( 'bgm', ['new_bonds_edit.mp3'] );
 	},
 
 	create: function()

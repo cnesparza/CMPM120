@@ -10,8 +10,6 @@ Play.prototype =
 
     create: function()
     {
-
-    
         // start physics engine for game
         game.physics.startSystem( Phaser.Physics.P2JS );
 
@@ -19,10 +17,20 @@ Play.prototype =
         var playerCollisionGroup = game.physics.p2.createCollisionGroup();
         var platformCollisionGroup = game.physics.p2.createCollisionGroup();
 
+        // set up level
+        map = game.add.tilemap( 'level' );
+        map.addTilesetImage( 'platforms', 'tilesheet' );
+
+        layer = map.createLayer( 'Tile Layer 1' );
+        layer.resizeWorld();
+
+        map.setCollisionBetween( 1, 12 );
+        game.physics.p2.convertTilemap( map, layer );
+
         // Create platforms group
-        platforms = game.add.group();
-        platforms.enableBody = true;
-        platforms.physicsBodyType = Phaser.Physics.P2JS;
+        //platforms = game.add.group();
+        //platforms.enableBody = true;
+        //platforms.physicsBodyType = Phaser.Physics.P2JS;
 
         // Setting up world properties
         game.physics.p2.gravity.y = 5000;
@@ -30,11 +38,11 @@ Play.prototype =
         game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Create the floor
-        var floor = platforms.create( 0, game.world.height, 'floor' );
+        //var floor = platforms.create( 0, game.world.height, 'floor' );
 
         // Create platform
-        var platform = platforms.create( game.world.width/2 + 100, game.world.height - 200, 'platform' );
-        platform.scale.setTo( 1, 0.5 );
+        //var platform = platforms.create( game.world.width/2 + 100, game.world.height - 200, 'platform' );
+        //platform.scale.setTo( 1, 0.5 );
 
         // Add player sprites and enable phsysics
         player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'blue 1' );
@@ -43,14 +51,14 @@ Play.prototype =
         player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
-        game.physics.p2.enable( [ player1, player2, platform, floor ], false );
+        game.physics.p2.enable( [ player1, player2 ], false );
         
         // Additional physics
         player1.body.fixedRotation = true;
         player2.body.fixedRotation = true;
-        platform.body.setRectangle( 434, 54 );
-        platform.body.static = true;
-        floor.body.static = true;
+        //platform.body.setRectangle( 434, 54 );
+        //platform.body.static = true;
+        //floor.body.static = true;
         
         //animations for the players
 		player1.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
