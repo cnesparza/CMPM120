@@ -16,6 +16,8 @@ Play.prototype =
         game.load.atlas( 'buddy', 'players/redspritesheet.png', 'players/redsprites.json' );
         game.load.image('playerStanding', 'player_1.png');
         game.load.image('buddyStanding', 'player_2.png');
+        game.load.tilemap('Bonds_Protoype_MeetPlayer1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.spritesheet('platforms', 'platfroms.png', 3, 3);
     },
 
     create: function()
@@ -105,7 +107,6 @@ Play.prototype =
         }
         else
         {
-        	player1.
             player1.body.velocity.x = 0;
         }
 
