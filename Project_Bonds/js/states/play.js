@@ -45,7 +45,7 @@ Play.prototype =
         var floor = platforms.create( 0, game.world.height, 'floor' );
 
         // Create platform
-        var platform = platforms.create( game.world.width/2 + 100, game.world.height - 130, 'platform' );
+        var platform = platforms.create( game.world.width/2 + 100, game.world.height - 230, 'platform' );
         platform.scale.setTo( 1, 0.5 );
 
         // Add player sprites and enable phsysics
