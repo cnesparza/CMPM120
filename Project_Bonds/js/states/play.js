@@ -47,15 +47,18 @@ Play.prototype =
         // Add player sprites and enable phsysics
         player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'blue 1' );
         player1.scale.setTo( 0.5, 0.5 );
+        dead_p1 = game.add.sprite( game.world.width/4 * 3, game.world.height - 60, 'dead_player', 'bluefall 1' );
+        //dead_p1.scale.setTo( 0.5, 0.5 );
         player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy', 'red 1' );
         player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
-        game.physics.p2.enable( [ player1, player2 ], false );
+        game.physics.p2.enable( [ player1, dead_p1, player2 ], false );
         
         // Additional physics
         player1.body.fixedRotation = true;
         player2.body.fixedRotation = true;
+        dead_p1.body.static = true;
         //platform.body.setRectangle( 434, 54 );
         //platform.body.static = true;
         //floor.body.static = true;
@@ -63,13 +66,14 @@ Play.prototype =
         //animations for the players
 		player1.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
         player1.animations.add( 'right', [ 'blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8' ], 20, true );
+        dead_p1.animations.add( 'dead', [ 'bluefall 1', 'bluefall 2', 'bluefall 3', 'bluefall 4', 'bluefall 5', 'bluefall 6', 'bluefall 7' ], 20, true );
         player2.animations.add( 'left', [ 'red 9', 'red 10', 'red 11', 'red 12', 'red 13', 'red 14', 'red 15', 'red 16' ], 20, true );
         player2.animations.add( 'right', [ 'red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8' ], 20, true );
 
         // set players together
         this.createRope( player1, player2 );
         //game.physics.p2.createSpring( player1, player2, 300, 10, 3 );
-
+        dead_p1.animations.play( 'dead', null, false, false );
 
         // Create keyboard functionality
         cursors = game.input.keyboard.createCursorKeys();
