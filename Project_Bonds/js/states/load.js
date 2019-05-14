@@ -13,7 +13,7 @@ Load.prototype =
 
 		// load collectibles assets & level json and spritesheet
 		game.load.path = 'assets/img/';
-		game.load.tilemap( 'level', 'test_map.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.tilemap( 'level', 'demo_map.json', null, Phaser.Tilemap.TILED_JSON );
         game.load.spritesheet( 'tilesheet', 'platfroms.png', 16, 16 );
         game.load.image( 'trust', 'stringBall.png' );
 
@@ -25,6 +25,7 @@ Load.prototype =
 		// load players
 		game.load.path = 'assets/img/players/';
 		game.load.atlas( 'player', 'fullbluespritesheet.png', 'fullbluesprites.json' );
+		game.load.atlas( 'dead_player', 'bluefallspritesheet.png', 'bluefallsprites.json' );
         game.load.atlas( 'buddy', 'fullredspritesheet.png', 'fullredsprites.json' );
         
 		// load platform assets
