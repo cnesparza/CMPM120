@@ -43,6 +43,6 @@ Load.prototype =
 
 	create: function()
 	{
-		game.state.start( 'Menu', true, false );
+		game.state.start( 'Menu' );
 	}
 };
