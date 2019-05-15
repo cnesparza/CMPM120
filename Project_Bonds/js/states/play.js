@@ -33,11 +33,9 @@ Play.prototype =
         game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Add player sprites and enable phsysics
-        player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'blue 1' );
+        player1 = game.add.sprite( 150, game.world.height - 60, 'player', 'blue 1' );
         player1.scale.setTo( 0.5, 0.5 );
-        //dead_p1 = game.add.sprite( game.world.width/4 * 3, game.world.height - 60, 'dead_player', 'bluefall 1' );
-        //dead_p1.scale.setTo( 0.5, 0.5 );
-        player2 = game.add.sprite( game.world.width/2, game.world.height - 60, 'buddy', 'red 1' );
+        player2 = game.add.sprite( 200, game.world.height - 60, 'buddy', 'red 1' );
         player2.scale.setTo( 0.5, 0.5 );
         
         // batch enable physics
@@ -51,13 +49,11 @@ Play.prototype =
         //animations for the players
 		player1.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
         player1.animations.add( 'right', [ 'blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8' ], 20, true );
-        //dead_p1.animations.add( 'dead', [ 'bluefall 1', 'bluefall 2', 'bluefall 3', 'bluefall 4', 'bluefall 5', 'bluefall 6', 'bluefall 7', 'bluefall 8' ], 16, true );
         player2.animations.add( 'left', [ 'red 9', 'red 10', 'red 11', 'red 12', 'red 13', 'red 14', 'red 15', 'red 16' ], 20, true );
         player2.animations.add( 'right', [ 'red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8' ], 20, true );
 
         // set players together
         this.createRope( player1, player2 );
-        //dead_p1.animations.play( 'dead', null, false, false );
 
         // Create keyboard functionality
         cursors = game.input.keyboard.createCursorKeys();
@@ -72,25 +68,25 @@ Play.prototype =
     update: function()
     {
         // Set up player1 movement and animations, if not moving then set velocity to 0
-        if( cursors.left.isDown )
+        if( cursors.left.isDown && this.ropeBroken != true )
         {
             player1.body.velocity.x = -( plyrSpeed );
         	player1.animations.play( 'left' );
         }
-        else if( cursors.right.isDown )
+        else if( cursors.right.isDown && this.ropeBroken != true )
         {
             player1.body.velocity.x = plyrSpeed;
             player1.animations.play( 'right' );
 
         }
-        else
+        else if( this.ropeBroken != true )
         {
             player1.animations.stop();
             player1.body.velocity.x = 0;
         }
 
         // Allow the player to jump if they are touching the ground
-        if( cursors.up.isDown && game.time.now > jumpTimer && this.checkIfCanJump( player1 ) )
+        if( ( cursors.up.isDown && game.time.now > jumpTimer && this.checkIfCanJump( player1 ) ) && this.ropeBroken != true )
         {
             player1.body.velocity.y = -( plyrJump );
             jumpTimer = game.time.now + 750;
@@ -98,34 +94,42 @@ Play.prototype =
 
 
         // Set up player2 movement and animations, if not moving then set velocity to 0
-        if( game.input.keyboard.isDown( Phaser.Keyboard.A ) )
+        if( game.input.keyboard.isDown( Phaser.Keyboard.A ) && this.ropeBroken != true )
         {
             player2.body.velocity.x = -( plyrSpeed );
 			player2.animations.play( 'left' );
 
         }
-        else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) )
+        else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) && this.ropeBroken != true )
         {
             player2.body.velocity.x = plyrSpeed;
 			player2.animations.play( 'right' );
         }
-        else
+        else if( this.ropeBroken != true )
         {
             player2.animations.stop();
             player2.body.velocity.x = 0;
         }
 
         // Allow the player to jump if they are touching the ground
-        if( game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > jumpTimer && this.checkIfCanJump( player2 ) )
+        if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > jumpTimer && this.checkIfCanJump( player2 ) ) && this.ropeBroken != true )
         {
             player2.body.velocity.y = -( plyrJump );
             jumpTimer = game.time.now + 750;
         }
 
         // Update the string
-        this.drawRope();
+        if( this.ropeBroken != true )
+        {
+            this.drawRope();    
+        }
+        
 
         // Check if we should call spring break method
+        if( this.ropeBroken != true &&( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 250 ) )
+        {
+            this.breakString( player1, player2 );
+        }
     },
 
     // Code found for creating rope sprite: 
@@ -144,7 +148,7 @@ Play.prototype =
         this.line = game.add.sprite( 0, 0, this.ropeBitmapData );
 
         // Create a spring between the player and block to act as the ropoe
-        this.rope = this.game.physics.p2.createSpring( p1, p2, 50, 50, 5 );
+        this.rope = this.game.physics.p2.createSpring( p1, p2, 50, 25, 5 );
 
         // Draw a line from the players
         this.line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
@@ -196,9 +200,34 @@ Play.prototype =
     },
 
     // Break String method
-    breakString: function ( player )
+    breakString: function ( pl1, pl2 )
     {
-        player.body.p2.clear();
+        // Clear spring from players
+        game.physics.p2.removeSpring( rope );
+        this.ropeBroken = true;
+
+        // Store coordinates for players
+        var p1x = pl1.body.x;
+        var p1y = pl1.body.y;
+        var p2x = pl2.body.x;
+        var p2y = pl2.body.y;
+
+        // Destroy players and create death sprites
+        pl1.destroy();
+        pl2.destroy();
+        pl1 = game.add.sprite( p1x, p1y, 'dead_player', 'bluedied 1' );
+        pl1.scale.setTo( 0.5, 0.5 );
+        pl1.animations.add( 'death', [ 'bluedied 1', 'bluedied 2', 'bluedied 3', 'bluedied 4', 'bluedied 5', 'bluedied 6', 'bluedied 7', 'bluedied 8', 'bluedied 9', 'bluedied 10', 'bluedied 11', 'bluedied 12' ], 20, true );
+        pl2 = game.add.sprite( p2x, p2y, 'dead_buddy', 'reddied 1' );
+        pl2.scale.setTo( 0.5, 0.5 );
+        pl2.animations.add( 'death', [ 'reddied 1', 'reddied 2', 'reddied 3', 'reddied 4', 'reddied 5', 'reddied 6', 'reddied 7', 'reddied 8', 'reddied 9', 'reddied 10', 'reddied 11', 'reddied 12' ], 20, true );
+
+        // batch enable physics
+        game.physics.p2.enable( [ pl1, pl2 ], false );
+
+        // Play death animation
+        pl1.animations.play( 'death', null, false, false );
+        pl2.animations.play( 'death', null, false, false ); 
         
     }
 };

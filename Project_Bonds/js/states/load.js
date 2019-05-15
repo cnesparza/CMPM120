@@ -25,8 +25,9 @@ Load.prototype =
 		// load players
 		game.load.path = 'assets/img/players/';
 		game.load.atlas( 'player', 'fullbluespritesheet.png', 'fullbluesprites.json' );
-		game.load.atlas( 'dead_player', 'bluefallspritesheet.png', 'bluefallsprites.json' );
+		game.load.atlas( 'dead_player', 'bdiedspritesheet.png', 'bdiedsprites.json' );
         game.load.atlas( 'buddy', 'fullredspritesheet.png', 'fullredsprites.json' );
+        game.load.atlas( 'dead_buddy', 'reddiedspritesheet.png', 'reddiedsprites.json' );
         
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
