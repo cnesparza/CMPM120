@@ -27,22 +27,10 @@ Play.prototype =
         layer = map.createLayer( 'Tile Layer 1' );
         //layer.resizeWorld();
 
-        // Create platforms group
-        //platforms = game.add.group();
-        //platforms.enableBody = true;
-        //platforms.physicsBodyType = Phaser.Physics.P2JS;
-
         // Setting up world properties
         game.physics.p2.gravity.y = 5000;
         game.physics.p2.world.defaultContactMaterial.friction = 0.3;
-        //game.physics.p2.world.setGlobalStiffness( 1e5 );
-
-        // Create the floor
-        //var floor = platforms.create( 0, game.world.height, 'floor' );
-
-        // Create platform
-        //var platform = platforms.create( game.world.width/2 + 100, game.world.height - 200, 'platform' );
-        //platform.scale.setTo( 1, 0.5 );
+        game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Add player sprites and enable phsysics
         player1 = game.add.sprite( game.world.width/4, game.world.height - 60, 'player', 'blue 1' );
@@ -59,9 +47,6 @@ Play.prototype =
         player1.body.fixedRotation = true;
         player2.body.fixedRotation = true;
         //dead_p1.body.static = true;
-        //platform.body.setRectangle( 434, 54 );
-        //platform.body.static = true;
-        //floor.body.static = true;
         
         //animations for the players
 		player1.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
@@ -72,7 +57,6 @@ Play.prototype =
 
         // set players together
         this.createRope( player1, player2 );
-        //game.physics.p2.createSpring( player1, player2, 300, 10, 3 );
         //dead_p1.animations.play( 'dead', null, false, false );
 
         // Create keyboard functionality
@@ -87,9 +71,6 @@ Play.prototype =
 
     update: function()
     {
-        // Collide the player and the platforms
-        //var hitPlatformP1 = game.physics.arcade.collide( player1, platforms );
-
         // Set up player1 movement and animations, if not moving then set velocity to 0
         if( cursors.left.isDown )
         {
@@ -141,8 +122,10 @@ Play.prototype =
             jumpTimer = game.time.now + 750;
         }
 
+        // Update the string
         this.drawRope();
 
+        // Check if we should call spring break method
     },
 
     // Code found for creating rope sprite: 
@@ -210,5 +193,12 @@ Play.prototype =
         }
 
         return result;
+    },
+
+    // Break String method
+    breakString: function ( player )
+    {
+        player.body.p2.clear();
+        
     }
 };
