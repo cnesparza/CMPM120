@@ -25,4 +25,20 @@ function Player( game, key, frame, scale, controls )
 	// enable physics
 	game.physics.p2.enable( this );
 	this.body.fixedRotation = true;
+
+}
+// explicitly define prefab's prototype (Phaser.Sprite) and constructor (Player)
+Player.prototype = Object.create( Phaser.Sprite.prototype );
+Player.prototype.constructor = Player;
+
+// override Phaser.Sprite update
+Player.prototype.update = function()
+{
+	if( controls == 1 )
+	{
+
+	}
+	else if( controls == 2 )
+	{
+	}
 }

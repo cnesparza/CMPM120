@@ -18,6 +18,7 @@ var map;
 var layer;
 var trustLVL;
 var rope;
+var ropeBroken = false;
 var plyrSpeed = 600;
 var plyrJump = 2000;
 var yAxis = p2.vec2.fromValues( 0, 1 );

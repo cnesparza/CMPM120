@@ -126,7 +126,7 @@ Play.prototype =
         
 
         // Check if we should call spring break method
-        if( this.ropeBroken != true &&( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 250 ) )
+        if( this.ropeBroken != true &&( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 325 ) )
         {
             this.breakString( player1, player2 );
         }
