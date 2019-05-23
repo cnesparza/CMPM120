@@ -30,13 +30,13 @@ Load.prototype =
         game.load.atlas( 'dead_buddy', 'reddiedspritesheet.png', 'reddiedsprites.json' );
         
 		// load platform assets
-		game.load.path = 'assets/img/platforms/';
-		game.load.image( 'platform', 'turq_long.png' );
-		game.load.image( 'floor', 'floor.png' );
+		// game.load.path = 'assets/img/platforms/';
+		// game.load.image( 'platform', 'turq_long.png' );
+		// game.load.image( 'floor', 'floor.png' );
 
 		// load hazard assets
-		game.load.path = 'assets/img/hazards/';
-		game.load.image( 'spike', 'orangeSpike.png' );
+		// game.load.path = 'assets/img/hazards/';
+		// game.load.image( 'spike', 'orangeSpike.png' );
 
 		// load audio assets
 		game.load.path = 'assets/audio/';

@@ -22,6 +22,6 @@ Menu.prototype =
 
     actionOnClick: function()
     {
-        game.state.start( 'Play' );
+        game.state.start( 'Level_1' );
     }
 };

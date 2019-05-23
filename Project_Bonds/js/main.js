@@ -19,10 +19,10 @@ var layer;
 var trustLVL;
 var rope;
 var ropeBroken = false;
-var plyrSpeed = 600;
-var plyrJump = 2000;
-var yAxis = p2.vec2.fromValues( 0, 1 );
-var jumpTimer = 0;
+var plyrSpeed = 300;
+var plyrJump = 1500;
+// var yAxis = p2.vec2.fromValues( 0, 1 );
+// var jumpTimer = 0;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
@@ -33,11 +33,11 @@ window.onload = function() {
 	game = new Phaser.Game( 1280,720, Phaser.AUTO, 'phaser' );
 	
 	// define states
-	game.state.add('Boot', Boot);
-	game.state.add('Load', Load);
-	game.state.add('Menu', Menu);
-	game.state.add('Play', Play);
-	game.state.start('Boot');
+	game.state.add( 'Boot', Boot );
+	game.state.add( 'Load', Load );
+	game.state.add( 'Menu', Menu );
+	game.state.add( 'Level_1', Level_1 );
+	game.state.start( 'Boot' );
 }
 
 
