@@ -18,7 +18,7 @@ var map;
 var layer;
 var trustLVL;
 var rope;
-var ropeBroken = false;
+var ropeBroken = true;
 var plyrSpeed = 300;
 var plyrJump = 1500;
 // var yAxis = p2.vec2.fromValues( 0, 1 );
@@ -37,6 +37,7 @@ window.onload = function() {
 	game.state.add( 'Load', Load );
 	game.state.add( 'Menu', Menu );
 	game.state.add( 'Level_1', Level_1 );
+	game.state.add( 'Level_2', Level_2 );
 	game.state.start( 'Boot' );
 }
 

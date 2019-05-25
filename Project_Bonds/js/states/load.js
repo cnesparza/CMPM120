@@ -14,6 +14,7 @@ Load.prototype =
 		// load collectibles assets & level json and spritesheet
 		game.load.path = 'assets/img/';
 		game.load.tilemap( 'level_1', 'level_1.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.tilemap( 'level_2', 'level_2.json', null, Phaser.Tilemap.TILED_JSON );
         game.load.image( 'trust', 'stringBall.png' );
         game.load.image( 'p1_controls', 'arrows.png' );
         game.load.image( 'p2_controls', 'letters.png' );
@@ -33,6 +34,7 @@ Load.prototype =
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
 		game.load.spritesheet( 'tilesheet', 'plattspritesheet.png', 16, 16 );
+		game.load.spritesheet( 'tilesheet2', 'platttspritesheet.png', 16, 16 );
 		// game.load.image( 'platform', 'turq_long.png' );
 		// game.load.image( 'floor', 'floor.png' );
 
