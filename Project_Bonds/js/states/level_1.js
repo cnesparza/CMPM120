@@ -29,11 +29,11 @@ Level_1.prototype =
     game.physics.p2.world.setGlobalStiffness( 1e5 );
 
     // Create player 1 function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
-    player1 = new Player1( game, 80, game.world.height - 60, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+    player1 = new Player1( game, 80, game.world.height - 100, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
     game.add.existing( player1 );
 
     // Create player 2 function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
-    player2 = new Player2( game, game.world.width - 100, 200, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+    player2 = new Player2( game, game.world.width - 100, 275, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
     game.add.existing( player2 );
 
     // set players together

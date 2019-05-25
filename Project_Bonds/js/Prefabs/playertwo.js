@@ -14,7 +14,7 @@ function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 {
 	// call to Phaser.Sprite
 	// new Sprite( game, x, y, key, frame )
-	Phaser.Sprite.call( this, game, x, game.world.height - 60, key, frame );
+	Phaser.Sprite.call( this, game, x, y, key, frame );
 
 	// add player properties
 	this.anchor.set( 0.5 );
