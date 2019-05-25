@@ -3,10 +3,8 @@
 var Level_2 = function ( game ) {};
 Level_2.prototype =
 {
-	init: function ( player1, player2, trustLVL, ropeBroken )
+	init: function ( trustLVL, ropeBroken )
 	{
-		this.player1 = player1;
-		this.player2 = player2;
 		this.trustLVL = 0;
 		this.ropeBroken = ropeBroken
 		this.connected = false;
@@ -49,7 +47,7 @@ Level_2.prototype =
 		}
 
 		// Update string sprite
-		if( this.ropeBroken != true )
+		if( this.ropeBroken != true && this.connected == true )
 		{
 			this.drawRope();
 		}
@@ -58,6 +56,7 @@ Level_2.prototype =
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
 			this.breakString( player1, player2 );
+			game.state.start( 'Game_Over', false, false, this.trustLVL, this.ropeBroken );
 		}
 	},
 
@@ -115,6 +114,7 @@ Level_2.prototype =
         // Destroy players and create death sprites
         pl1.destroy();
         pl2.destroy();
+        this.ropeBitmapData.clear();
         pl1 = game.add.sprite( p1x, p1y, 'dead_player', 'bluedied 1' );
         pl1.scale.setTo( 0.5, 0.5 );
         pl1.animations.add( 'death', [ 'bluedied 1', 'bluedied 2', 'bluedied 3', 'bluedied 4', 'bluedied 5', 'bluedied 6', 'bluedied 7', 'bluedied 8', 'bluedied 9', 'bluedied 10', 'bluedied 11', 'bluedied 12' ], 20, true );

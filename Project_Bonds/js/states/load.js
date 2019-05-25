@@ -23,6 +23,7 @@ Load.prototype =
 		game.load.path = 'assets/img/title_screen/';
 		game.load.image( 'title', 'title.png' );
 		game.load.image( 'button', 'button.png' );
+		game.load.image( 'end', 'endScreen.png' );
 
 		// load players
 		game.load.path = 'assets/img/players/';

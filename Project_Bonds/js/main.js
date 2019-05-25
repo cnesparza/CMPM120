@@ -38,6 +38,7 @@ window.onload = function() {
 	game.state.add( 'Menu', Menu );
 	game.state.add( 'Level_1', Level_1 );
 	game.state.add( 'Level_2', Level_2 );
+	game.state.add( 'Game_Over', Game_Over );
 	game.state.start( 'Boot' );
 }
 
