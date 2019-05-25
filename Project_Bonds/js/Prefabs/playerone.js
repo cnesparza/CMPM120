@@ -48,25 +48,25 @@ Player1.prototype.constructor = Player1;
 Player1.prototype.update = function()
 {
 		// Set up player1 movement and animations, if not moving then set velocity to 0
-        if( cursors.left.isDown && ropeBroken != true )
+        if( cursors.left.isDown )
         {
             this.body.velocity.x = -( this.plyrSpeed );
         	this.animations.play( 'left' );
         }
-        else if( cursors.right.isDown && ropeBroken != true )
+        else if( cursors.right.isDown )
         {
             this.body.velocity.x = this.plyrSpeed;
             this.animations.play( 'right' );
 
         }
-        else if( ropeBroken != true )
+        else
         {
             this.animations.stop();
             this.body.velocity.x = 0;
         }
 
         // Allow the player to jump if they are touching the ground
-        if( ( cursors.up.isDown && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) && ropeBroken != true )
+        if( ( cursors.up.isDown && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
         {
             this.body.velocity.y = -( this.plyrJump );
             this.jumpTimer = game.time.now + 750;

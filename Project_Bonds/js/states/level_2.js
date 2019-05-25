@@ -3,11 +3,13 @@
 var Level_2 = function ( game ) {};
 Level_2.prototype =
 {
-	init: function ( player1, player2, trustLVL )
+	init: function ( player1, player2, trustLVL, ropeBroken )
 	{
 		this.player1 = player1;
 		this.player2 = player2;
 		this.trustLVL = 0;
+		this.ropeBroken = ropeBroken
+		this.connected = false;
 	},
 
 	create: function()
@@ -38,13 +40,14 @@ Level_2.prototype =
 	update: function()
 	{
 		// Once players 'meet' connect them together with string
-		if( this.ropeBroken == true && ( Phaser.Math.distance( player.body.x, player1.body.y, player2.body.x, player2.body.y ) < 100 ) )
+		if( ( this.ropeBroken == true && this.connected == false ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) < 100 ) )
 		{
 			// Connect the players together
 			this.createRope( player1, player2 );
 			this.ropeBroken = false;
+			this.connected = true;
 		}
-		
+
 		// Update string sprite
 		if( this.ropeBroken != true )
 		{
@@ -54,7 +57,7 @@ Level_2.prototype =
 		// Check if players have broken string
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
-			this.breakString( player, player2 );
+			this.breakString( player1, player2 );
 		}
 	},
 

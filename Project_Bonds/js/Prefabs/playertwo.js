@@ -46,25 +46,25 @@ Player2.prototype.constructor = Player2;
 // override Phaser.Sprite update
 Player2.prototype.update = function()
 {
-	if( game.input.keyboard.isDown( Phaser.Keyboard.A ) && ropeBroken != true )
+	if( game.input.keyboard.isDown( Phaser.Keyboard.A ) )
     {
         this.body.velocity.x = -( this.plyrSpeed );
 		this.animations.play( 'left' );
 
     }
-    else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) && ropeBroken != true )
+    else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) )
     {
         this.body.velocity.x = this.plyrSpeed;
 		this.animations.play( 'right' );
     }
-    else if( ropeBroken != true )
+    else
     {
         this.animations.stop();
         this.body.velocity.x = 0;
     }
 
     // Allow the player to jump if they are touching the ground
-    if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) && ropeBroken != true )
+    if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
     {
         this.body.velocity.y = -( plyrJump );
         this.jumpTimer = game.time.now + 750;

@@ -61,7 +61,7 @@ Level_1.prototype =
     {
 		if( player2.body.x < 0 && player1.body.x > game.width )
 		{
-			game.state.start( 'Level_2', true, false, player1, player2, this.trustLVL )
+			game.state.start( 'Level_2', true, false, player1, player2, this.trustLVL, ropeBroken )
 		}    	
     }
 
