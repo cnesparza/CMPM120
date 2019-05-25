@@ -13,6 +13,12 @@ Level_1.prototype =
 	// start physics engine for game
     game.physics.startSystem( Phaser.Physics.P2JS );
 
+    // load images for controls
+    game.add.image( game.world.centerX, game.world.height - 300, 'p1_controls' );
+    game.add.text( game.world.centerX - 25, game.world.height - 250, 'player 1 controls', { fontSize: '16px', fill: '#FFF' } );
+    game.add.image( game.world.centerX, 50, 'p2_controls' );
+    game.add.text( game.world.centerX - 25, 110, 'player 2 controls', { fontSize: '16px', fill: '#FFF' } );
+
 
     // set up level
     map = game.add.tilemap( 'level_1' );
@@ -43,17 +49,7 @@ Level_1.prototype =
 
     update: function()
     {
-        // Update the string
-        /*if( this.ropeBroken != true )
-        {
-            this.drawRope();    
-        }
-
-        // Check if we should call spring break method
-        if( this.ropeBroken != true &&( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 325 ) )
-        {
-            this.breakString( player1, player2 );
-        } */
+        // Nothing here for now.........
     },
 
     // Code found for creating rope sprite: 
