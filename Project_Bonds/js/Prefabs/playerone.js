@@ -10,11 +10,11 @@
 // File Description: Player prefab constructor function
 // ====================================================================
 
-function Player1( game, x, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
+function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
 {
 	// call to Phaser.Sprite
 	// new Sprite( game, x, y, key, frame )
-	Phaser.Sprite.call( this, game, x, game.world.height - 60, key, frame );
+	Phaser.Sprite.call( this, game, x, y, key, frame );
 
 	// add player properties
 	this.anchor.set( 0.5 );
@@ -29,6 +29,7 @@ function Player1( game, x, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
 	game.physics.p2.enable( this );
 	this.body.fixedRotation = true;
 	this.maxSpeed = plyrSpeed;
+    //this.body.collideWorldBounds = false;
 
 	// Add animations for player depending on which one they are
 	this.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
