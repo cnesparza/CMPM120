@@ -10,11 +10,11 @@
 // File Description: Player prefab constructor function
 // ====================================================================
 
-function Player( game, key, frame, plyrSpeed, plyrJump, scale, controls, ropeBroken )
+function Player1( game, x, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
 {
 	// call to Phaser.Sprite
 	// new Sprite( game, x, y, key, frame )
-	Phaser.Sprite.call( this, game, 20, game.world.height - 60, key, frame );
+	Phaser.Sprite.call( this, game, x, game.world.height - 60, key, frame );
 
 	// add player properties
 	this.anchor.set( 0.5 );
@@ -22,7 +22,6 @@ function Player( game, key, frame, plyrSpeed, plyrJump, scale, controls, ropeBro
 	this.plyrJump = plyrJump;
 	this.scale.x = scale;
 	this.scale.y = scale;
-	this.controls = controls;
 	this.yAxis = p2.vec2.fromValues( 0, 1 );
 	this.jumpTimer = 0;
 
@@ -32,16 +31,8 @@ function Player( game, key, frame, plyrSpeed, plyrJump, scale, controls, ropeBro
 	this.maxSpeed = plyrSpeed;
 
 	// Add animations for player depending on which one they are
-	if( this.controls == 1 )
-	{
-		this.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
-        this.animations.add( 'right', [ 'blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8' ], 20, true );
-	}
-	else if( this.controls == 2 )
-	{
-		this.animations.add( 'left', [ 'red 9', 'red 10', 'red 11', 'red 12', 'red 13', 'red 14', 'red 15', 'red 16' ], 20, true );
-        this.animations.add( 'right', [ 'red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8' ], 20, true );
-	}
+	this.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
+    this.animations.add( 'right', [ 'blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8' ], 20, true );
 
 	// Create keyboard functionality
     cursors = game.input.keyboard.createCursorKeys();
@@ -49,14 +40,12 @@ function Player( game, key, frame, plyrSpeed, plyrJump, scale, controls, ropeBro
 }
 
 // explicitly define prefab's prototype (Phaser.Sprite) and constructor (Player)
-Player.prototype = Object.create( Phaser.Sprite.prototype );
-Player.prototype.constructor = Player;
+Player1.prototype = Object.create( Phaser.Sprite.prototype );
+Player1.prototype.constructor = Player1;
 
 // override Phaser.Sprite update
-Player.prototype.update = function()
+Player1.prototype.update = function()
 {
-	if( this.controls == 1 )
-	{
 		// Set up player1 movement and animations, if not moving then set velocity to 0
         if( cursors.left.isDown && ropeBroken != true )
         {
@@ -81,34 +70,6 @@ Player.prototype.update = function()
             this.body.velocity.y = -( this.plyrJump );
             this.jumpTimer = game.time.now + 750;
         }
-	}
-
-	else if( this.controls == 2 )
-	{
-		if( game.input.keyboard.isDown( Phaser.Keyboard.A ) && ropeBroken != true )
-        {
-            this.body.velocity.x = -( this.plyrSpeed );
-			this.animations.play( 'left' );
-
-        }
-        else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) && ropeBroken != true )
-        {
-            this.body.velocity.x = this.plyrSpeed;
-			this.animations.play( 'right' );
-        }
-        else if( ropeBroken != true )
-        {
-            this.animations.stop();
-            this.body.velocity.x = 0;
-        }
-
-        // Allow the player to jump if they are touching the ground
-        if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) && ropeBroken != true )
-        {
-            this.body.velocity.y = -( plyrJump );
-            this.jumpTimer = game.time.now + 750;
-        }
-	}
 }
 
 
