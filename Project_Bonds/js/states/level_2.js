@@ -52,12 +52,16 @@ Level_2.prototype =
 			this.drawRope();
 		}
 
-		// Check if players have broken string
+		// Check if players have broken string or have fallen
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
 			this.breakString( player1, player2 );
 			game.state.start( 'Game_Over', false, false, this.trustLVL, this.ropeBroken );
 		}
+        else if( player1.body.y > game.world.height || player2.body.y > game.world.height )
+        {
+            game.state.start( 'Game_Over', false, false, this.trustLVL, this.ropeBroken );
+        }
 	},
 
 	// Code found for creating rope sprite: 
