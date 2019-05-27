@@ -26,8 +26,6 @@ var plyrJump = 1500;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
-	// uncomment the following line if you need to purge local storage data
-	// localStorage.clear();
 	
 	// define game
 	game = new Phaser.Game( 1280,720, Phaser.AUTO, 'phaser' );
