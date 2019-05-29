@@ -109,7 +109,7 @@ Level_2.prototype =
 
         this.ropeBitmapData.ctx.beginPath();
         this.ropeBitmapData.ctx.lineWidth = "1.5";
-        this.ropeBitmapData.ctx.strokeStyle = "#FFB200";
+        this.ropeBitmapData.ctx.strokeStyle = "#ffff";
         this.ropeBitmapData.ctx.stroke();
 
         // Create a new sprite using the bitmap data
