@@ -13,9 +13,10 @@ Level_2.prototype =
 
 	create: function()
 	{
+        console.log( 'Level_2: lvl == ' + this.lvl );
 		// set up level
 		map = game.add.tilemap( 'level_2' );
-		map.addTilesetImage( 'platttspritesheet', 'tilesheet2' );
+		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
 		layer = map.createLayer( 'Tile Layer 1' );
 		layer.resizeWorld();
 
@@ -23,7 +24,7 @@ Level_2.prototype =
         game.physics.p2.convertTilemap( map, layer );
 
         // Resetting bounds to the world after resize
-        game.physics.p2.setBoundsToWorld( true, false, false, false, true );
+        game.physics.p2.setBoundsToWorld( true, true, false, false, true );
 
 		// Setting up world properties
 		game.physics.p2.gravity.y = 5000;
@@ -32,8 +33,6 @@ Level_2.prototype =
 
         // Set up collision groups for colored platforms
         var worldCollisionGroup = game.physics.p2.createCollisionGroup();
-        var bplatCollisionGroup = game.physics.p2.createCollisionGroup();
-        var rplatCollisionGroup = game.physics.p2.createCollisionGroup();
         var p1CollisionGroup = game.physics.p2.createCollisionGroup();
         var p2CollisionGroup = game.physics.p2.createCollisionGroup();
 
@@ -44,19 +43,6 @@ Level_2.prototype =
             tileBody.collides( [ p1CollisionGroup, p2CollisionGroup ] );
         }
 
-        // Set up platforms
-        bplats = game.add.group();
-        bplats.enableBody = true;
-        bplats.physicsBodyType = Phaser.Physics.P2JS
-
-        // Create platforms
-        var bplat = bplats.create( 0, game.world.height - 200, 'b_plat' );
-        bplat.body.immovable = true;
-        game.physics.p2.enable( [ bplat ], false );
-        bplat.body.static = true;
-        bplat.body.setCollisionGroup( bplatCollisionGroup );
-        bplat.body.collides( [ p1CollisionGroup ] );
-
 
 		// Set players new positions
 		player1 = new Player1( game, game.world.width - 100, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
@@ -64,14 +50,14 @@ Level_2.prototype =
         player1.body.setCollisionGroup( p1CollisionGroup );
 
         // Set up player 1 to only collide with blue platforms
-        player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
+        player1.body.collides( [ worldCollisionGroup, p2CollisionGroup ] );
 
 	    player2 = new Player2( game, 80, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player2 );
         player2.body.setCollisionGroup( p2CollisionGroup );
 
         // Set up player 2 to only collide with red platforms
-        player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
+        player2.body.collides( [ worldCollisionGroup, p1CollisionGroup ] );
 
 	},
 
@@ -84,6 +70,7 @@ Level_2.prototype =
 			this.createRope( player1, player2 );
 			this.ropeBroken = false;
 			this.connected = true;
+            game.physics.p2.setBoundsToWorld( true, false, false, false, true );
 		}
 
 		// Update string sprite

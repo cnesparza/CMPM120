@@ -21,7 +21,7 @@ Menu.prototype =
         var button = game.add.button( game.world.centerX, game.world.centerY + 100, 'button', this.actionOnClick, this );
         button.anchor.set( 0.5 );
 
-        var playText = game.add.text( game.world.centerX, game.world.centerY + 100, 'play', { fontSize: '32px', fill: '#000' } );
+        var playText = game.add.text( game.world.centerX, game.world.centerY + 110, 'play', { fontSize: '32px', fill: '#FFF' } );
         playText.anchor.set( 0.5 );
 
         // begin playing bgm

@@ -35,8 +35,7 @@ Load.prototype =
         
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
-		game.load.spritesheet( 'tilesheet', 'plattspritesheet.png', 16, 16 );
-		game.load.spritesheet( 'tilesheet2', 'platttspritesheet.png', 16, 16 );
+		game.load.spritesheet( 'tilesheet', 'platttspritesheet.png', 16, 16 );
 		game.load.image( 'b_plat', 'TurqPlat.png' );
 		game.load.image( 'r_plat', 'RedPlat.png' );
 

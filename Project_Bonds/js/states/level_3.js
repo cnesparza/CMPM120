@@ -12,17 +12,18 @@ Level_3.prototype =
 
 	create: function()
 	{
+        console.log( 'Level_3: lvl == ' + this.lvl );
 		// set up level
 		map = game.add.tilemap( 'level_3' );
-		map.addTilesetImage( 'Platspritesheet', 'tilesheet2' );
-		layer = map.createLayer( 'PurplePlats' );
+		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
+		layer = map.createLayer( 'Tile Layer 1' );
 		layer.resizeWorld();
 
         map.setCollisionByExclusion( [] );
         game.physics.p2.convertTilemap( map, layer );
 
         // Resetting bounds to the world after resize
-        game.physics.p2.setBoundsToWorld( true, false, false, false, true );
+        game.physics.p2.setBoundsToWorld( true, false, false, false, false );
 
 		// Setting up world properties
 		game.physics.p2.gravity.y = 5000;
@@ -30,33 +31,31 @@ Level_3.prototype =
 		game.physics.p2.world.setGlobalStiffness( 1e5 );
 
         // Set up collision groups for colored platforms
-        var worldCollisionGroup = game.physics.p2.createCollisionGroup();
-        var bplatCollisionGroup = game.physics.p2.createCollisionGroup();
-        var rplatCollisionGroup = game.physics.p2.createCollisionGroup();
-        var p1CollisionGroup = game.physics.p2.createCollisionGroup();
-        var p2CollisionGroup = game.physics.p2.createCollisionGroup();
+        // var worldCollisionGroup = game.physics.p2.createCollisionGroup();
+        // var p1CollisionGroup = game.physics.p2.createCollisionGroup();
+        // var p2CollisionGroup = game.physics.p2.createCollisionGroup();
 
-        for( var bodyIndex = 0; bodyIndex < map.layer.bodies.length; bodyIndex++ )
-        {
-            var tileBody = map.layer.bodies[bodyIndex];
-            tileBody.setCollisionGroup( worldCollisionGroup );
-            tileBody.collides( [ p1CollisionGroup, p2CollisionGroup ] );
-        }
+        // for( var bodyIndex = 0; bodyIndex < map.layer.bodies.length; bodyIndex++ )
+        // {
+            // var tileBody = map.layer.bodies[bodyIndex];
+            // tileBody.setCollisionGroup( worldCollisionGroup );
+            // tileBody.collides( [ p1CollisionGroup, p2CollisionGroup ] );
+        // }
 
 		// Set players new positions
-		player1 = new Player1( game, 50, game.world.height - 65, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+		player1 = new Player1( game, 50, game.world.height - 105, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player1 );
-        player1.body.setCollisionGroup( p1CollisionGroup );
+        // player1.body.setCollisionGroup( p1CollisionGroup );
 
         // Set up player 1 to only collide with blue platforms
-        player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
+        // player1.body.collides( [ worldCollisionGroup, p2CollisionGroup ] );
 
-	    player2 = new Player2( game, 100, game.world.height - 65, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+	    player2 = new Player2( game, 100, game.world.height - 105, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player2 );
-        player2.body.setCollisionGroup( p2CollisionGroup );
+        // player2.body.setCollisionGroup( p2CollisionGroup );
 
         // Set up player 2 to only collide with red platforms
-        player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
+        // player2.body.collides( [ worldCollisionGroup, p1CollisionGroup ] );
 
         // Connect the players together
         this.createRope( player1, player2 );
@@ -77,12 +76,12 @@ Level_3.prototype =
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
 			this.breakString( player1, player2 );
-			game.state.start( 'Game_Over', false, false, this.trustLVL, this.ropeBroken );
+			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
 		}
         else if( player1.body.y > game.world.height + 50 || player2.body.y > game.world.height + 50 )
         {
             this.ropeBroken = true;
-            game.state.start( 'Game_Over', false, false, game.state.getCurrentState(), this.trustLVL, this.ropeBroken );
+            game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
 	},
 

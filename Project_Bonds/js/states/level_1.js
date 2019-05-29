@@ -11,6 +11,7 @@ Level_1.prototype =
 
 	create: function()
 	{
+    console.log( 'Level_1: lvl == ' + this.lvl );
 	// start physics engine for game
     game.physics.startSystem( Phaser.Physics.P2JS );
 
@@ -27,7 +28,7 @@ Level_1.prototype =
 
     // set up level
     map = game.add.tilemap( 'level_1' );
-    map.addTilesetImage( 'plattspritesheet', 'tilesheet' );
+    map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
     map.setCollisionByExclusion( [ ] );
     layer = map.createLayer( 'Tile Layer 1' );
     game.physics.p2.convertTilemap( map, layer );
@@ -43,11 +44,11 @@ Level_1.prototype =
     game.add.existing( player1 );
 
     // Create player 2 function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
-    player2 = new Player2( game, game.world.width - 100, 275, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+    player2 = new Player2( game, game.world.width - 100, 300, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
     game.add.existing( player2 );
 
     // Set up collision between layer and players
-    game.physics.p2.setBoundsToWorld( false, false, true, true, false );
+    game.physics.p2.setBoundsToWorld( false, false, false, false, false );
 
 	},
 

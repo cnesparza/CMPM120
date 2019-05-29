@@ -25,7 +25,6 @@ Play.prototype =
         map.setCollisionByExclusion( [] );
         game.physics.p2.convertTilemap( map, layer );
         layer = map.createLayer( 'Tile Layer 1' );
-        //layer.resizeWorld();
 
         // Setting up world properties
         game.physics.p2.gravity.y = 5000;
@@ -40,6 +39,21 @@ Play.prototype =
         
         // batch enable physics
         game.physics.p2.enable( [ player1, player2 ], false );
+        
+                
+        // Set up platforms
+        bplats = game.add.group();
+        bplats.enableBody = true;
+        bplats.physicsBodyType = Phaser.Physics.P2JS
+
+        // Create platforms
+        var bplat = bplats.create( 0, game.world.height - 200, 'b_plat' );
+        bplat.body.immovable = true;
+        game.physics.p2.enable( [ bplat ], false );
+        bplat.body.static = true;
+        bplat.body.setCollisionGroup( bplatCollisionGroup );
+        bplat.body.collides( [ p1CollisionGroup ] );
+
         
         // Additional physics
         player1.body.fixedRotation = true;
