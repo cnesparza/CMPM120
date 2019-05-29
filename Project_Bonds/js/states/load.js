@@ -36,8 +36,8 @@ Load.prototype =
 		game.load.path = 'assets/img/platforms/';
 		game.load.spritesheet( 'tilesheet', 'plattspritesheet.png', 16, 16 );
 		game.load.spritesheet( 'tilesheet2', 'platttspritesheet.png', 16, 16 );
-		// game.load.image( 'platform', 'turq_long.png' );
-		// game.load.image( 'floor', 'floor.png' );
+		game.load.image( 'b_plat', 'TurqPlat.png' );
+		game.load.image( 'r_plat', 'RedPlat.png' );
 
 		// load hazard assets
 		// game.load.path = 'assets/img/hazards/';
