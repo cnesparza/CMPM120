@@ -3,8 +3,9 @@
 var Game_Over = function ( game ) {};
 Game_Over.prototype = 
 {
-	init: function ( trustLVL, ropeBroken )
+	init: function ( lastState, lvl, trustLVL, ropeBroken )
 	{
+		this.lvl = lvl;
 		this.trustLVL = trustLVL;
 		this.ropeBroken = ropeBroken;
 	},
@@ -23,7 +24,15 @@ Game_Over.prototype =
 	{
 		if( game.input.keyboard.justPressed( Phaser.Keyboard.R ) )
 		{
-			game.state.start( 'Level_2', true, false, this.trustLVL, this.ropeBroken );
+			if( levels[lvl] == "Menu" )
+			{
+				game.state.start( 'Menu', true, false, this.lvl, this.trustLVL, this.ropeBroken );				
+			}
+			else if( levels[lvl] == "Level_1" )
+			{
+				game.state.start( 'Level_1', true, false, this.lvl );				
+			}
+
 		}
 	}
 }

@@ -4,16 +4,25 @@
 var Menu = function( game ) {};
 Menu.prototype =
 {
+    init: function()
+    {
+        this.lvl = 0;
+    },
+
     create: function() 
     {
         // set up background color
-        game.stage.backgroundColor = bg;
+        game.stage.backgroundColor = bg[0];
 
         // add menu screen text
-        game.add.image( game.width/3, game.height/3, 'title' );
+        var logo = game.add.image( game.world.centerX, game.world.centerY, 'title' );
+        logo.anchor.set( 0.5 );
 
-        var button = game.add.button( game.width/3 + 50, game.height * .7, 'button', this.actionOnClick, this );
-        var playText = game.add.text( game.width/3 + 125, game.height * .7 + 20, 'play', { fontSize: '32px', fill: '#000' } );
+        var button = game.add.button( game.world.centerX, game.world.centerY + 100, 'button', this.actionOnClick, this );
+        button.anchor.set( 0.5 );
+
+        var playText = game.add.text( game.world.centerX, game.world.centerY + 100, 'play', { fontSize: '32px', fill: '#000' } );
+        playText.anchor.set( 0.5 );
 
         // begin playing bgm
         this.bgm = game.add.audio( 'bgm' );
@@ -22,6 +31,6 @@ Menu.prototype =
 
     actionOnClick: function()
     {
-        game.state.start( 'Level_1' );
+        game.state.start( 'Level_1', true, false, ++this.lvl );
     }
 };

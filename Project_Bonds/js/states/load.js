@@ -15,6 +15,7 @@ Load.prototype =
 		game.load.path = 'assets/img/';
 		game.load.tilemap( 'level_1', 'level_1.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_2', 'level_2.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.tilemap( 'level_3', 'level_3.json', null, Phaser.Tilemap.TILED_JSON );
         game.load.image( 'trust', 'stringBall.png' );
         game.load.image( 'p1_controls', 'arrows.png' );
         game.load.image( 'p2_controls', 'letters.png' );

@@ -1,22 +1,21 @@
 // Level 2 state
 
-var Level_2 = function ( game ) {};
-Level_2.prototype =
+var Level_3 = function ( game ) {};
+Level_3.prototype =
 {
 	init: function ( lvl, trustLVL, ropeBroken )
 	{
-		this.lvl = lvl;
+        this.lvl = lvl;
 		this.trustLVL = 0;
 		this.ropeBroken = ropeBroken
-		this.connected = false;
 	},
 
 	create: function()
 	{
 		// set up level
-		map = game.add.tilemap( 'level_2' );
-		map.addTilesetImage( 'platttspritesheet', 'tilesheet2' );
-		layer = map.createLayer( 'Tile Layer 1' );
+		map = game.add.tilemap( 'level_3' );
+		map.addTilesetImage( 'Platspritesheet', 'tilesheet2' );
+		layer = map.createLayer( 'PurplePlats' );
 		layer.resizeWorld();
 
         map.setCollisionByExclusion( [] );
@@ -44,72 +43,46 @@ Level_2.prototype =
             tileBody.collides( [ p1CollisionGroup, p2CollisionGroup ] );
         }
 
-        // Set up platforms
-        bplats = game.add.group();
-        bplats.enableBody = true;
-        bplats.physicsBodyType = Phaser.Physics.P2JS
-
-        // Create platforms
-        var bplat = bplats.create( 0, game.world.height - 200, 'b_plat' );
-        bplat.body.immovable = true;
-        game.physics.p2.enable( [ bplat ], false );
-        bplat.body.static = true;
-        bplat.body.setCollisionGroup( bplatCollisionGroup );
-        bplat.body.collides( [ p1CollisionGroup ] );
-
-
 		// Set players new positions
-		player1 = new Player1( game, game.world.width - 100, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+		player1 = new Player1( game, 50, game.world.height - 65, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player1 );
         player1.body.setCollisionGroup( p1CollisionGroup );
 
         // Set up player 1 to only collide with blue platforms
         player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
-	    player2 = new Player2( game, 80, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+	    player2 = new Player2( game, 100, game.world.height - 65, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player2 );
         player2.body.setCollisionGroup( p2CollisionGroup );
 
         // Set up player 2 to only collide with red platforms
         player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
+        // Connect the players together
+        this.createRope( player1, player2 );
+        this.ropeBroken = false;
+
 	},
 
 	update: function()
 	{
-		// Once players 'meet' connect them together with string
-		if( ( this.ropeBroken == true && this.connected == false ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) < 100 ) )
-		{
-			// Connect the players together
-			this.createRope( player1, player2 );
-			this.ropeBroken = false;
-			this.connected = true;
-		}
 
 		// Update string sprite
-		if( this.ropeBroken != true && this.connected == true )
+		if( this.ropeBroken != true )
 		{
 			this.drawRope();
 		}
 
 		// Check if players have broken string or have fallen
-		if( ( this.ropeBroken != true && this.connected == true ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
+		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
 			this.breakString( player1, player2 );
-			var state = game.state.getCurrentState();
-			game.state.start( 'Game_Over', false, false, state, this.trustLVL, this.ropeBroken );
+			game.state.start( 'Game_Over', false, false, this.trustLVL, this.ropeBroken );
 		}
-        else if( player1.body.y > game.world.height + 75 || player2.body.y > game.world.height + 75 )
+        else if( player1.body.y > game.world.height + 50 || player2.body.y > game.world.height + 50 )
         {
-        	this.ropeBroken = true;
-        	var state = game.state.getCurrentState();
-            game.state.start( 'Game_Over', false, false, state, this.lvl, this.trustLVL, this.ropeBroken );
-        }
-
-        // Check if players are progressing to next screen
-        if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
-        {
-        	game.state.start( 'Level_3', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
+            this.ropeBroken = true;
+            game.state.start( 'Game_Over', false, false, game.state.getCurrentState(), this.trustLVL, this.ropeBroken );
         }
 	},
 
