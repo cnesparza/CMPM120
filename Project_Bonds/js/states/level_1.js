@@ -55,7 +55,7 @@ Level_1.prototype =
 
     // Setting up world properties
     game.physics.p2.restitution = 0;
-    game.physics.p2.gravity.y = 2600;
+    game.physics.p2.gravity.y = 5000;
     game.physics.p2.world.defaultContactMaterial.friction = 0.3;
     game.physics.p2.world.setGlobalStiffness( 1e5 );
 

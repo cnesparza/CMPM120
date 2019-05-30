@@ -26,6 +26,7 @@ Level_3.prototype =
         game.physics.p2.setBoundsToWorld( true, false, false, false, false );
 
 		// Setting up world properties
+        game.physics.p2.restitution = 0;
 		game.physics.p2.gravity.y = 5000;
 		game.physics.p2.world.defaultContactMaterial.friction = 0.3;
 		game.physics.p2.world.setGlobalStiffness( 1e5 );
@@ -82,6 +83,12 @@ Level_3.prototype =
         {
             this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+        }
+
+        // Check if players are progressing to next screen
+        if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
+        {
+            game.state.start( 'Level_4', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
         }
 	},
 

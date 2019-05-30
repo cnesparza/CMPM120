@@ -14,7 +14,7 @@
 // define globals
 var game;
 var bg = [ "#E5C472", "#EAC75D", "#EFC847", "#F4CA30", "#FFCC00" ];
-var levels = [ "Menu", "Level_1", "Level_2", "Level_3" ];
+var levels = [ "Menu", "Level_1", "Level_2", "Level_3", "Level_4" ];
 var lvl;
 var map;
 var layer;
@@ -22,7 +22,7 @@ var trustLVL;
 var rope;
 var ropeBroken = true;
 var plyrSpeed = 300;
-var plyrJump = 1000;
+var plyrJump = 1500;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
@@ -37,6 +37,7 @@ window.onload = function() {
 	game.state.add( 'Level_1', Level_1 );
 	game.state.add( 'Level_2', Level_2 );
 	game.state.add( 'Level_3', Level_3 );
+	game.state.add( 'Level_4', Level_4 );
 	game.state.add( 'Game_Over', Game_Over );
 	game.state.start( 'Boot' );
 }

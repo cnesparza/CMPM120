@@ -29,7 +29,6 @@ function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	game.physics.p2.enable( this );
 	this.body.fixedRotation = true;
     // this.body.damping = 0.5;
-    // this.body.collideWorldBounds = false;
 
 	// Add animations for player depending on which one they are
 	this.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );

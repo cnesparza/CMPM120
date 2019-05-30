@@ -16,6 +16,7 @@ Load.prototype =
 		game.load.tilemap( 'level_1', 'level_1.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_2', 'level_2.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_3', 'level_3.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.tilemap( 'level_4', 'level_4.json', null, Phaser.Tilemap.TILED_JSON );
         game.load.image( 'trust', 'stringBall.png' );
         game.load.image( 'p1_controls', 'Arrows.png' );
         game.load.image( 'p2_controls', 'WAD.png' );
@@ -42,7 +43,8 @@ Load.prototype =
 		game.load.path = 'assets/img/platforms/';
 		game.load.spritesheet( 'tilesheet', 'platttspritesheet.png', 16, 16 );
 		game.load.image( 'b_plat', 'TurqPlat.png' );
-		game.load.image( 'r_plat', 'RedPlat.png' );
+		game.load.image( 'redxlrg', 'redxlrg.png' );
+		game.load.image( 'redlrg', 'redlrg.png' );
 
 		// load audio assets
 		game.load.path = 'assets/audio/';

@@ -28,7 +28,6 @@ function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	// enable physics
 	game.physics.p2.enable( this );
 	this.body.fixedRotation = true;
-	this.maxSpeed = plyrSpeed;
     // this.body.collideWorldBounds = false;
 
 	// Add animations for player depending on which one they are
@@ -48,13 +47,13 @@ Player2.prototype.update = function()
 {
 	if( game.input.keyboard.isDown( Phaser.Keyboard.A ) )
     {
-        this.body.velocity.x = -( this.plyrSpeed );
+        this.body.moveLeft( this.plyrSpeed );
 		this.animations.play( 'left' );
 
     }
     else if( game.input.keyboard.isDown( Phaser.Keyboard.D ) )
     {
-        this.body.velocity.x = this.plyrSpeed;
+        this.body.moveRight( this.plyrSpeed );
 		this.animations.play( 'right' );
     }
     else
@@ -66,7 +65,7 @@ Player2.prototype.update = function()
     // Allow the player to jump if they are touching the ground
     if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
     {
-        this.body.velocity.y = -( plyrJump );
+        this.body.moveUp( this.plyrJump );
         this.jumpTimer = game.time.now + 750;
     }
 }
