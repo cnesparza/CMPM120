@@ -26,7 +26,7 @@ Menu.prototype =
 
         // begin playing bgm
         this.bgm = game.add.audio( 'bgm' );
-        this.bgm.play( '', 0, 1, true );    // set bgm to loop
+        this.bgm.play( '', 0, 0.2, true );    // set bgm to loop
     },
 
     actionOnClick: function()

@@ -42,9 +42,15 @@ Load.prototype =
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
 		game.load.spritesheet( 'tilesheet', 'platttspritesheet.png', 16, 16 );
-		game.load.image( 'b_plat', 'TurqPlat.png' );
+		game.load.image( 'bluxlrg', 'bluxlrg.png' );
+		game.load.image( 'blulrg', 'blulrg.png' );
+		game.load.image( 'blumd', 'blumd.png' );
+		game.load.image( 'blusm', 'blusm.png' );
 		game.load.image( 'redxlrg', 'redxlrg.png' );
 		game.load.image( 'redlrg', 'redlrg.png' );
+		game.load.image( 'redmd', 'redmd.png' );
+		game.load.image( 'redsm', 'redsm.png' );
+
 
 		// load audio assets
 		game.load.path = 'assets/audio/';

@@ -64,7 +64,7 @@ Level_1.prototype =
     game.add.existing( player1 );
 
     // Create player 2 function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken )
-    player2 = new Player2( game, game.world.width - 100, 300, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
+    player2 = new Player2( game, game.world.width - 100, 240, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
     game.add.existing( player2 );
 
     // Set up collision between layer and players
