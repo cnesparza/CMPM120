@@ -90,7 +90,7 @@ Level_2.prototype =
         {
         	this.ropeBroken = true;
         	var state = game.state.getCurrentState();
-            game.state.start( 'Game_Over', false, false, state, this.lvl, this.trustLVL, this.ropeBroken );
+            game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
 
         // Check if players are progressing to next screen
