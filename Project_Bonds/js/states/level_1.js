@@ -54,7 +54,8 @@ Level_1.prototype =
     layer.resizeWorld();
 
     // Setting up world properties
-    game.physics.p2.gravity.y = 5000;
+    game.physics.p2.restitution = 0;
+    game.physics.p2.gravity.y = 2600;
     game.physics.p2.world.defaultContactMaterial.friction = 0.3;
     game.physics.p2.world.setGlobalStiffness( 1e5 );
 
@@ -73,10 +74,32 @@ Level_1.prototype =
 
     update: function()
     {
+        // Constrain velocity for both players
+        this.constrainVelocity( player1.body, 5000 );
+        this.constrainVelocity( player2.body, 5000 );
+        
 		if( player2.body.x < 0 && player1.body.x > game.width )
 		{
 			game.state.start( 'Level_2', true, false, ++this.lvl, this.trustLVL, true )
 		}    	
+    },
+
+    //Code found here: 
+    // http://www.html5gamedevs.com/topic/22461-p2-no-collision-at-certain-velocity/
+    constrainVelocity: function( body, maxVelocity ) 
+    {
+        var angle, currVelocitySqr, vx, vy;
+        vx = body.velocity.x;
+        vy = body.velocity.y;
+        currVelocitySqr = vx * vx + vy * vy;
+        if (currVelocitySqr > maxVelocity * maxVelocity) 
+        {
+            angle = Math.atan2(vy, vx);
+            vx = Math.cos(angle) * maxVelocity;
+            vy = Math.sin(angle) * maxVelocity;
+            body.velocity.x = vx;
+            body.velocity.y = vy;
+        }
     }
 
 }

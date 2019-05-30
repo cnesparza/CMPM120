@@ -22,7 +22,7 @@ var trustLVL;
 var rope;
 var ropeBroken = true;
 var plyrSpeed = 300;
-var plyrJump = 1500;
+var plyrJump = 1000;
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {

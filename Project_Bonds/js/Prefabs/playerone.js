@@ -19,7 +19,7 @@ function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	// add player properties
 	this.anchor.set( 0.5 );
 	this.plyrSpeed = plyrSpeed;
-	this.plyrJump = plyrJump;
+	this.plyrJump = plyrJump;    
 	this.scale.x = scale;
 	this.scale.y = scale;
 	this.yAxis = p2.vec2.fromValues( 0, 1 );
@@ -28,7 +28,7 @@ function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	// enable physics
 	game.physics.p2.enable( this );
 	this.body.fixedRotation = true;
-	this.maxSpeed = plyrSpeed;
+    // this.body.damping = 0.5;
     // this.body.collideWorldBounds = false;
 
 	// Add animations for player depending on which one they are
@@ -47,30 +47,33 @@ Player1.prototype.constructor = Player1;
 // override Phaser.Sprite update
 Player1.prototype.update = function()
 {
-		// Set up player1 movement and animations, if not moving then set velocity to 0
-        if( cursors.left.isDown )
-        {
-            this.body.velocity.x = -( this.plyrSpeed );
-        	this.animations.play( 'left' );
-        }
-        else if( cursors.right.isDown )
-        {
-            this.body.velocity.x = this.plyrSpeed;
-            this.animations.play( 'right' );
+    // Set up max speed constraint
+    // constrainVelocity( this.body, 5000 );
 
-        }
-        else
-        {
-            this.animations.stop();
-            this.body.velocity.x = 0;
-        }
+	// Set up player1 movement and animations, if not moving then set velocity to 0
+    if( cursors.left.isDown )
+    {
+        this.body.moveLeft( this.plyrSpeed );
+        this.animations.play( 'left' );
+    }
+    else if( cursors.right.isDown )
+    {
+        this.body.moveRight( this.plyrSpeed );
+        this.animations.play( 'right' );
 
-        // Allow the player to jump if they are touching the ground
-        if( ( cursors.up.isDown && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
-        {
-            this.body.velocity.y = -( this.plyrJump );
-            this.jumpTimer = game.time.now + 750;
-        }
+    }
+    else
+    {
+        this.animations.stop();
+        this.body.velocity.x = 0;
+    }
+
+    // Allow the player to jump if they are touching the ground
+    if( ( cursors.up.isDown && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
+    {
+        this.body.moveUp( this.plyrJump );
+        this.jumpTimer = game.time.now + 750;
+    }
 }
 
 
@@ -103,3 +106,21 @@ function checkIfCanJump ( player, yAxis )
     return result;
 
 }
+
+// // Code found here: 
+// // http://www.html5gamedevs.com/topic/22461-p2-no-collision-at-certain-velocity/
+// function    constrainVelocity(body, maxVelocity) 
+// {
+//     var angle, currVelocitySqr, vx, vy;
+//     vx = body.velocity.x;
+//     vy = body.velocity.y;
+//     currVelocitySqr = vx * vx + vy * vy;
+//     if (currVelocitySqr > maxVelocity * maxVelocity) 
+//     {
+//         angle = Math.atan2(vy, vx);
+//         vx = Math.cos(angle) * maxVelocity;
+//         vy = Math.sin(angle) * maxVelocity;
+//         body.velocity.x = vx;
+//         body.velocity.y = vy;
+//     }
+// }
