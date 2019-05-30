@@ -27,19 +27,19 @@ Game_Over.prototype =
 			{
 				game.state.start( 'Menu', true, false, this.lvl, this.trustLVL, this.ropeBroken );				
 			}
-			else if( levels[this.lvl] == "Level_1" )
+			else if( levels[this.lvl] == "Tutorial" )
 			{
 				game.state.start( 'Level_1', true, false, this.lvl );				
 			}
-			else if( levels[this.lvl] == "Level_2" )
+			else if( levels[this.lvl] == "Bonds" )
 			{
 				game.state.start( 'Level_2', true, false, this.lvl, this.trustLVL, true )
 			}
-			else if( levels[this.lvl] == "Level_3" )
+			else if( levels[this.lvl] == "Level_1" )
 			{
 				game.state.start( 'Level_3', true, false, this.lvl, this.trustLVL, this.ropeBroken );
 			}
-			else if( levels[this.lvl] == "Level_4" )
+			else if( levels[this.lvl] == "Level_2" )
 			{
 				game.state.start( 'Level_4', true, false, this.lvl, this.trustLVL, this.ropeBroken );
 			}

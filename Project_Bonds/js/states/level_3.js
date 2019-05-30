@@ -56,7 +56,8 @@ Level_3.prototype =
 		// Check if players have broken string or have fallen
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
-			this.breakString( player1, player2 );
+			breakString( game, this.ropeBitmapData, player1, player2 );
+            this.ropeBroken = true;
 			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
 		}
         else if( player1.body.y > game.world.height + 50 || player2.body.y > game.world.height + 50 )
@@ -108,39 +109,6 @@ Level_3.prototype =
         this.ropeBitmapData.ctx.stroke();
         this.ropeBitmapData.ctx.closePath();
         this.ropeBitmapData.render();
-    },
-
-    // Break String method
-    breakString: function ( pl1, pl2 )
-    {
-        // Clear spring from players
-        game.physics.p2.removeSpring( rope );
-        this.ropeBroken = true;
-
-        // Store coordinates for players
-        var p1x = pl1.body.x;
-        var p1y = pl1.body.y;
-        var p2x = pl2.body.x;
-        var p2y = pl2.body.y;
-
-        // Destroy players and create death sprites
-        pl1.destroy();
-        pl2.destroy();
-        this.ropeBitmapData.clear();
-        pl1 = game.add.sprite( p1x, p1y, 'dead_player', 'bluedied 1' );
-        pl1.scale.setTo( 0.25, 0.25 );
-        pl1.animations.add( 'death', [ 'bluedied 1', 'bluedied 2', 'bluedied 3', 'bluedied 4', 'bluedied 5', 'bluedied 6', 'bluedied 7', 'bluedied 8', 'bluedied 9', 'bluedied 10', 'bluedied 11', 'bluedied 12' ], 20, true );
-        pl2 = game.add.sprite( p2x, p2y, 'dead_buddy', 'reddied 1' );
-        pl2.scale.setTo( 0.25, 0.25 );
-        pl2.animations.add( 'death', [ 'reddied 1', 'reddied 2', 'reddied 3', 'reddied 4', 'reddied 5', 'reddied 6', 'reddied 7', 'reddied 8', 'reddied 9', 'reddied 10', 'reddied 11', 'reddied 12' ], 20, true );
-
-        // batch enable physics
-        game.physics.p2.enable( [ pl1, pl2 ], false );
-
-        // Play death animation
-        pl1.animations.play( 'death', null, false, false );
-        pl2.animations.play( 'death', null, false, false ); 
-        
     }
 
 }

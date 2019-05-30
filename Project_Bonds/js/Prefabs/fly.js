@@ -1,5 +1,5 @@
 // ====================================================================
-// file: Player.js
+// file: fly.js
 // ====================================================================
 // Programmer(s): Cole Esparza, Lezette De Paz, and Zoe Andrews
 // Date: 5/4/2019
@@ -7,7 +7,7 @@
 // Time: MWF 1:20-3:45PM (Jack Baskin Auditorium)
 // Instructor: Professor(s) Elizabeth Swensen & Nathan Altice
 // Project: Bonds
-// File Description: Player prefab constructor function
+// File Description: Fly prefab
 // ====================================================================
 
 function Fly( game, x, y, key, frame )
@@ -24,6 +24,6 @@ function Fly( game, x, y, key, frame )
     this.animations.play( 'flying', null, true, false );
 }
 
-// explicitly define prefab's prototype (Phaser.Sprite) and constructor (Player)
+// explicitly define prefab's prototype (Phaser.Sprite) and constructor (Fly)
 Fly.prototype = Object.create( Phaser.Sprite.prototype );
 Fly.prototype.constructor = Fly;
