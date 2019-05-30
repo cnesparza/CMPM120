@@ -17,14 +17,19 @@ Load.prototype =
 		game.load.tilemap( 'level_2', 'level_2.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_3', 'level_3.json', null, Phaser.Tilemap.TILED_JSON );
         game.load.image( 'trust', 'stringBall.png' );
-        game.load.image( 'p1_controls', 'arrows.png' );
-        game.load.image( 'p2_controls', 'letters.png' );
+        game.load.image( 'p1_controls', 'Arrows.png' );
+        game.load.image( 'p2_controls', 'WAD.png' );
+        game.load.image( 'text_box', 'blkdialog.png' );
 
 		// load menu assets
 		game.load.path = 'assets/img/title_screen/';
 		game.load.image( 'title', 'title.png' );
 		game.load.image( 'button', 'button.png' );
 		game.load.image( 'end', 'endScreen.png' );
+
+		// load fly sprite
+		game.load.path = 'assets/img/sprites/';
+		game.load.atlas( 'fly', 'bugspritesheet.png', 'bugsprites.json' );
 
 		// load players
 		game.load.path = 'assets/img/players/';
@@ -38,10 +43,6 @@ Load.prototype =
 		game.load.spritesheet( 'tilesheet', 'platttspritesheet.png', 16, 16 );
 		game.load.image( 'b_plat', 'TurqPlat.png' );
 		game.load.image( 'r_plat', 'RedPlat.png' );
-
-		// load hazard assets
-		// game.load.path = 'assets/img/hazards/';
-		// game.load.image( 'spike', 'orangeSpike.png' );
 
 		// load audio assets
 		game.load.path = 'assets/audio/';
