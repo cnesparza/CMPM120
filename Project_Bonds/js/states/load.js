@@ -18,7 +18,6 @@ Load.prototype =
 		game.load.tilemap( 'level_3', 'level_3.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_4', 'level_4.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_end', 'level_end.json', null, Phaser.Tilemap.TILED_JSON );
-        game.load.image( 'trust', 'stringBall.png' );
         game.load.image( 'p1_controls', 'Arrows.png' );
         game.load.image( 'p2_controls', 'WAD.png' );
         game.load.image( 'text_box', 'blkdialog.png' );
@@ -52,7 +51,16 @@ Load.prototype =
 		game.load.image( 'redmd', 'redmd.png' );
 		game.load.image( 'redsm', 'redsm.png' );
 
+		// load hazards
+		game.load.path = 'assets/img/hazards/';
+		game.load.image( 'bluSpike', 'blueSpike.png' );
+		game.load.image( 'redSpike', 'redSpike.png' );
+		game.load.image( 'purpSpike', 'purpleSpike.png' );
 
+		// load collectibles
+		game.load.path = 'assets/img/collectibles/';
+		game.load.image( 'jar', 'smjar.png' );
+		
 		// load audio assets
 		game.load.path = 'assets/audio/';
 		game.load.audio( 'bgm', ['new_bonds_edit.mp3'] );

@@ -6,8 +6,8 @@ Level_3.prototype =
 	init: function ( lvl, trustLVL, ropeBroken )
 	{
         this.lvl = lvl;
-		this.trustLVL = 0;
-		this.ropeBroken = ropeBroken
+		this.trustLVL = trustLVL;
+		this.ropeBroken = ropeBroken;
 	},
 
 	create: function()

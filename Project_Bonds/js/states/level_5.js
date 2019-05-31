@@ -1,7 +1,7 @@
-// Level 4 state
+// Level 5 state
 
-var Level_4 = function ( game ) {};
-Level_4.prototype = 
+var Level_5 = function ( game ) {};
+Level_5.prototype = 
 {
 	init: function( lvl, trustLVL, ropeBroken )
 	{
