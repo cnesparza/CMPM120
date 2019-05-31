@@ -37,9 +37,57 @@ function    createSpike( game, x, y, key, spikeCollisionGroup, p1CollisionGroup,
 
 
 
+// === createRope =====================================================
+// Code found for creating rope sprite: 
+//https://www.codeandweb.com/physicseditor/tutorials/phaser-p2-physics-example-tutorial
+// ====================================================================
+function    createRope( game, p1, p2 )
+{
+    // Add bitmap data to draw the rope
+    ropeBitmapData = game.add.bitmapData( this.game.world.width, this.game.world.height );
+
+    ropeBitmapData.ctx.beginPath();
+    ropeBitmapData.ctx.lineWidth = "1.5";
+    ropeBitmapData.ctx.strokeStyle = "#ffff";
+    ropeBitmapData.ctx.stroke();
+
+    // Create a new sprite using the bitmap data
+    line = game.add.sprite( 0, 0, this.ropeBitmapData );
+
+    // Create a spring between the player and block to act as the ropoe
+    rope = game.physics.p2.createSpring( p1, p2, 50, 20, 3 );
+
+    // Draw a line from the players
+    line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
+
+}// End of "createRope"
+
+
+
+// === drawRope =======================================================
+// Code found for drawing rope sprite: 
+//https://www.codeandweb.com/physicseditor/tutorials/phaser-p2-physics-example-tutorial
+// ====================================================================
+function    drawRope( player1, player2 ) 
+{
+    // Change the bitmap data to reflect the new rope position
+    ropeBitmapData.clear();
+    ropeBitmapData.ctx.beginPath();
+    ropeBitmapData.ctx.beginPath();
+    ropeBitmapData.ctx.moveTo( player1.x, player1.y );
+    ropeBitmapData.ctx.lineTo( player2.x, player2.y );
+    ropeBitmapData.ctx.lineWidth = 1.5;
+    ropeBitmapData.ctx.stroke();
+    ropeBitmapData.ctx.closePath();
+    ropeBitmapData.render();
+
+}// End of "drawRope"
+
+
+
 // === breakString ====================================================
 // ====================================================================
-function    breakString( game, ropeBitmapData, pl1, pl2 )
+function    breakString( game, pl1, pl2 )
 {
     // Clear spring from players
     game.physics.p2.removeSpring( rope );

@@ -68,7 +68,7 @@ Level_2.prototype =
 		if( ( this.ropeBroken == true && this.connected == false ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) < 100 ) )
 		{
 			// Connect the players together
-			this.createRope( player1, player2 );
+			createRope( game, player1, player2 );
 			this.ropeBroken = false;
 			this.connected = true;
             game.physics.p2.setBoundsToWorld( true, false, false, false, true );
@@ -77,13 +77,13 @@ Level_2.prototype =
 		// Update string sprite
 		if( this.ropeBroken != true && this.connected == true )
 		{
-			this.drawRope( player1, player2 );
+			drawRope( player1, player2 );
 		}
 
 		// Check if players have broken string or have fallen
 		if( ( this.ropeBroken != true && this.connected == true ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
-			breakString( game, this.ropeBitmapData, player1, player2 );
+			breakString( game, player1, player2 );
             this.ropeBroken = true;
 			var state = game.state.getCurrentState();
 			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
@@ -100,44 +100,6 @@ Level_2.prototype =
         {
         	game.state.start( 'Level_3', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
         }
-	},
-
-	// Code found for creating rope sprite: 
-    //https://www.codeandweb.com/physicseditor/tutorials/phaser-p2-physics-example-tutorial
-    createRope: function( p1, p2 )
-    {
-        // Add bitmap data to draw the rope
-        this.ropeBitmapData = game.add.bitmapData( this.game.world.width, this.game.world.height );
-
-        this.ropeBitmapData.ctx.beginPath();
-        this.ropeBitmapData.ctx.lineWidth = "1.5";
-        this.ropeBitmapData.ctx.strokeStyle = "#ffff";
-        this.ropeBitmapData.ctx.stroke();
-
-        // Create a new sprite using the bitmap data
-        this.line = game.add.sprite( 0, 0, this.ropeBitmapData );
-
-        // Create a spring between the player and block to act as the ropoe
-        this.rope = this.game.physics.p2.createSpring( p1, p2, 50, 25, 5 );
-
-        // Draw a line from the players
-        this.line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
-    },
-
-    // Code found for drawing rope sprite: 
-    //https://www.codeandweb.com/physicseditor/tutorials/phaser-p2-physics-example-tutorial
-    drawRope: function() 
-    {
-        // Change the bitmap data to reflect the new rope position
-        this.ropeBitmapData.clear();
-        this.ropeBitmapData.ctx.beginPath();
-        this.ropeBitmapData.ctx.beginPath();
-        this.ropeBitmapData.ctx.moveTo( player1.x, player1.y );
-        this.ropeBitmapData.ctx.lineTo( player2.x, player2.y );
-        this.ropeBitmapData.ctx.lineWidth = 1.5;
-        this.ropeBitmapData.ctx.stroke();
-        this.ropeBitmapData.ctx.closePath();
-        this.ropeBitmapData.render();
-    }
+	}
 
 }

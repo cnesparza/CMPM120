@@ -19,7 +19,9 @@ var lvl;
 var map;
 var layer;
 var trustLVL;
+var ropeBitmapData;
 var rope;
+var line;
 var ropeBroken = true;
 var plyrSpeed = 300;
 var plyrJump = 1500;
@@ -38,6 +40,7 @@ window.onload = function() {
 	game.state.add( 'Level_2', Level_2 );
 	game.state.add( 'Level_3', Level_3 );
 	game.state.add( 'Level_4', Level_4 );
+	game.state.add( 'Level_End', Level_End );
 	game.state.add( 'Game_Over', Game_Over );
 	game.state.start( 'Boot' );
 }
