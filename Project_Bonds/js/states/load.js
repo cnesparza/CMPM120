@@ -54,6 +54,8 @@ Load.prototype =
         // load background asset
         game.load.path = 'assets/img/backgrounds/';
         game.load.image( 'treebg', 'treebg.png' );
+        game.load.image( 'treebg2', 'treebg2.png' );
+        game.load.image( 'treebg3', 'treebg3.png' );
         
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';
