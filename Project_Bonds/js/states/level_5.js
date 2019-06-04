@@ -73,15 +73,19 @@ Level_5.prototype =
 		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
-		player1.body.collides( [ worldCollisionGroup, spikeCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
+		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
 		player2 = new Player2( game, 75, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
 
 		// Set up player 2 to only collide with red platforms and world
-		player2.body.collides( [ worldCollisionGroup, spikeCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
+		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
+		// Set up spike collisions with callBack
+		player1.body.collides( spikeCollisionGroup );
+		player2.body.collides( spikeCollisionGroup );
+		
 		// Re-create string between players
 		createRope( game, player1, player2 );
 		this.ropeBroken = false;
@@ -107,6 +111,7 @@ Level_5.prototype =
             this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
+
 
         // Check if players move on to next level
         if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
