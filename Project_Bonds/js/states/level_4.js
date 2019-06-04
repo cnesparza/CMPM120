@@ -27,7 +27,7 @@ Level_4.prototype =
 		game.physics.p2.convertTilemap( map, layer );
 
 		// Resetting bounds to the world after resize
-		game.physics.p2.setBoundsToWorld( true, false, false, false, true );
+		game.physics.p2.setBoundsToWorld( false, false, false, false, true );
 
 		// Setting up world physics
 		game.physics.p2.restitution = 0;
@@ -65,14 +65,14 @@ Level_4.prototype =
 		createPlat( game, 925, 218, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 
 		// Set players new positions
-		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player1 = new Player1( game, 50, 97, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player1 );
 		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
 		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
-		player2 = new Player2( game, 75, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player2 = new Player2( game, 90, 97, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
 
@@ -82,6 +82,23 @@ Level_4.prototype =
 		// Re-create string between players
 		createRope( game, player1, player2 );
 		this.ropeBroken = false;
+
+		// invisible barrier offscreen just for polish
+        var barrier = game.add.sprite( game.world.width + 50, 138, 'barrier' );
+        barrier.scale.setTo( 20, 1 );
+        barrier.alpha = 0;
+        game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
+        barrier.body.static = true;
+
+        barrier = game.add.sprite( -8, -5, 'barrier' );
+        barrier.scale.setTo( 1, 25 );
+        // barrier.alpha = 0;        
+        game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
+        barrier.body.static = true;
 	},
 
 	update: function()

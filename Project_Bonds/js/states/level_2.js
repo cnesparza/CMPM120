@@ -49,34 +49,19 @@ Level_2.prototype =
 		game.physics.p2.world.defaultContactMaterial.friction = 0.3;
 		game.physics.p2.world.setGlobalStiffness( 1e5 );
 
-        // Set up collision groups for colored platforms
-        var worldCollisionGroup = game.physics.p2.createCollisionGroup();
-        var p1CollisionGroup = game.physics.p2.createCollisionGroup();
-        var p2CollisionGroup = game.physics.p2.createCollisionGroup();
-
-        for( var bodyIndex = 0; bodyIndex < map.layer.bodies.length; bodyIndex++ )
-        {
-            var tileBody = map.layer.bodies[bodyIndex];
-            tileBody.setCollisionGroup( worldCollisionGroup );
-            tileBody.collides( [ p1CollisionGroup, p2CollisionGroup ] );
-        }
-
-
 		// Set players new positions
 		player1 = new Player1( game, game.world.width - 100, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player1 );
-        player1.body.setCollisionGroup( p1CollisionGroup );
-
-        // Set up player 1 to only collide with blue platforms
-        player1.body.collides( [ worldCollisionGroup, p2CollisionGroup ] );
 
 	    player2 = new Player2( game, 80, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player2 );
-        player2.body.setCollisionGroup( p2CollisionGroup );
 
-        // Set up player 2 to only collide with red platforms
-        player2.body.collides( [ worldCollisionGroup, p1CollisionGroup ] );
-
+        // invisible barrier offscreen just for polish
+        var barrier = game.add.sprite( game.world.width + 50, game.world.height - 54, 'barrier' );
+        barrier.scale.setTo( 20, 1 );
+        barrier.alpha = 0;
+        game.physics.p2.enable( barrier );
+        barrier.body.static = true;
 	},
 
 	update: function()
