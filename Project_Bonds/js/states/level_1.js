@@ -22,11 +22,17 @@ Level_1.prototype =
     var levelCollisionGroup = game.physics.p2.createCollisionGroup();
 
     // Set up directional fly boi!
-    var fly = new Fly( game, game.world.width - 50, game.world.centerY + 100, 'fly', 'bug 1' );
-    game.add.existing( fly );
     var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 120, 'followMe' );
     flyTextBox.anchor.setTo( 1, 1 );
+    flyTextBox.scale.setTo( 0.5 );    
+    var fly = new Fly( game, game.world.width - 50, game.world.centerY + 100, 'fly', 'bug 1', 1 );
+    game.add.existing( fly );
+
+    flyTextBox = game.add.image( 100, 120, 'thisWay' );
+    flyTextBox.anchor.setTo( 0, 1 );
     flyTextBox.scale.setTo( 0.5 );
+    fly = new Fly( game, 80, 100, 'fly', 'bug 1', -1 );
+    game.add.existing( fly );
 
     // load images for controls
     var bControls = game.add.image( game.world.centerX, game.world.centerY + 25, 'p1_controls' );

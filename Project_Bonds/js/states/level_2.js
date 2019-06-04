@@ -19,6 +19,18 @@ Level_2.prototype =
     	var background = game.add.sprite( 0, 0, 'treebg' );
     	background.alpha = 0.4;
 
+        // set up sign to appear later
+        this.sign = game.add.image( game.world.width - 80, game.world.height - 60, 'sign' );
+        this.sign.anchor.setTo( 0.5, 1 );        
+        this.sign.visible = false;
+
+        // Set up fly boi!
+        this.flyTextBox = game.add.image( game.world.centerX + 15, game.world.centerY + 3, 'preBond' );
+        this.flyTextBox.anchor.setTo( 0, 1 );
+        this.flyTextBox.scale.setTo( 0.5 );
+        var fly = new Fly( game, game.world.centerX, game.world.centerY, 'fly', 'bug 1', 1 );
+        game.add.existing( fly );
+
 		// set up level
 		map = game.add.tilemap( 'level_2' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
@@ -77,6 +89,12 @@ Level_2.prototype =
 			this.ropeBroken = false;
 			this.connected = true;
             game.physics.p2.setBoundsToWorld( true, false, false, false, true );
+            this.sign.visible = true;
+            this.flyTextBox.visible = false;
+            this.flyTextBox = game.add.image( game.world.centerX + 15, game.world.centerY + 3, 'madeBuddy' );
+            this.flyTextBox.anchor.setTo( 0, 1 );
+            this.flyTextBox.scale.setTo( 0.5 );
+
 		}
 
 		// Update string sprite
@@ -90,13 +108,11 @@ Level_2.prototype =
 		{
 			breakString( game, player1, player2, ropeBroken );
             this.ropeBroken = true;
-			var state = game.state.getCurrentState();
 			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
 		}
         else if( player1.body.y > game.world.height + 75 || player2.body.y > game.world.height + 75 )
         {
         	this.ropeBroken = true;
-        	var state = game.state.getCurrentState();
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
 

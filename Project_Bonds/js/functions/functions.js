@@ -123,3 +123,11 @@ function    breakString( game, pl1, pl2, ropeBroken )
 }// End of "breakString"
 
 
+
+// === hitSpike =======================================================
+// ====================================================================
+function    hitSpike( body1, body2 )
+{
+	breakString( game, player1, player2, ropeBroken );
+	game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+}// End of "hitSpike"
