@@ -107,10 +107,6 @@ Level_5.prototype =
             this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
-        else if( ropeBroken )
-        {
-        	game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
-        }
 
         // Check if players move on to next level
         if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
