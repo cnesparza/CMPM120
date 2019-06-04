@@ -32,7 +32,7 @@ function    createSpike( game, x, y, key, spikeCollisionGroup, p1CollisionGroup,
 	game.physics.p2.enable( [ spike ], false );
 	spike.body.static = true;
 	spike.body.setCollisionGroup( spikeCollisionGroup );
-	spike.body.collides( [ p1CollisionGroup, p2CollisionGroup ], breakString( game, player1, player2 ) );
+	spike.body.collides( [ p1CollisionGroup, p2CollisionGroup ] );
 
 }// End of "createSpike"
 

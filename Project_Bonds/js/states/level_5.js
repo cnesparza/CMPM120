@@ -95,6 +95,14 @@ Level_5.prototype =
 			drawRope( player1, player2 );
 		}
 
+		// Check if players collide with a spike
+		if ( player1.body.collides( [ spikeCollisionGroup ], breakString( game, player1, player2 ) ) ||
+			player2.body.collides( [ spikeCollisionGroup ], breakString( game, player1, player2 ) ) )
+		{
+			this.ropeBroken = true;
+			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+		}
+
 		// Check if players have broken string or have fallen
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
