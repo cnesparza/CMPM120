@@ -16,8 +16,7 @@ Level_2.prototype =
         console.log( 'Level_2: lvl == ' + this.lvl );
 
         // load background
-    	var background = game.add.sprite( 0, 0, 'treebg' );
-    	background.alpha = 0.4;
+    	setBg( game );
 
         // set up sign to appear later
         this.sign = game.add.image( game.world.width - 80, game.world.height - 60, 'sign' );

@@ -15,8 +15,7 @@ Level_3.prototype =
         console.log( 'Level_3: lvl == ' + this.lvl );
 
         // load background
-    	var background = game.add.sprite( 0, 0, 'treebg' );
-    	background.alpha = 0.4;
+    	setBg( game );
 
         // load sign to show where to go
         var sign = game.add.image( game.world.width - 50, 144, 'sign' );

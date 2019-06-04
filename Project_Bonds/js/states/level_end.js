@@ -13,8 +13,7 @@ Level_End.prototype =
 	create: function()
 	{
 		// load background
-    	var background = game.add.sprite( 0, 0, 'treebg' );
-    	background.alpha = 0.4;
+    	setBg( game );
 		
 		// Demo level text
 		var endText = game.add.text( game.world.centerX, 100, 'Congrats, you did nothing...', { fontSize: '32px', fill: '#FFF' } );

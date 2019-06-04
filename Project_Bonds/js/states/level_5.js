@@ -17,8 +17,7 @@ Level_5.prototype =
 		game.physics.p2.setImpactEvents(true);
 
 		// load background
-    	var background = game.add.sprite( 0, 0, 'treebg' );
-    	background.alpha = 0.4;
+    	setBg( game );
 		
 		// set up level
 		map = game.add.tilemap( 'level_5' );

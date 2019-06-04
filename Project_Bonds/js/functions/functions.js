@@ -138,18 +138,20 @@ function    hitSpike( body1, body2 )
 function setBg( game )
 {
     var background;
-
-    switch( Math.floor( Math.random() * 3 ) )
+    var bgNum = Math.floor( Math.random() * 3 );
+    
+    if( bgNum == 0 )
     {
-        case 0:
-            background = game.add.sprite( 0, 0, 'treebg' );
-        case 1:
-            background = game.add.sprite( 0, 0, 'treebg2' );
-        case 2:
-            background = game.add.sprite( 0, 0, 'treebg3' );
-        default:
-            console.log( 'ERROR: setBg function' );
+        background = game.add.sprite( 0, 0, 'treebg' );
     }
+    else if( bgNum == 1 )
+    {
+    	background = game.add.sprite( 0, 0, 'treebg2' );
+    }
+	else if( bgNum == 2 )
+	{
+		background = game.add.sprite( 0, 0, 'treebg3' );
+	}            
 
     background.alpha = 0.4;
 }// End of "setBg"
