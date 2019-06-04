@@ -24,6 +24,7 @@ function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	this.scale.y = scale;
 	this.yAxis = p2.vec2.fromValues( 0, 1 );
 	this.jumpTimer = 0;
+    this.dead = false;
 
 	// enable physics
 	game.physics.p2.enable( this );

@@ -83,9 +83,9 @@ Level_5.prototype =
 		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
 		// Set up spike collisions with callBack
-		player1.body.collides( spikeCollisionGroup );
-		player2.body.collides( spikeCollisionGroup );
-		
+		player1.body.collides( spikeCollisionGroup, hitSpike, this );
+		player2.body.collides( spikeCollisionGroup, hitSpike, this );
+
 		// Re-create string between players
 		createRope( game, player1, player2 );
 		this.ropeBroken = false;
@@ -110,6 +110,12 @@ Level_5.prototype =
         	ropeBitmapData.clear();
             this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+        }
+        else if( player1.dead == true || player2.dead == true )
+        {
+        	breakString( game, player1, player2, ropeBroken );
+        	this.ropeBroken = true;
+        	game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
 
 

@@ -121,3 +121,12 @@ function    breakString( game, pl1, pl2, ropeBroken )
     pl2.animations.play( 'death', null, false, false ); 
      
 }// End of "breakString"
+
+
+
+// === hitSpike =======================================================
+// ====================================================================
+function    hitSpike( body1, body2 )
+{
+    this.dead = true;
+}// End of "hitSpike"
