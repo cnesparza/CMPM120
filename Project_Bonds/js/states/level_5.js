@@ -17,7 +17,7 @@ Level_5.prototype =
     	background.alpha = 0.4;
 		
 		// set up level
-		map = game.add.tilemap( 'level_4' );
+		map = game.add.tilemap( 'level_5' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
 		layer = map.createLayer( 'Tile Layer 1' );
 		layer.resizeWorld();
@@ -40,6 +40,7 @@ Level_5.prototype =
 		var bplatCollisionGroup = game.physics.p2.createCollisionGroup();
 		var p1CollisionGroup = game.physics.p2.createCollisionGroup();
 		var p2CollisionGroup = game.physics.p2.createCollisionGroup();
+		var spikeCollisionGroup = game.physics.p2.createCollisionGroup();
 
 		// Set collision group for each tile from tilemap
 		for( var bodyIndex = 0; bodyIndex < map.layer.bodies.length; bodyIndex++ )
@@ -49,19 +50,22 @@ Level_5.prototype =
 			tileBody.collides( [p1CollisionGroup, p2CollisionGroup ] );
 		}
 
-		// Create red platforms
-		createPlat( game, 300, 380, 'redmd', rplatCollisionGroup, p2CollisionGroup );
-		createPlat( game, 1072, 380, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
-		createPlat( game, 545, 550, 'redsm', rplatCollisionGroup, p2CollisionGroup );
-		createPlat( game, 1090, 265, 'redsm', rplatCollisionGroup, p2CollisionGroup );
+		// Create spikes on platforms
+		createSpike( game, 240, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 208, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 64, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 32, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 976, 272, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 1088, 272, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 
+		// Create red platforms
+		createPlat( game, 1032, 224, 'redmd', rplatCollisionGroup, p2CollisionGroup );
+		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
 
 		// Create blue platforms
-		createPlat( game, 300, 282, 'blumd', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 803, 618, 'blulrg', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 1022, 552, 'blusm', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 793, 329, 'blumd', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 925, 218, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 280, 304, 'blumd', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 680, 368, 'blumd', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 688, 592, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 
 		// Set players new positions
 		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );

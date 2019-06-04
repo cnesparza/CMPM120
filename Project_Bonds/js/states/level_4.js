@@ -109,7 +109,7 @@ Level_4.prototype =
         // Check if players move on to next level
         if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
         {
-            game.state.start( 'Level_End', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
+            game.state.start( 'Level_5', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
         }
 
 	}
