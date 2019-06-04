@@ -38,6 +38,10 @@ Load.prototype =
 		game.load.atlas( 'dead_player', 'bdiedspritesheet.png', 'bdiedsprites.json' );
         game.load.atlas( 'buddy', 'fullredspritesheet.png', 'fullredsprites.json' );
         game.load.atlas( 'dead_buddy', 'reddiedspritesheet.png', 'reddiedsprites.json' );
+
+        // load background asset
+        game.load.path = 'assets/img/backgrounds/';
+        game.load.image( 'treebg', 'treebg.png' );
         
 		// load platform assets
 		game.load.path = 'assets/img/platforms/';

@@ -12,6 +12,11 @@ Level_1.prototype =
 	create: function()
 	{
     console.log( 'Level_1: lvl == ' + this.lvl );
+
+    // load background
+    var background = game.add.sprite( 0, 0, 'treebg' );
+    background.alpha = 0.4;
+
 	// start physics engine for game
     game.physics.startSystem( Phaser.Physics.P2JS );
 

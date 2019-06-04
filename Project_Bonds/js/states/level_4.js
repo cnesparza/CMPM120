@@ -12,6 +12,11 @@ Level_4.prototype =
 
 	create: function()
 	{
+
+		// load background
+    	var background = game.add.sprite( 0, 0, 'treebg' );
+    	background.alpha = 0.4;
+		
 		// set up level
 		map = game.add.tilemap( 'level_4' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );

@@ -43,7 +43,7 @@ Game_Over.prototype =
 			{
 				game.state.start( 'Level_4', true, false, this.lvl, this.trustLVL, this.ropeBroken );
 			}
-			else if( levels[this.lvl] ) == "Level_3" )
+			else if( levels[this.lvl] == "Level_3" )
 			{
 				game.state.start( 'Level_5', true, false, this.lvl, this.trustLVL, this.ropeBroken );
 			}

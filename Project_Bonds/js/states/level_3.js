@@ -13,6 +13,11 @@ Level_3.prototype =
 	create: function()
 	{
         console.log( 'Level_3: lvl == ' + this.lvl );
+
+        // load background
+    	var background = game.add.sprite( 0, 0, 'treebg' );
+    	background.alpha = 0.4;
+        
 		// set up level
 		map = game.add.tilemap( 'level_3' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
