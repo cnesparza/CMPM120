@@ -24,7 +24,11 @@ Level_1.prototype =
     game.physics.p2.enable( barrier );
     barrier.body.static = true;
 
-    barrier = game.add.sprite( 10, 400, 'barrier' );
+    barrier = game.add.sprite( -8, 448, 'barrier' );
+    barrier.scale.setTo( 1, 26 );
+    barrier.alpha = 0;
+    game.physics.p2.enable( barrier );
+    barrier.body.static = true;
 
     // Set up directional fly boi!
     var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 120, 'followMe' );
