@@ -22,6 +22,7 @@ Load.prototype =
 		game.load.image( 'sign', 'sign.png' );
         game.load.image( 'p1_controls', 'Arrows.png' );
         game.load.image( 'p2_controls', 'WAD.png' );
+        game.load.image( 'barrier', 'barrier.png' );
 
 		// load menu assets
 		game.load.path = 'assets/img/title_screen/';
