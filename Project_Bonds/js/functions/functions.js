@@ -123,12 +123,3 @@ function    breakString( game, pl1, pl2, ropeBroken )
 }// End of "breakString"
 
 
-
-// === hitSpike =======================================================
-// ====================================================================
-function    hitSpike( body1, body2 )
-{   
-    console.log( 'Before changing dead variable = ' + body1.dead );
-    body1.dead = true;
-    console.log( 'After changing dead variable = ' + body1.dead );
-}// End of "hitSpike"

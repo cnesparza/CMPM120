@@ -83,11 +83,7 @@ Level_5.prototype =
 		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
 		// Set up spike collisions with callBack
-		player1.body.collides( spikeCollisionGroup, function () { 
-			console.log( 'Before changing dead variable = '+ player1.dead );
-			player1.dead = true;
-			 }, this );
-		player2.body.collides( spikeCollisionGroup, hitSpike, this );
+
 
 		// Re-create string between players
 		createRope( game, player1, player2 );

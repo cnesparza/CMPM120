@@ -17,9 +17,6 @@ Level_1.prototype =
     var background = game.add.sprite( 0, 0, 'treebg' );
     background.alpha = 0.4;
 
-	// start physics engine for game
-    game.physics.startSystem( Phaser.Physics.P2JS );
-
     // Set up collision groups.
     var playerCollisionGroup = game.physics.p2.createCollisionGroup();
     var levelCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -27,28 +24,18 @@ Level_1.prototype =
     // Set up directional fly boi!
     var fly = new Fly( game, game.world.width - 50, game.world.centerY + 100, 'fly', 'bug 1' );
     game.add.existing( fly );
-    var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 100, 'text_box' );
+    var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 120, 'followMe' );
     flyTextBox.anchor.setTo( 1, 1 );
     flyTextBox.scale.setTo( 0.5 );
 
-    var flyText = game.add.text( game.world.width - 147, game.world.centerY + 78, 'This way!', { fontSize: '26px', fill: '#FFF' } );
-    flyText.anchor.set( 0.5 );
-
     // load images for controls
-    var bControls = game.add.image( game.world.centerX, game.world.height - 300, 'p1_controls' );
+    var bControls = game.add.image( game.world.centerX, game.world.centerY + 25, 'p1_controls' );
     bControls.anchor.set( 0.5 );
     bControls.scale.setTo( 0.5 );
 
-    var bctrlText = game.add.text( game.world.centerX, game.world.height - 235, 'blue player controls', { fontSize: '16px', fill: '#FFF' } );
-    bctrlText.anchor.set( 0.5 );
-
-    var rControls = game.add.image( game.world.centerX, 50, 'p2_controls' );
+    var rControls = game.add.image( game.world.centerX, 80, 'p2_controls' );
     rControls.anchor.set( 0.5 );
     rControls.scale.setTo( 0.5 );
-
-    var rctrlText = game.add.text( game.world.centerX, 110, 'red player controls', { fontSize: '16px', fill: '#FFF' } );
-    rctrlText.anchor.set( 0.5 );
-
 
     // set up level
     map = game.add.tilemap( 'level_1' );

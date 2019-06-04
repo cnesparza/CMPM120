@@ -19,9 +19,9 @@ Load.prototype =
 		game.load.tilemap( 'level_4', 'level_4.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_5', 'level_5.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_end', 'level_end.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.image( 'sign', 'sign.png' );
         game.load.image( 'p1_controls', 'Arrows.png' );
         game.load.image( 'p2_controls', 'WAD.png' );
-        game.load.image( 'text_box', 'blkdialog.png' );
 
 		// load menu assets
 		game.load.path = 'assets/img/title_screen/';
@@ -32,6 +32,16 @@ Load.prototype =
 		// load fly sprite
 		game.load.path = 'assets/img/sprites/';
 		game.load.atlas( 'fly', 'bugspritesheet.png', 'bugsprites.json' );
+
+		// load fly dialog boxes
+		game.load.path = 'assets/img/dialog/';
+		game.load.image( 'followMe', 'followMe.png' );
+		game.load.image( 'thisWay', 'thisWay.png' );
+		game.load.image( 'preBond', 'preBond.png' );
+		game.load.image( 'madeBuddy', 'madeBuddy.png' );
+		game.load.image( 'endGood', 'endGood.png' );
+		game.load.image( 'endBad', 'endBad.png' );
+
 
 		// load players
 		game.load.path = 'assets/img/players/';
