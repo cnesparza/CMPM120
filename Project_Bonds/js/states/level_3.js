@@ -61,7 +61,7 @@ Level_3.prototype =
 		// Check if players have broken string or have fallen
 		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
-			breakString( game, player1, player2 );
+			breakString( game, player1, player2, ropeBroken );
             this.ropeBroken = true;
 			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
 		}

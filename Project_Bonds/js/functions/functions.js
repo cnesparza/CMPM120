@@ -88,7 +88,7 @@ function    drawRope( player1, player2 )
 
 // === breakString ====================================================
 // ====================================================================
-function    breakString( game, pl1, pl2 )
+function    breakString( game, pl1, pl2, ropeBroken )
 {
     // Clear spring from players
     game.physics.p2.removeSpring( rope );
@@ -100,6 +100,7 @@ function    breakString( game, pl1, pl2 )
     var p2y = pl2.body.y;
 
     // Destroy players and create death sprites
+    ropeBroken = true;
     pl1.destroy();
     pl2.destroy();
     ropeBitmapData.clear();
