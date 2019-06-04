@@ -47,6 +47,13 @@ Level_3.prototype =
         createRope( game, player1, player2 );
         this.ropeBroken = false;
 
+        // invisible barrier offscreen just for polish
+        var barrier = game.add.sprite( game.world.width + 50, 138, 'barrier' );
+        barrier.scale.setTo( 20, 1 );
+        barrier.alpha = 0;
+        game.physics.p2.enable( barrier );
+        barrier.body.static = true;
+
 	},
 
 	update: function()
