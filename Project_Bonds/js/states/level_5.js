@@ -59,15 +59,15 @@ Level_5.prototype =
 		createSpike( game, 208, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 64, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 32, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 976, 272, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 1088, 272, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 976, 272, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 1088, 272, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 
-		// Create red platforms
-		createPlat( game, 1032, 224, 'redmd', rplatCollisionGroup, p2CollisionGroup );
+		// Create red platforms		
 		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
 
 		// Create blue platforms
 		createPlat( game, 280, 304, 'blumd', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 1032, 224, 'blumd', bplatCollisionGroup, p1CollisionGroup );
 		createPlat( game, 680, 368, 'blumd', bplatCollisionGroup, p1CollisionGroup );
 		createPlat( game, 688, 592, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 
@@ -88,6 +88,7 @@ Level_5.prototype =
 
 		// Set up spike collisions with callBack
 		player1.body.collides( spikeCollisionGroup, hitSpike, this );
+		player2.body.collides( spikeCollisionGroup, hitSpike, this );
 
 		// Re-create string between players
 		createRope( game, player1, player2 );
