@@ -17,10 +17,10 @@ Level_1.prototype =
     var background = game.add.sprite( 0, 0, 'treebg' );
     background.alpha = 0.4;
 
-    // Set up collision groups.
-    var playerCollisionGroup = game.physics.p2.createCollisionGroup();
-    var levelCollisionGroup = game.physics.p2.createCollisionGroup();
-
+    // load barriers to block players
+    var barrier = game.add.sprite( game.world.width, 100, 'barrier' );
+    barrier.scale.setTo( 1, 272 );
+    
     // Set up directional fly boi!
     var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 120, 'followMe' );
     flyTextBox.anchor.setTo( 1, 1 );
