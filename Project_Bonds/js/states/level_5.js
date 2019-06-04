@@ -112,7 +112,8 @@ Level_5.prototype =
             this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
-        else if( player1.dead == true || player2.dead == true )
+
+        if( player1.dead == true || player2.dead == true )
         {
         	breakString( game, player1, player2, ropeBroken );
         	this.ropeBroken = true;
