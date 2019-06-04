@@ -19,7 +19,7 @@ Level_1.prototype =
 
     // load barriers to block players
     var barrier = game.add.sprite( game.world.width - 25, 100, 'barrier' );
-    barrier.scale.setTo( 1, 5 );
+    //barrier.scale.setTo( , 5 );
 
     // Set up directional fly boi!
     var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 120, 'followMe' );
