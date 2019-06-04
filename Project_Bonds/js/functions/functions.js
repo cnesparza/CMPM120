@@ -128,5 +128,5 @@ function    breakString( game, pl1, pl2, ropeBroken )
 // ====================================================================
 function    hitSpike( body1, body2 )
 {
-    this.dead = true;
+    body1.dead = true;
 }// End of "hitSpike"
