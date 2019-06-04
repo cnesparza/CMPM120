@@ -75,9 +75,6 @@ Level_5.prototype =
 		// Set up player 1 to only collide with blue platforms and world
 		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
-		// Set up collision detection with spikes
-	    player1.body.collides( [ spikeCollisionGroup ], breakString( game, player1, player2, ropeBroken ) )
-
 		player2 = new Player2( game, 75, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
@@ -85,7 +82,8 @@ Level_5.prototype =
 		// Set up player 2 to only collide with red platforms and world
 		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
-		// Set up collision with spikes
+		// Set up collision detection with spikes
+	    player1.body.collides( [ spikeCollisionGroup ], breakString( game, player1, player2, ropeBroken ) )
 		player2.body.collides( [ spikeCollisionGroup ], breakString( game, player1, player2, ropeBroken ) )
 
 		// Re-create string between players
