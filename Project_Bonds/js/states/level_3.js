@@ -17,6 +17,10 @@ Level_3.prototype =
         // load background
     	var background = game.add.sprite( 0, 0, 'treebg' );
     	background.alpha = 0.4;
+
+        // load sign to show where to go
+        var sign = game.add.image( game.world.width - 50, 144, 'sign' );
+        sign.anchor.setTo( 0.5, 1 );
         
 		// set up level
 		map = game.add.tilemap( 'level_3' );
