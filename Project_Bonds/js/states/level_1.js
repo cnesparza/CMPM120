@@ -18,8 +18,13 @@ Level_1.prototype =
     background.alpha = 0.4;
 
     // load barriers to block players
-    var barrier = game.add.sprite( game.world.width - 25, 100, 'barrier' );
-    //barrier.scale.setTo( , 5 );
+    var barrier = game.add.sprite( game.world.width + 8, 136, 'barrier' );
+    barrier.scale.setTo( 1, 17 );
+    barrier.alpha = 0;
+    game.physics.p2.enable( barrier );
+    barrier.body.static = true;
+
+    barrier = game.add.sprite( 10, 400, 'barrier' );
 
     // Set up directional fly boi!
     var flyTextBox = game.add.image( game.world.width - 75, game.world.centerY + 120, 'followMe' );
