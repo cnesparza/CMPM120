@@ -68,12 +68,12 @@ Level_5.prototype =
 		createPlat( game, 688, 592, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 
 		// Set players new positions
-		this.player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player1 );
-		this.player1.body.setCollisionGroup( p1CollisionGroup );
+		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
-		this.player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
+		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
 		player2 = new Player2( game, 75, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
@@ -83,12 +83,12 @@ Level_5.prototype =
 		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
 		// Set up spike collisions with callBack
-		this.player1.body.collides( spikeCollisionGroup, function () { 
-			this.player1.dead = true; }, this );
+		player1.body.collides( spikeCollisionGroup, function () { 
+			this.dead = true; }, this );
 		player2.body.collides( spikeCollisionGroup, hitSpike, this );
 
 		// Re-create string between players
-		createRope( game, this.player1, player2 );
+		createRope( game, player1, player2 );
 		this.ropeBroken = false;
 	},
 
@@ -97,31 +97,31 @@ Level_5.prototype =
 		// Update string sprite
 		if( this.ropeBroken != true )
 		{
-			drawRope( this.player1, player2 );
+			drawRope( player1, player2 );
 		}
 
-		if( this.ropeBroken != true && ( Phaser.Math.distance( this.player1.body.x, this.player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
+		if( this.ropeBroken != true && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
-			breakString( game, this.player1, player2, ropeBroken );
+			breakString( game, player1, player2, ropeBroken );
 			this.ropeBroken = true;
 			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
 		}
-        else if( this.player1.body.y > game.world.height + 50 || player2.body.y > game.world.height + 50 )
+        else if( player1.body.y > game.world.height + 50 || player2.body.y > game.world.height + 50 )
         {
         	ropeBitmapData.clear();
             this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
-        else if( this.player1.dead == true || player2.dead == true )
+        else if( player1.dead == true || player2.dead == true )
         {
-        	breakString( game, this.player1, player2, ropeBroken );
+        	breakString( game, player1, player2, ropeBroken );
         	this.ropeBroken = true;
         	game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
         }
 
 
         // Check if players move on to next level
-        if( ( this.ropeBroken != true ) && ( this.player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
+        if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
         {
             game.state.start( 'Level_End', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
         }
