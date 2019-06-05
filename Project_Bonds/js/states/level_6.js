@@ -19,6 +19,10 @@ Level_6.prototype =
 		// load background
     	setBg( game );
 		
+		// load sign to show where to go
+    	var sign = game.add.image( game.world.width - 50, game.world.height - 50, 'sign' );
+    	sign.anchor.setTo( 0.5, 1 );
+
 		// set up level
 		map = game.add.tilemap( 'level_6' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
@@ -118,6 +122,15 @@ Level_6.prototype =
 		// Re-create string between players
 		createRope( game, player1, player2 );
 		this.ropeBroken = false;
+
+		// invisible barrier offscreen just for polish
+		var barrier = game.add.sprite( -8, 15, 'barrier' );
+        barrier.scale.setTo( 1, 15 );
+        barrier.alpha = 0;        
+        game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
+        barrier.body.static = true;
 	},
 
 	update: function()
