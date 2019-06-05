@@ -85,14 +85,14 @@ Level_5.prototype =
 		createPlat( game, 976, 448, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 
 		// Set players new positions
-		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player1 = new Player1( game, 25, 95, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player1 );
 		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
 		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
-		player2 = new Player2( game, 75, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player2 = new Player2( game, 80, 95, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
 
@@ -104,9 +104,9 @@ Level_5.prototype =
 		player2.body.collides( hazCollisionGroup, hitHazard, this );
 
 		// invisible barrier offscreen just for polish
-		var barrier = game.add.sprite( 0, 0, 'barrier' );
-        barrier.scale.setTo( 1, 10 );
-        // barrier.alpha = 0;        
+		var barrier = game.add.sprite( -8, 15, 'barrier' );
+        barrier.scale.setTo( 1, 15 );
+        barrier.alpha = 0;        
         game.physics.p2.enable( barrier );
         barrier.body.setCollisionGroup( worldCollisionGroup );
         barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
