@@ -54,21 +54,27 @@ Level_5.prototype =
 		}
 
 		// Create spikes on platforms
-		createSpike( game, 240, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 208, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 64, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 32, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 976, 272, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 1088, 272, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 208, 352, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 240, 352, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 240, 352, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 528, 272, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 560, 272, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 512, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 544, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 576, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 
 		// Create red platforms		
 		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
+		createPlat( game, 1112, 416, 'redmd', rplatCollisionGroup, p2CollisionGroup );
+		createPlat( game, 656, 368, 'redsm', rplatCollisionGroup, p2CollisionGroup );
 
 		// Create blue platforms
-		createPlat( game, 280, 304, 'blumd', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 1032, 224, 'blumd', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 680, 368, 'blumd', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 688, 592, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 224, 304, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 136, 672, 'blumd', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 432, 368, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 976, 448, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 
 		// Set players new positions
 		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
