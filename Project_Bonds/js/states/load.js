@@ -71,11 +71,10 @@ Load.prototype =
 
 		// load hazards
 		game.load.path = 'assets/img/hazards/';
+		game.load.atlas( 'fire', 'firespritesheet.png', 'firesprites.json' );
 		game.load.image( 'bluSpike', 'blueSpike.png' );
 		game.load.image( 'redSpike', 'redSpike.png' );
 		game.load.image( 'purpSpike', 'purpleSpike.png' );
-		game.load.image( 'uBluSpike', 'uBlueSpike.PNG' );
-		game.load.image( 'uRedSpike', 'uRedSpike.PNG' );
 		game.load.image( 'uPurpSpike', 'uPurpleSpike.PNG' );
 
 		// load collectibles

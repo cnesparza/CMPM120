@@ -43,7 +43,7 @@ Level_5.prototype =
 		var bplatCollisionGroup = game.physics.p2.createCollisionGroup();
 		var p1CollisionGroup = game.physics.p2.createCollisionGroup();
 		var p2CollisionGroup = game.physics.p2.createCollisionGroup();
-		var spikeCollisionGroup = game.physics.p2.createCollisionGroup();
+		var hazCollisionGroup = game.physics.p2.createCollisionGroup();
 
 		// Set collision group for each tile from tilemap
 		for( var bodyIndex = 0; bodyIndex < map.layer.bodies.length; bodyIndex++ )
@@ -54,18 +54,20 @@ Level_5.prototype =
 		}
 
 		// Create spikes on platforms
-		createSpike( game, 64, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 32, 512, 'redSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 208, 352, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 240, 352, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 240, 352, 'bluSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 528, 272, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 560, 272, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 512, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 544, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 576, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 1048, 512, 'uRedSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 1176, 512, 'uPurpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 64, 512, 'redSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 32, 512, 'redSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 208, 352, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 240, 352, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 240, 352, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 528, 272, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 560, 272, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 512, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 544, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 576, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		var fire = new Fire( game, 1056, 508, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		game.add.existing( fire );
+		// createSpike( game, 1048, 512, 'uRedSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		// createSpike( game, 1176, 512, 'uPurpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 
 		// Create red platforms		
 		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
@@ -94,8 +96,8 @@ Level_5.prototype =
 		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
 		// Set up spike collisions with callBack
-		player1.body.collides( spikeCollisionGroup, hitSpike, this );
-		player2.body.collides( spikeCollisionGroup, hitSpike, this );
+		player1.body.collides( hazCollisionGroup, hitSpike, this );
+		player2.body.collides( hazCollisionGroup, hitSpike, this );
 
 		// Re-create string between players
 		createRope( game, player1, player2 );
