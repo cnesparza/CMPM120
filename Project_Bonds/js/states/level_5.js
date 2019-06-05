@@ -18,6 +18,10 @@ Level_5.prototype =
 
 		// load background
     	setBg( game );
+
+    	// load sign to show where to go
+    	var sign = game.add.image( game.world.width - 50, 100, 'sign' );
+    	sign.anchor.setTo( 0.5, 1 );
 		
 		// set up level
 		map = game.add.tilemap( 'level_5' );
