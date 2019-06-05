@@ -64,6 +64,8 @@ Level_5.prototype =
 		createSpike( game, 512, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 544, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 576, 544, 'purpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 1048, 512, 'uPurpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		createSpike( game, 1176, 512, 'uPurpSpike', spikeCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 
 		// Create red platforms		
 		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
