@@ -64,10 +64,10 @@ Level_5.prototype =
 		createSpike( game, 512, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 544, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		createSpike( game, 576, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		var fire = new Fire( game, 1056, 508, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		var fire = new Fire( game, 1050, 504, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		game.add.existing( fire );
-		// createSpike( game, 1048, 512, 'uRedSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		// createSpike( game, 1176, 512, 'uPurpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		fire = new Fire( game, 1174, 504, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		game.add.existing( fire );
 
 		// Create red platforms		
 		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
