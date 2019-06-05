@@ -103,6 +103,15 @@ Level_5.prototype =
 		player1.body.collides( hazCollisionGroup, hitHazard, this );
 		player2.body.collides( hazCollisionGroup, hitHazard, this );
 
+		// invisible barrier offscreen just for polish
+		var barrier = game.add.sprite( 0, 0, 'barrier' );
+        barrier.scale.setTo( 1, 10 );
+        // barrier.alpha = 0;        
+        game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
+        barrier.body.static = true;
+
 		// Re-create string between players
 		createRope( game, player1, player2 );
 		this.ropeBroken = false;
