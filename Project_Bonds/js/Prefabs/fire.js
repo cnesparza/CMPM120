@@ -27,7 +27,7 @@ function Fire( game, x, y, key, frame, hazCollisionGroup, p1CollisionGroup, p2Co
 
 
 	// Add and play animations
-    this.animations.add( 'flicker', [ 'fire1', 'fire2', 'fire3' ], 20, true );
+    this.animations.add( 'flicker', [ 'fire1', 'fire2', 'fire3' ], 10, true );
     this.animations.play( 'flicker', null, true, false );
 }
 
