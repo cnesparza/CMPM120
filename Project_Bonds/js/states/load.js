@@ -74,9 +74,9 @@ Load.prototype =
 		game.load.image( 'bluSpike', 'blueSpike.png' );
 		game.load.image( 'redSpike', 'redSpike.png' );
 		game.load.image( 'purpSpike', 'purpleSpike.png' );
-		game.load.image( 'uBluSpike', 'uBlueSpike.png' );
-		game.load.image( 'uRedSpike', 'uRedSpike.png' );
-		game.load.image( 'uPurpSpike', 'uPurpleSpike.png' );
+		game.load.image( 'uBluSpike', 'uBlueSpike.PNG' );
+		game.load.image( 'uRedSpike', 'uRedSpike.PNG' );
+		game.load.image( 'uPurpSpike', 'uPurpleSpike.PNG' );
 
 		// load collectibles
 		game.load.path = 'assets/img/collectibles/';
