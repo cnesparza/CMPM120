@@ -52,7 +52,11 @@ Menu.prototype =
         button.anchor.set( 0.5 );
         button.scale.set( 0.5 );
 
-        button = game.add.button( 550, game.world.height - 50, 'button', this.clickLvlE, this );
+        button = game.add.button( 550, game.world.height - 50, 'button', this.clickLvl6, this );
+        button.anchor.set( 0.5 );
+        button.scale.set( 0.5 );
+
+        button = game.add.button( 650, game.world.height - 50, 'button', this.clickLvlE, this );
         button.anchor.set( 0.5 );
         button.scale.set( 0.5 );
     },
@@ -87,8 +91,13 @@ Menu.prototype =
         game.state.start( 'Level_5', true, false, 5, 0, false );
     },
 
+    clickLvl6: function()
+    {
+        game.state.start( 'Level_6', true, false, 6, 0, false );
+    },
+
     clickLvlE: function()
     {
         game.state.start( 'Level_End', true, false, 6, 0, false );
-    },                
+    }            
 };

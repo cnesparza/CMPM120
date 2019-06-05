@@ -1,7 +1,7 @@
-// Level 5 state
+// Level 6 state
 
-var Level_5 = function ( game ) {};
-Level_5.prototype = 
+var Level_6 = function ( game ) {};
+Level_6.prototype = 
 {
 	init: function( lvl, trustLVL, ropeBroken )
 	{
@@ -20,7 +20,7 @@ Level_5.prototype =
     	setBg( game );
 		
 		// set up level
-		map = game.add.tilemap( 'level_5' );
+		map = game.add.tilemap( 'level_6' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
 		layer = map.createLayer( 'Tile Layer 1' );
 		layer.resizeWorld();
@@ -29,7 +29,7 @@ Level_5.prototype =
 		game.physics.p2.convertTilemap( map, layer );
 
 		// Resetting bounds to the world after resize
-		game.physics.p2.setBoundsToWorld( true, false, false, false, true );
+		game.physics.p2.setBoundsToWorld( false, false, false, false, true );
 
 		// Setting up world physics
 		game.physics.p2.restitution = 0;
@@ -54,31 +54,47 @@ Level_5.prototype =
 		}
 
 		// Create spikes on platforms
-		createSpike( game, 64, 512, 'redSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 32, 512, 'redSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 208, 352, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 240, 352, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 240, 352, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 528, 272, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 560, 272, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 512, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 544, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		createSpike( game, 576, 544, 'purpSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		var fire = new Fire( game, 1050, 504, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		game.add.existing( fire );
-		fire = new Fire( game, 1174, 504, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		game.add.existing( fire );
+		var xCords = [ 272, 304, 432, 464, 592, 624, 752, 784, 912, 944 ];
+		for( var i = 0; i < 10; i++ )
+		{
+			createSpike( game, xCords[i], 160, 'redSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+		}
+		xCords.length = 0;
 
-		// Create red platforms		
-		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
-		createPlat( game, 1112, 416, 'redmd', rplatCollisionGroup, p2CollisionGroup );
-		createPlat( game, 656, 368, 'redsm', rplatCollisionGroup, p2CollisionGroup );
+		// Create fire on platforms
+		xCords = [ 192, 224, 352, 384, 512, 544, 672, 704, 832, 864, 992, 1024 ];
+		for( var i = 0; i < 12; i++ )
+		{
+			var fire = new Fire( game, xCords[i], 400, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+			game.add.existing( fire );
+		}		
+		xCords.length = 0;
+
+		xCords = [ 384, 416, 448, 800, 832, 864 ];
+		for( var i = 0; i < 6; i++ )
+		{
+			var fire = new Fire( game, xCords[i], 656, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+			game.add.existing( fire );
+		}
+		xCords.length = 0;
+
+		// Create red platforms
+		xCords = [ 288, 448, 608, 768, 928 ];
+		for( var i = 0; i < 5; i++ )
+		{
+			createPlat( game, xCords[i], 112, 'redsm', rplatCollisionGroup, p2CollisionGroup );
+		}
+		xCords.length = 0;
+
+		createPlat( game, 1224, 112, 'redmd', rplatCollisionGroup, p2CollisionGroup );
 
 		// Create blue platforms
-		createPlat( game, 224, 304, 'blusm', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 136, 672, 'blumd', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 432, 368, 'blusm', bplatCollisionGroup, p1CollisionGroup );
-		createPlat( game, 976, 448, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		xCords = [ 208, 368, 528, 688, 848, 1008 ];
+		for( var i = 0; i < 6; i++ )
+		{
+			createPlat( game, xCords[i], 176, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		}
+		xCords.length = 0;
 
 		// Set players new positions
 		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
@@ -128,7 +144,7 @@ Level_5.prototype =
         // Check if players move on to next level
         if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
         {
-            game.state.start( 'Level_6', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
+            game.state.start( 'Level_End', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
         }
 
 	}

@@ -18,6 +18,7 @@ Load.prototype =
 		game.load.tilemap( 'level_3', 'level_3.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_4', 'level_4.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_5', 'level_5.json', null, Phaser.Tilemap.TILED_JSON );
+		game.load.tilemap( 'level_6', 'level_6.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.tilemap( 'level_end', 'level_end.json', null, Phaser.Tilemap.TILED_JSON );
 		game.load.image( 'sign', 'sign.png' );
         game.load.image( 'p1_controls', 'Arrows.png' );
