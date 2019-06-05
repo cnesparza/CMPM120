@@ -98,6 +98,6 @@ Menu.prototype =
 
     clickLvlE: function()
     {
-        game.state.start( 'Level_End', true, false, 6, 0, false );
+        game.state.start( 'Level_End', true, false, 7, 0, false );
     }            
 };
