@@ -13,7 +13,7 @@
 
 // define globals
 var game;
-var bg = [ "#E5C472", "#EAC75D", "#EFC847", "#F4CA30", "#FFCC00" ];
+var bg = [ "#B2A68D", "#C6B58B", "#CEB577", "#E5C472", "#F7D571" ];
 var levels = [ "Menu", "Tutorial", "Bonds", "Level_1", "Level_2", "Level_3", "Level_4", "Level_End" ];
 var lvl;
 var map;
