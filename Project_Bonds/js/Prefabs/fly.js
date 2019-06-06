@@ -10,7 +10,7 @@
 // File Description: Fly prefab
 // ====================================================================
 
-function Fly( game, x, y, key, frame, scale )
+function Fly( game, x, y, key, frame )
 {
 	// call to Phaser.Sprite
 	// new Sprite( game, x, y, key, frame )
@@ -18,7 +18,6 @@ function Fly( game, x, y, key, frame, scale )
 
 	// add fly properties
 	this.anchor.set( 0.5 );
-	this.scale.x *= scale;
 
 	// Add and play animations
     this.animations.add( 'flying', [ 'bug 1', 'bug 2' ], 10, true );

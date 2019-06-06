@@ -22,6 +22,7 @@ function Fire( game, x, y, key, frame, hazCollisionGroup, p1CollisionGroup, p2Co
 	this.scale.y = 1.5;
 	game.physics.p2.enable( this );
 	this.body.static = true;
+	this.body.setRectangle( 16, 16 );
 	this.body.setCollisionGroup( hazCollisionGroup );
 	this.body.collides( [ p1CollisionGroup, p2CollisionGroup ] );
 
