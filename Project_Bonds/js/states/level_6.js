@@ -139,6 +139,14 @@ Level_6.prototype =
         barrier.body.setCollisionGroup( worldCollisionGroup );
         barrier.body.collides( [ p1CollisionGroup, p2CollisionGroup ] );
         barrier.body.static = true;
+
+        barrier = game.add.sprite( game.world.width + 70, game.world.height - 55, 'barrier' );
+        barrier.scale.setTo( 20, 1 );
+        barrier.alpha = 0;
+        game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
+        barrier.body.static = true;
 	},
 
 	update: function()

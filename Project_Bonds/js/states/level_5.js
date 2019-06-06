@@ -112,6 +112,14 @@ Level_5.prototype =
         barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
         barrier.body.static = true;
 
+        barrier = game.add.sprite( game.world.width + 70, 90, 'barrier' );
+        barrier.scale.setTo( 20, 1 );
+        barrier.alpha = 0;
+        game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
+        barrier.body.static = true;
+
 		// Re-create string between players
 		createRope( game, player1, player2 );
 		this.ropeBroken = false;
