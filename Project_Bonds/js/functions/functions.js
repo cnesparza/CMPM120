@@ -50,7 +50,7 @@ function    createRope( game, p1, p2 )
 
     ropeBitmapData.ctx.beginPath();
     ropeBitmapData.ctx.lineWidth = "1.5";
-    ropeBitmapData.ctx.strokeStyle = "#ffd11a";
+    ropeBitmapData.ctx.strokeStyle = "#e6ac00";
     ropeBitmapData.ctx.stroke();
 
     // Create a new sprite using the bitmap data
