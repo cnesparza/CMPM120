@@ -49,7 +49,7 @@ function    createRope( game, p1, p2 )
     ropeBitmapData = game.add.bitmapData( this.game.world.width, this.game.world.height );
 
     ropeBitmapData.ctx.beginPath();
-    ropeBitmapData.ctx.lineWidth = "1.5";
+    ropeBitmapData.ctx.lineWidth = "2";
     ropeBitmapData.ctx.strokeStyle = "#e6ac00";
     ropeBitmapData.ctx.stroke();
 
@@ -78,7 +78,7 @@ function    drawRope( player1, player2 )
     ropeBitmapData.ctx.beginPath();
     ropeBitmapData.ctx.moveTo( player1.x, player1.y + 14 );
     ropeBitmapData.ctx.lineTo( player2.x, player2.y + 9 );
-    ropeBitmapData.ctx.lineWidth = 1.5;
+    ropeBitmapData.ctx.lineWidth = 2;
     ropeBitmapData.ctx.stroke();
     ropeBitmapData.ctx.closePath();
     ropeBitmapData.render();
