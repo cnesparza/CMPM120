@@ -128,7 +128,7 @@ function    breakString( game, pl1, pl2, ropeBroken )
 function    hitHazard( body1, body2 )
 {
 	breakString( game, player1, player2, ropeBroken );
-	game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+	game.state.start( 'Game_Over', false, false, this.lvl, this.prevTrust, this.ropeBroken );
 }// End of "hitSpike"
 
 
@@ -138,6 +138,7 @@ function    hitHazard( body1, body2 )
 function    collectJar( body1, body2 )
 {
 	++this.trustLVL;
+    console.log( 'trustLVL == ' + this.trustLVL );
 	jar.destroy();
 }// End of "collectJar"
 

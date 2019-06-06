@@ -19,6 +19,7 @@ var lvl;
 var map;
 var layer;
 var trustLVL;
+var prevTrust;
 var ropeBitmapData;
 var rope;
 var line;
