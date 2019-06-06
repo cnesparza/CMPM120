@@ -106,10 +106,10 @@ function    breakString( game, pl1, pl2, ropeBroken )
     pl2.destroy();
     ropeBitmapData.clear();
     pl1 = game.add.sprite( p1x, p1y, 'dead_player', 'death1' );
-    pl1.scale.setTo( 0.28, 0.28 );
+    pl1.scale.setTo( 0.26, 0.26 );
     pl1.animations.add( 'death', [ 'death1', 'death2', 'death3', 'death4', 'death5', 'death6', 'death7', 'death8', 'death9', 'death10', 'death11', 'death12', 'death13', 'death14' ], 20, true );
     pl2 = game.add.sprite( p2x, p2y, 'dead_buddy', 'reddied 1' );
-    pl2.scale.setTo( 0.28, 0.28 );
+    pl2.scale.setTo( 0.26, 0.26 );
     pl2.animations.add( 'death', [ 'reddied 1', 'reddied 2', 'reddied 3', 'reddied 4', 'reddied 5', 'reddied 6', 'reddied 7', 'reddied 8', 'reddied 9', 'reddied 10', 'reddied 11', 'reddied 12' ], 20, true );
 
     // batch enable physics
@@ -138,6 +138,7 @@ function    hitHazard( body1, body2 )
 function    collectJar( body1, body2 )
 {
 	++this.trustLVL;
+	game.stage.backgroundColor = bg[ this.trustLVL ];
     console.log( 'trustLVL == ' + this.trustLVL );
 	body1.sprite.destroy();
 }// End of "collectJar"
@@ -145,8 +146,11 @@ function    collectJar( body1, body2 )
 
 // === setBg ==========================================================
 // ====================================================================
-function setBg( game )
+function setBg( game, trustLVL )
 {
+	 // set up background color
+    game.stage.backgroundColor = bg[ trustLVL ];
+
     var background;
     var bgNum = Math.floor( Math.random() * 3 );
     
@@ -163,5 +167,5 @@ function setBg( game )
 		background = game.add.sprite( 0, 0, 'treebg3' );
 	}            
 
-    background.alpha = 0.4;
+    background.alpha = 0.6;
 }// End of "setBg"

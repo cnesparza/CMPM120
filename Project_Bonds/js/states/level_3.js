@@ -19,7 +19,7 @@ Level_3.prototype =
 		game.physics.p2.setImpactEvents(true);
 
         // load background
-    	setBg( game );
+    	setBg( game, this.trustLVL );
 
         // load sign to show where to go
         var sign = game.add.image( game.world.width - 50, 144, 'sign' );

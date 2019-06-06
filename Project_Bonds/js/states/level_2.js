@@ -6,7 +6,7 @@ Level_2.prototype =
 	init: function ( lvl, trustLVL, ropeBroken )
 	{
 		this.lvl = lvl;
-		this.trustLVL = 0;
+		this.trustLVL = trustLVL;
         this.prevTrust = trustLVL;
 		this.ropeBroken = ropeBroken
 		this.connected = false;
@@ -17,7 +17,7 @@ Level_2.prototype =
         console.log( 'Level_2: lvl == ' + this.lvl );
 
         // load background
-    	setBg( game );
+    	setBg( game, this.trustLVL );
 
         // set up sign to appear later
         this.sign = game.add.image( game.world.width - 80, game.world.height - 60, 'sign' );

@@ -14,7 +14,7 @@ Level_1.prototype =
     console.log( 'Level_1: lvl == ' + this.lvl );
 
     // load background
-    setBg( game );
+    setBg( game, this.trustLVL );
 
     // load barriers to block players
     var barrier = game.add.sprite( game.world.width + 8, 136, 'barrier' );

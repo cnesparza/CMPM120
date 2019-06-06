@@ -14,7 +14,7 @@ Level_End.prototype =
 	create: function()
 	{
 		// load background
-    	setBg( game );
+    	setBg( game, this.trustLVL );
 		
     	// Set up fly boi! and alternate ending messages
 	    var flyTextBox;
