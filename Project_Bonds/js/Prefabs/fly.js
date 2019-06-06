@@ -20,7 +20,7 @@ function Fly( game, x, y, key, frame )
 	this.anchor.set( 0.5 );
 
 	// Add and play animations
-    this.animations.add( 'flying', [ 'fly1', 'fly2', 'fly3' ], 18, true );
+    this.animations.add( 'flying', [ 'fly1', 'fly2', 'fly3' ], 15, true );
     this.animations.play( 'flying', null, true, false );
 }
 
