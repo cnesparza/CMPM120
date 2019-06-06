@@ -66,10 +66,10 @@ Level_6.prototype =
 		xCords.length = 0;
 
 		// Create fire on platforms
-		xCords = [ 192, 224, 352, 384, 512, 544, 672, 704, 832, 864, 992, 1024 ];
-		for( var i = 0; i < 12; i++ )
+		xCords = [ 224, 384, 544, 704, 864, 1024 ];
+		for( var i = 0; i < 6; i++ )
 		{
-			var fire = new Fire( game, xCords[i], 400, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+			var fire = new Fire( game, xCords[i], 396, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 			game.add.existing( fire );
 		}		
 		xCords.length = 0;
@@ -77,7 +77,7 @@ Level_6.prototype =
 		xCords = [ 384, 416, 448, 800, 832, 864 ];
 		for( var i = 0; i < 6; i++ )
 		{
-			var fire = new Fire( game, xCords[i], 656, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
+			var fire = new Fire( game, xCords[i], 652, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 			game.add.existing( fire );
 		}
 		xCords.length = 0;
