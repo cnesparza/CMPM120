@@ -63,6 +63,7 @@ Level_3.prototype =
 		jar.body.static = true;
 		jar.body.setCollisionGroup( jarCollisionGroup );
 		jar.body.collides( [ p1CollisionGroup, p2CollisionGroup ], collectJar, this );
+        
 		// Set players new positions
 		player1 = new Player1( game, 50, game.world.height - 105, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, ropeBroken );
 	    game.add.existing( player1 );

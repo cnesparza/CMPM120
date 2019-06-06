@@ -41,6 +41,7 @@ Level_4.prototype =
 
 		// Set up collision groups for colored platforms
 		var worldCollisionGroup = game.physics.p2.createCollisionGroup();
+		var jarCollisionGroup = game.physics.p2.createCollisionGroup();
 		var rplatCollisionGroup = game.physics.p2.createCollisionGroup();
 		var bplatCollisionGroup = game.physics.p2.createCollisionGroup();
 		var p1CollisionGroup = game.physics.p2.createCollisionGroup();
@@ -59,14 +60,23 @@ Level_4.prototype =
 		createPlat( game, 1072, 380, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
 		createPlat( game, 545, 550, 'redsm', rplatCollisionGroup, p2CollisionGroup );
 		createPlat( game, 1090, 265, 'redsm', rplatCollisionGroup, p2CollisionGroup );
+		createPlat( game, 160, 624, 'redsm', rplatCollisionGroup, p2CollisionGroup );
 
 
 		// Create blue platforms
 		createPlat( game, 300, 282, 'blumd', bplatCollisionGroup, p1CollisionGroup );
 		createPlat( game, 803, 618, 'blulrg', bplatCollisionGroup, p1CollisionGroup );
 		createPlat( game, 1022, 552, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		createPlat( game, 48, 560, 'blusm', bplatCollisionGroup, p1CollisionGroup );
 		createPlat( game, 793, 329, 'blumd', bplatCollisionGroup, p1CollisionGroup );
 		createPlat( game, 925, 218, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+
+		// create jar to be collected
+		var jar = game.add.sprite( 48, 520, 'jar' );
+		game.physics.p2.enable( [ jar ], false );
+		jar.body.static = true;
+		jar.body.setCollisionGroup( jarCollisionGroup );
+		jar.body.collides( [ p1CollisionGroup, p2CollisionGroup ], collectJar, this );
 
 		// Set players new positions
 		player1 = new Player1( game, 50, 97, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
@@ -74,14 +84,14 @@ Level_4.prototype =
 		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
-		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
+		player1.body.collides( [ worldCollisionGroup, jarCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
 		player2 = new Player2( game, 90, 97, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
 
 		// Set up player 2 to only collide with red platforms and world
-		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
+		player2.body.collides( [ worldCollisionGroup, jarCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
 		// Re-create string between players
 		createRope( game, player1, player2 );
