@@ -60,7 +60,7 @@ function    createRope( game, p1, p2 )
     rope = game.physics.p2.createSpring( p1, p2, 50, 20, 3 );
 
     // Draw a line from the players
-    line = new Phaser.Line( p1.x, p1.y + 13, p2.x, p2.y + 9 );
+    line = new Phaser.Line( p1.x, p1.y + 14, p2.x, p2.y + 9 );
 
 }// End of "createRope"
 
@@ -76,7 +76,7 @@ function    drawRope( player1, player2 )
     ropeBitmapData.clear();
     ropeBitmapData.ctx.beginPath();
     ropeBitmapData.ctx.beginPath();
-    ropeBitmapData.ctx.moveTo( player1.x, player1.y + 13 );
+    ropeBitmapData.ctx.moveTo( player1.x, player1.y + 14 );
     ropeBitmapData.ctx.lineTo( player2.x, player2.y + 9 );
     ropeBitmapData.ctx.lineWidth = 1.5;
     ropeBitmapData.ctx.stroke();
@@ -107,7 +107,7 @@ function    breakString( game, pl1, pl2, ropeBroken )
     ropeBitmapData.clear();
     pl1 = game.add.sprite( p1x, p1y, 'dead_player', 'bluedied 1' );
     pl1.scale.setTo( 0.25, 0.25 );
-    pl1.animations.add( 'death', [ 'bluedied 1', 'bluedied 2', 'bluedied 3', 'bluedied 4', 'bluedied 5', 'bluedied 6', 'bluedied 7', 'bluedied 8', 'bluedied 9', 'bluedied 10', 'bluedied 11', 'bluedied 12' ], 20, true );
+    pl1.animations.add( 'death', [ 'death1', 'death2', 'death3', 'death4', 'death5', 'death6', 'death7', 'death8', 'death9', 'death10', 'death11', 'death12', 'death13', 'death14' ], 20, true );
     pl2 = game.add.sprite( p2x, p2y, 'dead_buddy', 'reddied 1' );
     pl2.scale.setTo( 0.25, 0.25 );
     pl2.animations.add( 'death', [ 'reddied 1', 'reddied 2', 'reddied 3', 'reddied 4', 'reddied 5', 'reddied 6', 'reddied 7', 'reddied 8', 'reddied 9', 'reddied 10', 'reddied 11', 'reddied 12' ], 20, true );
