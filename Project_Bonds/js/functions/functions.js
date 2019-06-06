@@ -49,7 +49,7 @@ function    createRope( game, p1, p2 )
 
     ropeBitmapData.ctx.beginPath();
     ropeBitmapData.ctx.lineWidth = "1.5";
-    ropeBitmapData.ctx.strokeStyle = "#ffff";
+    ropeBitmapData.ctx.strokeStyle = "#ffd11a";
     ropeBitmapData.ctx.stroke();
 
     // Create a new sprite using the bitmap data
@@ -59,7 +59,7 @@ function    createRope( game, p1, p2 )
     rope = game.physics.p2.createSpring( p1, p2, 50, 20, 3 );
 
     // Draw a line from the players
-    line = new Phaser.Line( p1.x, p1.y, p2.x, p2.y );
+    line = new Phaser.Line( p1.x, p1.y + 13, p2.x, p2.y + 9 );
 
 }// End of "createRope"
 
@@ -75,8 +75,8 @@ function    drawRope( player1, player2 )
     ropeBitmapData.clear();
     ropeBitmapData.ctx.beginPath();
     ropeBitmapData.ctx.beginPath();
-    ropeBitmapData.ctx.moveTo( player1.x, player1.y );
-    ropeBitmapData.ctx.lineTo( player2.x, player2.y );
+    ropeBitmapData.ctx.moveTo( player1.x, player1.y + 13 );
+    ropeBitmapData.ctx.lineTo( player2.x, player2.y + 9 );
     ropeBitmapData.ctx.lineWidth = 1.5;
     ropeBitmapData.ctx.stroke();
     ropeBitmapData.ctx.closePath();
