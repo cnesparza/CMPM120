@@ -7,6 +7,7 @@ Level_5.prototype =
 	{
 		this.lvl = lvl;
 		this.trustLVL = trustLVL;
+		this.prevTrust = trustLVL;
 		this.ropeBroken = ropeBroken;
 	},
 
@@ -137,13 +138,13 @@ Level_5.prototype =
 		{
 			breakString( game, player1, player2, ropeBroken );
 			this.ropeBroken = true;
-			game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+			game.state.start( 'Game_Over', false, false, this.lvl, this.prevTrust, this.ropeBroken );
 		}
         else if( player1.body.y > game.world.height + 50 || player2.body.y > game.world.height + 50 )
         {
         	ropeBitmapData.clear();
             this.ropeBroken = true;
-            game.state.start( 'Game_Over', false, false, this.lvl, this.trustLVL, this.ropeBroken );
+            game.state.start( 'Game_Over', false, false, this.lvl, this.prevTrust, this.ropeBroken );
         }
 
         // Check if players move on to next level
