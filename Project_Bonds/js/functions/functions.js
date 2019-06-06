@@ -31,6 +31,7 @@ function    createSpike( game, x, y, key, spikeCollisionGroup, p1CollisionGroup,
 	var spike = game.add.sprite( x, y, key );
 	game.physics.p2.enable( [ spike ], false );
 	spike.body.static = true;
+	spike.body.setRectangle( 30, 30 );
 	spike.body.setCollisionGroup( spikeCollisionGroup );
 	spike.body.collides( [ p1CollisionGroup, p2CollisionGroup ] );
 

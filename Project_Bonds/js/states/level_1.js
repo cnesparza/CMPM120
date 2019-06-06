@@ -41,6 +41,7 @@ Level_1.prototype =
     flyTextBox.scale.setTo( 0.5 );
     fly = new Fly( game, 80, 100, 'fly', 'fly1' );
     game.add.existing( fly );
+    fly.scale.setTo( -1, 1 );
 
     // load images for controls
     var bControls = game.add.image( game.world.centerX, game.world.centerY + 25, 'p1_controls' );
