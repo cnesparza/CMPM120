@@ -48,6 +48,7 @@ Level_5.prototype =
 		var bplatCollisionGroup = game.physics.p2.createCollisionGroup();
 		var p1CollisionGroup = game.physics.p2.createCollisionGroup();
 		var p2CollisionGroup = game.physics.p2.createCollisionGroup();
+		var jarCollisionGroup = game.physics.p2.createCollisionGroup();
 		var hazCollisionGroup = game.physics.p2.createCollisionGroup();
 
 		// Set collision group for each tile from tilemap
@@ -74,6 +75,13 @@ Level_5.prototype =
 		fire = new Fire( game, 1174, 506, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		game.add.existing( fire );
 
+		// create jar to be collected
+		var jar = game.add.sprite( 1113, 500, 'jar' );
+		game.physics.p2.enable( [ jar ], false );
+		jar.body.static = true;
+		jar.body.setCollisionGroup( jarCollisionGroup );
+		jar.body.collides( [ p1CollisionGroup, p2CollisionGroup ], collectJar, this );
+
 		// Create red platforms		
 		createPlat( game, 136, 464, 'redlrg', rplatCollisionGroup, p2CollisionGroup );
 		createPlat( game, 1112, 416, 'redmd', rplatCollisionGroup, p2CollisionGroup );
@@ -91,14 +99,14 @@ Level_5.prototype =
 		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
-		player1.body.collides( [ worldCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
+		player1.body.collides( [ worldCollisionGroup, jarCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
 		player2 = new Player2( game, 80, 95, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
 
 		// Set up player 2 to only collide with red platforms and world
-		player2.body.collides( [ worldCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
+		player2.body.collides( [ worldCollisionGroup, jarCollisionGroup, rplatCollisionGroup, p1CollisionGroup ] );
 
 		// Set up spike collisions with callBack
 		player1.body.collides( hazCollisionGroup, hitHazard, this );

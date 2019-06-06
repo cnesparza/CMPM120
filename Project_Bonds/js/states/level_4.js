@@ -14,6 +14,9 @@ Level_4.prototype =
 	create: function()
 	{
 
+		// Set up collision events
+		game.physics.p2.setImpactEvents(true);
+
 		// load background
     	setBg( game );
 
