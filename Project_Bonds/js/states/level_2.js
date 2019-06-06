@@ -27,7 +27,7 @@ Level_2.prototype =
         this.flyTextBox = game.add.image( game.world.centerX + 15, game.world.centerY + 3, 'preBond' );
         this.flyTextBox.anchor.setTo( 0, 1 );
         this.flyTextBox.scale.setTo( 0.5 );
-        var fly = new Fly( game, game.world.centerX, game.world.centerY, 'fly', 'bug 1' );
+        var fly = new Fly( game, game.world.centerX, game.world.centerY, 'fly', 'fly1' );
         game.add.existing( fly );
 
 		// set up level
