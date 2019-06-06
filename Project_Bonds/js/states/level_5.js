@@ -33,7 +33,7 @@ Level_5.prototype =
 		game.physics.p2.convertTilemap( map, layer );
 
 		// Resetting bounds to the world after resize
-		game.physics.p2.setBoundsToWorld( true, false, false, false, true );
+		game.physics.p2.setBoundsToWorld( false, false, false, false, true );
 
 		// Setting up world physics
 		game.physics.p2.restitution = 0;
