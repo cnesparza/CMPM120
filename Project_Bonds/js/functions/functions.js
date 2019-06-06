@@ -139,7 +139,7 @@ function    collectJar( body1, body2 )
 {
 	++this.trustLVL;
     console.log( 'trustLVL == ' + this.trustLVL );
-	jar.destroy();
+	this.jar.destroy();
 }// End of "collectJar"
 
 
