@@ -1,7 +1,7 @@
-// Level 6 state
+// Level 7 state
 
-var Level_6 = function ( game ) {};
-Level_6.prototype = 
+var Level_7 = function ( game ) {};
+Level_7.prototype = 
 {
 	init: function( lvl, trustLVL, ropeBroken )
 	{
@@ -21,11 +21,12 @@ Level_6.prototype =
     	setBg( game, this.trustLVL );
 		
 		// load sign to show where to go
-    	var sign = game.add.image( game.world.width - 50, game.world.height - 50, 'sign' );
+    	var sign = game.add.image( game.world.width - 50, game.world.centerY + 115, 'sign' );
     	sign.anchor.setTo( 0.5, 1 );
+    	sign.scale.setTo( 0.75, 0.75 );
 
 		// set up level
-		map = game.add.tilemap( 'level_6' );
+		map = game.add.tilemap( 'level_7' );
 		map.addTilesetImage( 'platttspritesheet', 'tilesheet' );
 		layer = map.createLayer( 'Tile Layer 1' );
 		layer.resizeWorld();
@@ -34,7 +35,7 @@ Level_6.prototype =
 		game.physics.p2.convertTilemap( map, layer );
 
 		// Resetting bounds to the world after resize
-		game.physics.p2.setBoundsToWorld( false, false, false, false, true );
+		game.physics.p2.setBoundsToWorld( true, false, false, false, true );
 
 		// Setting up world physics
 		game.physics.p2.restitution = 0;
@@ -59,65 +60,52 @@ Level_6.prototype =
 			tileBody.collides( [p1CollisionGroup, p2CollisionGroup ] );
 		}
 
-		// Create spikes on platforms
-		var xCords = [ 272, 304, 432, 464, 592, 624, 752, 784, 912, 944 ];
-		for( var i = 0; i < 10; i++ )
-		{
-			createSpike( game, xCords[i], 160, 'redSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-		}
-		xCords.length = 0;
-
-		// Create fire on platforms
-		xCords = [ 224, 384, 544, 704, 864, 1024 ];
-		for( var i = 0; i < 6; i++ )
-		{
-			var fire = new Fire( game, xCords[i], 396, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-			game.add.existing( fire );
-		}		
-		xCords.length = 0;
-
-		xCords = [ 384, 416, 448, 800, 832, 864 ];
-		for( var i = 0; i < 6; i++ )
-		{
-			var fire = new Fire( game, xCords[i], 652, 'fire', 'fire1', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
-			game.add.existing( fire );
-		}
-		xCords.length = 0;
-
 		// Create red platforms
-		xCords = [ 288, 448, 608, 768, 928 ];
+		xCords = [ 160, 96, 144, 608, 894 ];
+		var yCords = [ 224, 352, 480, 208, 400 ];
 		for( var i = 0; i < 5; i++ )
 		{
-			createPlat( game, xCords[i], 112, 'redsm', rplatCollisionGroup, p2CollisionGroup );
+			createPlat( game, xCords[i], yCords[i], 'redsm', rplatCollisionGroup, p2CollisionGroup );
 		}
 		xCords.length = 0;
-
-		createPlat( game, 1224, 112, 'redmd', rplatCollisionGroup, p2CollisionGroup );
+		yCords.length = 0;
 
 		// Create blue platforms
-		xCords = [ 208, 368, 528, 688, 848, 1008 ];
-		for( var i = 0; i < 6; i++ )
+		xCords = [ 304, 368, 320, 736, 992 ];
+		yCords = [ 224, 352, 480, 304, 496 ];
+		for( var i = 0; i < 5; i++ )
 		{
-			createPlat( game, xCords[i], 176, 'blusm', bplatCollisionGroup, p1CollisionGroup );
+			createPlat( game, xCords[i], yCords[i], 'blusm', bplatCollisionGroup, p1CollisionGroup );
+		}
+		xCords.length = 0;
+		yCords.length = 0;
+
+		createPlat( game, 1192, 336, 'blumd', bplatCollisionGroup, p1CollisionGroup );
+
+		// Create spikes on platforms
+		var xCords = [ 1136, 1168, 1216, 1248 ];
+		for( var i = 0; i < 4; i++ )
+		{
+			createSpike( game, xCords[i], 384, 'bluSpike', hazCollisionGroup, p1CollisionGroup, p2CollisionGroup );
 		}
 		xCords.length = 0;
 
 		// create jar to be collected
-		var jar = game.add.sprite( 1224, 70, 'jar' );
+		var jar = game.add.sprite( 1248, 304, 'jar' );
 		game.physics.p2.enable( [ jar ], false );
 		jar.body.static = true;
 		jar.body.setCollisionGroup( jarCollisionGroup );
 		jar.body.collides( [ p1CollisionGroup, p2CollisionGroup ], collectJar, this );
 
 		// Set players new positions
-		player1 = new Player1( game, 0, 0, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player1 = new Player1( game, 40, game.world.height - 95, 'player', 'blue 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player1 );
 		player1.body.setCollisionGroup( p1CollisionGroup );
 
 		// Set up player 1 to only collide with blue platforms and world
 		player1.body.collides( [ worldCollisionGroup, jarCollisionGroup, bplatCollisionGroup, p2CollisionGroup ] );
 
-		player2 = new Player2( game, 75, 0, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
+		player2 = new Player2( game, 90, game.world.height - 95, 'buddy', 'red 1', plyrSpeed, plyrJump, 0.5, this.ropeBroken );
 		game.add.existing( player2 );
 		player2.body.setCollisionGroup( p2CollisionGroup );
 
@@ -133,29 +121,15 @@ Level_6.prototype =
 		this.ropeBroken = false;
 
 		// invisible barrier offscreen just for polish
-		var barrier = game.add.sprite( -8, 15, 'barrier' );
-        barrier.scale.setTo( 1, 15 );
-        barrier.alpha = 0;        
-        game.physics.p2.enable( barrier );
-        barrier.body.setCollisionGroup( worldCollisionGroup );
-        barrier.body.collides( [ p1CollisionGroup, p2CollisionGroup ] );
-        barrier.body.static = true;
 
-        barrier = game.add.sprite( game.world.width + 8, 200, 'barrier' );
-        barrier.scale.setTo( 1, 30 );
+        var barrier = game.add.sprite( game.world.width + 8, 160, 'barrier' );
+        barrier.scale.setTo( 1, 20 );
         barrier.alpha = 0;
         game.physics.p2.enable( barrier );
         barrier.body.setCollisionGroup( worldCollisionGroup );
         barrier.body.collides( [ p1CollisionGroup, p2CollisionGroup ] );
         barrier.body.static = true;
 
-        barrier = game.add.sprite( game.world.width + 70, game.world.height - 55, 'barrier' );
-        barrier.scale.setTo( 20, 1 );
-        barrier.alpha = 0;
-        game.physics.p2.enable( barrier );
-        barrier.body.setCollisionGroup( worldCollisionGroup );
-        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
-        barrier.body.static = true;
 	},
 
 	update: function()
@@ -182,7 +156,7 @@ Level_6.prototype =
         // Check if players move on to next level
         if( ( this.ropeBroken != true ) && ( player1.body.x > game.world.width + 10 ) && ( player2.body.x > game.world.width + 10 ) )
         {
-            game.state.start( 'Level_7', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
+            game.state.start( 'Level_End', true, false, ++this.lvl, this.trustLVL, this.ropeBroken );
         }
 
 	}

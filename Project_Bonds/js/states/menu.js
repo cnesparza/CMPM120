@@ -29,7 +29,7 @@ Menu.prototype =
 
         // begin playing bgm
         this.bgm = game.add.audio( 'bgm' );
-        this.bgm.play( '', 0, 0.2, true );    // set bgm to loop
+        this.bgm.play( '', 0, 0.1, true );    // set bgm to loop
 
         // [ D E B U G ]
         button = game.add.button( 50, game.world.height - 50, 'button', this.clickLvl1, this );
@@ -56,7 +56,11 @@ Menu.prototype =
         button.anchor.set( 0.5 );
         button.scale.set( 0.5 );
 
-        button = game.add.button( 650, game.world.height - 50, 'button', this.clickLvlE, this );
+        button = game.add.button( 650, game.world.height - 50, 'button', this.clickLvl7, this );
+        button.anchor.set( 0.5 );
+        button.scale.set( 0.5 );
+
+        button = game.add.button( 750, game.world.height - 50, 'button', this.clickLvlE, this );
         button.anchor.set( 0.5 );
         button.scale.set( 0.5 );
     },
@@ -94,6 +98,11 @@ Menu.prototype =
     clickLvl6: function()
     {
         game.state.start( 'Level_6', true, false, 6, 0, false );
+    },
+
+    clickLvl7: function()
+    {
+        game.state.start( 'Level_7', true, false, 7, 0, false );
     },
 
     clickLvlE: function()

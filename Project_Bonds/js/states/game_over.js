@@ -51,6 +51,10 @@ Game_Over.prototype =
 			{
 				game.state.start( 'Level_6', true, false, this.lvl, this.trustLVL, this.ropeBroken );
 			}
+			else if( levels[this.lvl] == "Level_5" )
+			{
+				game.state.start( 'Level_7', true, false, this.lvl, this.trustLVL, this.ropeBroken );
+			}
 			else if( levels[this.lvl] == "Level_End" )
 			{
 				game.state.start( 'Level_End', true, false, this.lvl, this.trustLVL, this.ropeBroken );

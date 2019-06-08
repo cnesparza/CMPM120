@@ -35,6 +35,9 @@ function Player1( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	this.animations.add( 'left', [ 'blue 9', 'blue 10', 'blue 11', 'blue 12', 'blue 13', 'blue 14', 'blue 15', 'blue 16' ], 20, true );
     this.animations.add( 'right', [ 'blue 1', 'blue 2', 'blue 3', 'blue 4', 'blue 5', 'blue 6', 'blue 7', 'blue 8' ], 20, true );
 
+    // Add sounds for jumping
+    this.jump = game.add.audio( 'jump' );
+
 	// Create keyboard functionality
     cursors = game.input.keyboard.createCursorKeys();
 
@@ -71,6 +74,7 @@ Player1.prototype.update = function()
     // Allow the player to jump if they are touching the ground
     if( ( cursors.up.isDown && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
     {
+        this.jump.play( '', 0, 0.2, false );
         this.body.moveUp( this.plyrJump );
         this.jumpTimer = game.time.now + 750;
     }

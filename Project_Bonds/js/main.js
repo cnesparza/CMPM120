@@ -14,7 +14,7 @@
 // define globals
 var game;
 var bg = [ "#B2A68D", "#C6B58B", "#CEB577", "#E5C472", "#F7D571" ];
-var levels = [ "Menu", "Tutorial", "Bonds", "Level_1", "Level_2", "Level_3", "Level_4", "Level_End" ];
+var levels = [ "Menu", "Tutorial", "Bonds", "Level_1", "Level_2", "Level_3", "Level_4", "Level_5", "Level_End" ];
 var lvl;
 var map;
 var layer;
@@ -48,6 +48,7 @@ window.onload = function() {
 	game.state.add( 'Level_4', Level_4 );
 	game.state.add( 'Level_5', Level_5 );
 	game.state.add( 'Level_6', Level_6 );
+	game.state.add( 'Level_7', Level_7 );
 	game.state.add( 'Level_End', Level_End );
 	game.state.add( 'Game_Over', Game_Over );
 	game.state.start( 'Boot' );

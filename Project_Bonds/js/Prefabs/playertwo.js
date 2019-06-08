@@ -35,7 +35,10 @@ function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 	this.animations.add( 'left', [ 'red 9', 'red 10', 'red 11', 'red 12', 'red 13', 'red 14', 'red 15', 'red 16' ], 20, true );
     this.animations.add( 'right', [ 'red 1', 'red 2', 'red 3', 'red 4', 'red 5', 'red 6', 'red 7', 'red 8' ], 20, true );
 
-	// Create keyboard functionality
+	// Add sounds for jump
+    this.jump = game.add.audio( 'jump' );
+    
+    // Create keyboard functionality
     cursors = game.input.keyboard.createCursorKeys();
 }
 
@@ -66,6 +69,7 @@ Player2.prototype.update = function()
     // Allow the player to jump if they are touching the ground
     if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
     {
+        this.jump.play( '', 0, 0.2, false );
         this.body.moveUp( this.plyrJump );
         this.jumpTimer = game.time.now + 750;
     }
