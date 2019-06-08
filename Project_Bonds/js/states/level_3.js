@@ -84,10 +84,12 @@ Level_3.prototype =
         this.ropeBroken = false;
 
         // invisible barrier offscreen just for polish
-        var barrier = game.add.sprite( game.world.width + 50, 138, 'barrier' );
+        var barrier = game.add.sprite( game.world.width + 100, 138, 'barrier' );
         barrier.scale.setTo( 20, 1 );
         barrier.alpha = 0;
         game.physics.p2.enable( barrier );
+        barrier.body.setCollisionGroup( worldCollisionGroup );
+        barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );
         barrier.body.static = true;
 
 	},

@@ -111,7 +111,7 @@ Level_4.prototype =
 
         barrier = game.add.sprite( -8, -5, 'barrier' );
         barrier.scale.setTo( 1, 25 );
-        // barrier.alpha = 0;        
+        barrier.alpha = 0;        
         game.physics.p2.enable( barrier );
         barrier.body.setCollisionGroup( worldCollisionGroup );
         barrier.body.collides( [p1CollisionGroup, p2CollisionGroup ] );

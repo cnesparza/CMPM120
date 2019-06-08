@@ -32,37 +32,37 @@ Menu.prototype =
         this.bgm.play( '', 0, 0.1, true );    // set bgm to loop
 
         // [ D E B U G ]
-        button = game.add.button( 50, game.world.height - 50, 'button', this.clickLvl1, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 50, game.world.height - 50, 'button', this.clickLvl1, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 150, game.world.height - 50, 'button', this.clickLvl2, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 150, game.world.height - 50, 'button', this.clickLvl2, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 250, game.world.height - 50, 'button', this.clickLvl3, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 250, game.world.height - 50, 'button', this.clickLvl3, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 350, game.world.height - 50, 'button', this.clickLvl4, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 350, game.world.height - 50, 'button', this.clickLvl4, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 450, game.world.height - 50, 'button', this.clickLvl5, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 450, game.world.height - 50, 'button', this.clickLvl5, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 550, game.world.height - 50, 'button', this.clickLvl6, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 550, game.world.height - 50, 'button', this.clickLvl6, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 650, game.world.height - 50, 'button', this.clickLvl7, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 650, game.world.height - 50, 'button', this.clickLvl7, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
 
-        button = game.add.button( 750, game.world.height - 50, 'button', this.clickLvlE, this );
-        button.anchor.set( 0.5 );
-        button.scale.set( 0.5 );
+        // button = game.add.button( 750, game.world.height - 50, 'button', this.clickLvlE, this );
+        // button.anchor.set( 0.5 );
+        // button.scale.set( 0.5 );
     },
 
     actionOnClick: function()

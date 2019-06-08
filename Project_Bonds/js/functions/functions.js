@@ -137,9 +137,10 @@ function    hitHazard( body1, body2 )
 // ====================================================================
 function    collectJar( body1, body2 )
 {
+    this.collect = game.add.audio( 'collect' );
+    this.collect.play( '', 0, 0.2, false );
 	++this.trustLVL;
 	game.stage.backgroundColor = bg[ this.trustLVL ];
-    console.log( 'trustLVL == ' + this.trustLVL );
 	body1.sprite.destroy();
 }// End of "collectJar"
 
