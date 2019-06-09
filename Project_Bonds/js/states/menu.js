@@ -72,6 +72,7 @@ Menu.prototype =
         {
             this.intro.stop();
         }
+        
         this.bgm.play( '', 0, 0.1, true );
         game.state.start( 'Level_1', true, false, ++this.lvl );
     },
