@@ -92,6 +92,7 @@ Load.prototype =
 		game.load.audio( 'stringForm', ['Bonds String Form.mp3'] );
 		game.load.audio( 'break', ['Bonds Break.mp3'] );
 		game.load.audio( 'death', ['Bonds Death.mp3'] );
+		game.load.audio( 'intro', ['Bonds Intro.mp3'] );
 	},
 
 	create: function()

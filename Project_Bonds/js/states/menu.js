@@ -29,7 +29,8 @@ Menu.prototype =
 
         // begin playing bgm
         this.bgm = game.add.audio( 'bgm' );
-        this.bgm.play( '', 0, 0.1, true );    // set bgm to loop
+        this.intro = game.add.audio( 'intro' );
+        this.intro.play( '', 0, 0.2, false );    // set bgm to loop
 
         // [ D E B U G ]
         // button = game.add.button( 50, game.world.height - 50, 'button', this.clickLvl1, this );
@@ -67,6 +68,11 @@ Menu.prototype =
 
     actionOnClick: function()
     {
+        if( this.intro.isPlaying )
+        {
+            this.intro.stop();
+        }
+        this.bgm.play( '', 0, 0.1, true );
         game.state.start( 'Level_1', true, false, ++this.lvl );
     },
 

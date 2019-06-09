@@ -96,7 +96,6 @@ function    breakString( game, pl1, pl2, ropeBroken )
 
     // create break sound
     var breakSound = game.add.audio( 'break' );
-    var deathSound = game.add.audio( 'death' );
 
     // Store coordinates for players
     var p1x = pl1.body.x;
@@ -123,9 +122,6 @@ function    breakString( game, pl1, pl2, ropeBroken )
     // Play death animation
     pl1.animations.play( 'death', null, false, false );
     pl2.animations.play( 'death', null, false, false ); 
-
-    // Play deathSound after animations
-    deathSound.play( '', 0, 0.3, false );
      
 }// End of "breakString"
 
