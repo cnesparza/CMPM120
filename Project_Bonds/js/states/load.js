@@ -88,6 +88,9 @@ Load.prototype =
 		game.load.audio( 'bgm', ['background_music.mp3'] );
 		game.load.audio( 'jump', ['Bonds Jumping.mp3'] );
 		game.load.audio( 'collect', ['Bonds Collection.mp3'] );
+		game.load.audio( 'creak', ['Bonds Creaking.mp3'] );
+		game.load.audio( 'stringForm', ['Bonds String Form.mp3'] );
+		game.load.audio( 'break', ['Bonds Break.mp3'] );
 	},
 
 	create: function()

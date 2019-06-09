@@ -37,6 +37,7 @@ function Player2( game, x, y, key, frame, plyrSpeed, plyrJump, scale, ropeBroken
 
 	// Add sounds for jump
     this.jump = game.add.audio( 'jump' );
+    this.jump.allowMultiple = true;
 
     // Create keyboard functionality
     cursors = game.input.keyboard.createCursorKeys();

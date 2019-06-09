@@ -94,6 +94,9 @@ function    breakString( game, pl1, pl2, ropeBroken )
     // Clear spring from players
     game.physics.p2.removeSpring( rope );
 
+    // create break sound
+    var breakSound = game.add.audio( 'break' );
+
     // Store coordinates for players
     var p1x = pl1.body.x;
     var p1y = pl1.body.y;
@@ -105,6 +108,7 @@ function    breakString( game, pl1, pl2, ropeBroken )
     pl1.destroy();
     pl2.destroy();
     ropeBitmapData.clear();
+    breakSound.play( '', 0, 1, false );
     pl1 = game.add.sprite( p1x, p1y, 'dead_player', 'death1' );
     pl1.scale.setTo( 0.26, 0.26 );
     pl1.animations.add( 'death', [ 'death1', 'death2', 'death3', 'death4', 'death5', 'death6', 'death7', 'death8', 'death9', 'death10', 'death11', 'death12', 'death13', 'death14' ], 20, true );
@@ -147,7 +151,7 @@ function    collectJar( body1, body2 )
 
 // === setBg ==========================================================
 // ====================================================================
-function setBg( game, trustLVL )
+function    setBg( game, trustLVL )
 {
 	 // set up background color
     game.stage.backgroundColor = bg[ trustLVL ];
@@ -170,3 +174,21 @@ function setBg( game, trustLVL )
 
     background.alpha = 0.6;
 }// End of "setBg"
+
+
+// === checkCreak =====================================================
+// ====================================================================
+function    checkCreak( game, p1, p2 )
+{
+    creak = game.add.audio( 'creak' );
+
+    if( Phaser.Math.distance( p1.body.x, p1.body.y, p2.body.x, p2.body.y ) >= 250 &&
+     Phaser.Math.distance( p1.body.x, p1.body.y, p2.body.x, p2.body.y ) <= 300 )
+    {
+        creak.play( '', 0, 1, true );
+    }
+    else
+    {
+        creak.stop();
+    }
+}

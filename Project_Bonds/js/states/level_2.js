@@ -62,6 +62,10 @@ Level_2.prototype =
         barrier.alpha = 0;
         game.physics.p2.enable( barrier );
         barrier.body.static = true;
+
+        // Add sound to be used
+        creak = game.add.audio( 'creak' );
+        this.stringForm = game.add.audio( 'stringForm' );
 	},
 
 	update: function()
@@ -70,6 +74,7 @@ Level_2.prototype =
 		if( ( this.ropeBroken == true && this.connected == false ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) < 100 ) )
 		{
 			// Connect the players together
+			this.stringForm.play( '', 0, 0.6, false );
 			createRope( game, player1, player2 );
 			this.ropeBroken = false;
 			this.connected = true;

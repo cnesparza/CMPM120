@@ -26,11 +26,8 @@ var line;
 var ropeBroken = true;
 var plyrSpeed = 300;
 var plyrJump = 1500;
-var worldCollisionGroup;
-var bplatCollisionGroup;
-var rplatCollisionGroup;
-var p1CollisionGroup;
-var p2CollisionGroup;
+var creak;
+
 
 // wait for browser to load before creating Phaser game
 window.onload = function() {
