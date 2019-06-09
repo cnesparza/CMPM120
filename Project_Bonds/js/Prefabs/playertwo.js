@@ -70,7 +70,7 @@ Player2.prototype.update = function()
     // Allow the player to jump if they are touching the ground
     if( (game.input.keyboard.isDown( Phaser.Keyboard.W ) && game.time.now > this.jumpTimer && checkIfCanJump( this, this.yAxis ) ) )
     {
-        this.jump.play( '', 0, 0.3, false );
+        this.jump.play( '', 0, 0.05, false );
         this.body.moveUp( this.plyrJump );
         this.jumpTimer = game.time.now + 750;
     }

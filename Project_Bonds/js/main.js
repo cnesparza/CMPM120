@@ -26,7 +26,6 @@ var line;
 var ropeBroken = true;
 var plyrSpeed = 300;
 var plyrJump = 1500;
-var creak;
 
 
 // wait for browser to load before creating Phaser game
