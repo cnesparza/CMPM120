@@ -95,12 +95,14 @@ Level_2.prototype =
 		// Check if players have broken string or have fallen
 		if( ( this.ropeBroken != true && this.connected == true ) && ( Phaser.Math.distance( player1.body.x, player1.body.y, player2.body.x, player2.body.y ) > 300 ) )
 		{
+			this.stringForm.stop();
 			breakString( game, player1, player2, ropeBroken );
             this.ropeBroken = true;
 			game.state.start( 'Game_Over', false, false, this.lvl, this.prevTrust, this.ropeBroken );
 		}
         else if( player1.body.y > game.world.height + 75 || player2.body.y > game.world.height + 75 )
         {
+        	this.stringForm.stop();
         	this.ropeBroken = true;
             game.state.start( 'Game_Over', false, false, this.lvl, this.prevTrust, this.ropeBroken );
         }

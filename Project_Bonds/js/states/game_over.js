@@ -18,8 +18,9 @@ Game_Over.prototype =
 		endPlaque.anchor.set( 0.5 );
 		endPlaque.scale.set( 0.8 );
 
-		game.sound.pauseAll();
-		this.deathSound.play( '', 0, 0.2, false );
+		// game.sound.pauseAll();
+		bgm.pause();
+		this.deathSound.play( '', 0, 0.1, false );
 	},
 
 	update: function()
@@ -29,7 +30,8 @@ Game_Over.prototype =
 		{
     	    this.deathSound.stop();
 
-			game.sound.resumeAll();
+			// game.sound.resumeAll();
+			bgm.resume();
 
 			if( levels[this.lvl] == "Menu" )
 			{

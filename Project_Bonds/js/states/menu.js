@@ -30,7 +30,7 @@ Menu.prototype =
 
         // play intro music, set up bgm
         game.sound.stopAll();
-        this.bgm = game.add.audio( 'bgm' );
+        bgm = game.add.audio( 'bgm' );
         this.intro = game.add.audio( 'intro' );
         this.intro.allowMultiple = false;
 
@@ -81,7 +81,7 @@ Menu.prototype =
             this.intro.stop();
         }
         
-        this.bgm.play( '', 0, 0.1, true );
+        bgm.play( '', 0, 0.1, true );
         game.state.start( 'Level_1', true, false, ++this.lvl );
     },
 
