@@ -12,14 +12,14 @@ Game_Over.prototype =
 	create: function()
 	{
 		console.log( 'Game_Over: current levels string == ' + levels[this.lvl] );
-		var deathSound = game.add.audio( 'death' )
+		this.deathSound = game.add.audio( 'death' )
 
 		var endPlaque = game.add.image( game.world.centerX, game.world.centerY, 'end' );
 		endPlaque.anchor.set( 0.5 );
 		endPlaque.scale.set( 0.8 );
 
 		game.sound.pauseAll();
-		deathSound.play( '', 0, 0.2, false );
+		this.deathSound.play( '', 0, 0.2, false );
 	},
 
 	update: function()
@@ -27,11 +27,7 @@ Game_Over.prototype =
 
 		if( game.input.keyboard.justPressed( Phaser.Keyboard.SPACEBAR ) )
 		{
-
-			if( this.deathSound.isPlaying )
-        	{
-    	        this.deathSound.stop();
-	        }
+    	    this.deathSound.stop();
 
 			game.sound.resumeAll();
 
