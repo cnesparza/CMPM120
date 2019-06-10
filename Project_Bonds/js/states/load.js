@@ -32,6 +32,9 @@ Load.prototype =
 		game.load.image( 'button', 'button.png' );
 		game.load.image( 'end', 'endScreen.png' );
 		game.load.image( 'credits', 'credits.png' );
+		game.load.image( 'creditsButton', 'creditsButton.png' );
+		game.load.image( 'menuButton', 'menuButton.png' );
+		game.load.image( 'final', 'finalScreen.png' ); 
 
 		// load fly sprite
 		game.load.path = 'assets/img/sprites/';

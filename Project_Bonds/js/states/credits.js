@@ -18,7 +18,7 @@ Credits.prototype =
 		var credits = game.add.image( game.world.centerX, game.world.centerY, 'credits' );
 		credits.anchor.set( 0.5 );
 
-		var button = game.add.button( game.world.centerX, game.world.height - 100, 'button', this.actionOnClick, this );
+		var button = game.add.button( 110, 35, 'menuButton', this.actionOnClick, this );
         button.anchor.set( 0.5 );
 	},
 

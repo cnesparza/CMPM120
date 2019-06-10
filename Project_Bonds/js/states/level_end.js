@@ -9,6 +9,7 @@ Level_End.prototype =
 		this.trustLVL = trustLVL;
 		this.ropeBroken = ropeBroken;
 		this.ending = "";
+		this.restart = false;
 	},
 
 	create: function()
@@ -47,7 +48,7 @@ Level_End.prototype =
 		game.physics.p2.convertTilemap( map, layer );
 
 		// Resetting bounds to the world after resize
-		game.physics.p2.setBoundsToWorld( true, true, false, false, true );
+		game.physics.p2.setBoundsToWorld( true, false, false, false, true );
 
 		// Setting up world physics
 		game.physics.p2.restitution = 0;
@@ -115,6 +116,20 @@ Level_End.prototype =
 				this.breakString( game, player1, player2, this.ropeBroken );
 				this.ropeBroken = true;
 			}
+		}
+
+		// Transition to final screen and main menu
+        if( ( player1.body.x > game.world.width + 20 ) && ( player2.body.x > game.world.width + 20 ) )
+        {
+			var finalPlaque = game.add.image( game.world.centerX, game.world.centerY, 'final' );
+			finalPlaque.anchor.set( 0.5 );
+			finalPlaque.scale.set( 0.5 );
+			this.restart = true;
+        }
+
+        if( game.input.keyboard.justPressed( Phaser.Keyboard.SPACEBAR ) && this.restart == true )
+		{
+			game.state.start( 'Menu', true, false );
 		}
 
 	},

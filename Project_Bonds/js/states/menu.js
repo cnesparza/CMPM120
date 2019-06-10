@@ -22,12 +22,23 @@ Menu.prototype =
         logo.anchor.set( 0.5 );
 
         var button = game.add.button( game.world.centerX, game.world.centerY + 200, 'button', this.actionOnClick, this );
-        button.anchor.set( 0.5 );        
+        button.anchor.set( 0.5 );
+
+        // add button for credits screen
+        var credits = game.add.button( game.world.centerX, game.world.centerY + 275, 'creditsButton', this.creditsClick, this );
+        credits.anchor.set( 0.5 );   
 
         // play intro music, set up bgm
+        game.sound.stopAll();
         this.bgm = game.add.audio( 'bgm' );
         this.intro = game.add.audio( 'intro' );
-        this.intro.play( '', 0, 0.2, false );    // set bgm to loop
+        this.intro.allowMultiple = false;
+
+        if( this.intro.isPlaying == false )
+        {
+            this.intro.play( '', 0, 0.2, true );          
+        }
+
 
         // [ D E B U G ]
         // button = game.add.button( 50, game.world.height - 50, 'button', this.clickLvl1, this );
@@ -74,43 +85,47 @@ Menu.prototype =
         game.state.start( 'Level_1', true, false, ++this.lvl );
     },
 
-    clickLvl1: function()
+    creditsClick: function()
     {
-        game.state.start( 'Level_1', true, false, 1 );
-    },
+        game.state.start( 'Credits', true, false );
+    }
+    // clickLvl1: function()
+    // {
+    //     game.state.start( 'Level_1', true, false, 1 );
+    // },
 
-    clickLvl2: function()
-    {
-        game.state.start( 'Level_2', true, false, 2, 0, true );
-    },
+    // clickLvl2: function()
+    // {
+    //     game.state.start( 'Level_2', true, false, 2, 0, true );
+    // },
 
-    clickLvl3: function()
-    {
-        game.state.start( 'Level_3', true, false, 3, 0, false );
-    },
+    // clickLvl3: function()
+    // {
+    //     game.state.start( 'Level_3', true, false, 3, 0, false );
+    // },
 
-    clickLvl4: function()
-    {
-        game.state.start( 'Level_4', true, false, 4, 0, false );
-    },
+    // clickLvl4: function()
+    // {
+    //     game.state.start( 'Level_4', true, false, 4, 0, false );
+    // },
 
-    clickLvl5: function()
-    {
-        game.state.start( 'Level_5', true, false, 5, 0, false );
-    },
+    // clickLvl5: function()
+    // {
+    //     game.state.start( 'Level_5', true, false, 5, 0, false );
+    // },
 
-    clickLvl6: function()
-    {
-        game.state.start( 'Level_6', true, false, 6, 0, false );
-    },
+    // clickLvl6: function()
+    // {
+    //     game.state.start( 'Level_6', true, false, 6, 0, false );
+    // },
 
-    clickLvl7: function()
-    {
-        game.state.start( 'Level_7', true, false, 7, 0, false );
-    },
+    // clickLvl7: function()
+    // {
+    //     game.state.start( 'Level_7', true, false, 7, 0, false );
+    // },
 
-    clickLvlE: function()
-    {
-        game.state.start( 'Level_End', true, false, 7, 0, false );
-    }            
+    // clickLvlE: function()
+    // {
+    //     game.state.start( 'Level_End', true, false, 7, 0, false );
+    // }            
 };
