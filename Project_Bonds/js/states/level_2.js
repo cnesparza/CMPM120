@@ -64,7 +64,6 @@ Level_2.prototype =
         barrier.body.static = true;
 
         // Add sound to be used
-        creak = game.add.audio( 'creak' );
         this.stringForm = game.add.audio( 'stringForm' );
 	},
 
