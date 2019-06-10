@@ -24,10 +24,7 @@ Menu.prototype =
         var button = game.add.button( game.world.centerX, game.world.centerY + 200, 'button', this.actionOnClick, this );
         button.anchor.set( 0.5 );        
 
-        var playText = game.add.text( game.world.centerX, game.world.centerY + 210, 'play', { fontSize: '32px', fill: '#FFF' } );
-        playText.anchor.set( 0.5 );
-
-        // begin playing bgm
+        // play intro music, set up bgm
         this.bgm = game.add.audio( 'bgm' );
         this.intro = game.add.audio( 'intro' );
         this.intro.play( '', 0, 0.2, false );    // set bgm to loop
