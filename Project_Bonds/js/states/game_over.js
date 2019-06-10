@@ -27,6 +27,12 @@ Game_Over.prototype =
 
 		if( game.input.keyboard.justPressed( Phaser.Keyboard.SPACEBAR ) )
 		{
+
+			if( this.deathSound.isPlaying )
+        	{
+    	        this.deathSound.stop();
+	        }
+
 			game.sound.resumeAll();
 
 			if( levels[this.lvl] == "Menu" )
